@@ -15,11 +15,7 @@ jobs:
           yarn
           yarn build
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Gatsby Publish
+        uses: enriikke/gatsby-gh-pages-action@2.1.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: public
-          CLEAN: true
