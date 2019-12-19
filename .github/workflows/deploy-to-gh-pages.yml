@@ -1,12 +1,28 @@
-on: push
-name: Build Gatsby Site
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - develop
+
 jobs:
-  build:
-    name: Build Gatsby Site
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@master
-    - name: Build Gatsby Site
-      uses: jzweifel/gatsby-cli-github-action@master
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Build
+      run: |
+        yarn
+        yarn build
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        gatsby-arg: build
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BASE_BRANCH: develop
+        BRANCH: master
+        FOLDER: public
+        CLEAN: true
