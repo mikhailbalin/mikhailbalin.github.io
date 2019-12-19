@@ -4,6 +4,6 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/mikhailbalin/mikhailbalin.github.io)
 ![GitHub contributors](https://img.shields.io/github/contributors/mikhailbalin/mikhailbalin.github.io)
-![Twitter Follow](https://img.shields.io/twitter/follow/mikhailbalin?style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/mischabalin?style=social)
 
 Docs site. Check `package.json` for commands.
