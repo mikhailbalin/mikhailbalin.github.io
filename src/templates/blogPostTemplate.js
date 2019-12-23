@@ -1,9 +1,9 @@
+import { Layout } from "components/Layout";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { useSiteMetadata } from "hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
-import { Layout } from "components/Layout";
-import { useSiteMetadata } from "hooks/useSiteMetadata";
 
 export default ({ data, pageContext }) => {
   const {

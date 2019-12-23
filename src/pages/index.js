@@ -1,11 +1,11 @@
+import { Layout } from "components/Layout";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
-import React from "react";
-import styled from "styled-components";
-import { Layout } from "components/Layout";
 // import Dump from "components/Dump";
 import { useSiteMetadata } from "hooks/useSiteMetadata";
+import React from "react";
 import SEO from "react-seo-component";
+import styled from "styled-components";
 
 const IndexWrapper = styled.main``;
 
