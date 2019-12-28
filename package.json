@@ -19,6 +19,7 @@
     "@mdx-js/react": "^1.5.1",
     "@types/react": "^16.9.16",
     "babel-plugin-styled-components": "^1.10.6",
+    "baseui": "^9.34.0",
     "gatsby": "^2.18.7",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-mdx": "^1.0.59",
@@ -34,7 +35,9 @@
     "react-helmet": "^5.2.1",
     "react-live": "^2.2.2",
     "react-seo-component": "^0.1.16",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styletron-engine-atomic": "^1.4.4",
+    "styletron-react": "^5.2.6"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
