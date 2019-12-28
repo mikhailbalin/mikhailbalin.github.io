@@ -9,7 +9,8 @@
     "dev": "gatsby develop -p 9988",
     "build": "gatsby build",
     "serve": "gatsby serve -p 9500",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
   },
   "dependencies": {
     "@atlaskit/code": "^11.1.0",
@@ -17,7 +18,6 @@
     "@atlaskit/tree": "^7.0.2",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
-    "@types/react": "^16.9.16",
     "babel-plugin-styled-components": "^1.10.6",
     "baseui": "^9.34.0",
     "gatsby": "^2.18.7",
@@ -26,6 +26,7 @@
     "gatsby-plugin-react-helmet": "^3.1.18",
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-plugin-styled-components": "^3.1.14",
+    "gatsby-plugin-typescript": "^2.1.23",
     "gatsby-remark-images": "^3.1.35",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-sharp": "^2.3.7",
@@ -40,7 +41,11 @@
     "styletron-react": "^5.2.6"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "@types/node": "^13.1.1",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.19.1",
@@ -48,7 +53,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "prettier": "^1.19.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.4"
   },
   "homepage": "https://mikhailbalin.github.io"
 }
