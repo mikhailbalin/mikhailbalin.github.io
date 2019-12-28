@@ -14,7 +14,6 @@
   "dependencies": {
     "@atlaskit/code": "^11.1.0",
     "@atlaskit/css-reset": "^5.0.9",
-    "@atlaskit/page": "^11.0.9",
     "@atlaskit/tree": "^7.0.2",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
