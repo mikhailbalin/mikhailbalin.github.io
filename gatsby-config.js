@@ -16,7 +16,13 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-typescript",
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        allExtensions: true // defaults to false
+      }
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {

@@ -1,10 +1,11 @@
-import { Layout } from "components/Layout";
+import { Layout } from "../components/Layout";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { useSiteMetadata } from "hooks/useSiteMetadata";
-import React from "react";
+import { useSiteMetadata } from "../hooks/useSiteMetadata";
+import * as React from "react";
 import SEO from "react-seo-component";
 
+// eslint-disable-next-line react/display-name
 export default ({ data, pageContext }) => {
   const {
     image,

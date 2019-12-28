@@ -3,7 +3,7 @@ import theme from "prism-react-renderer/themes/vsDark";
 import React from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 import styled from "styled-components";
-import { copyToClipboard } from "../utils/copy-to-clipboard";
+import { copyToClipboard } from "../../utils/copy-to-clipboard";
 
 const Pre = styled.pre`
   position: relative;

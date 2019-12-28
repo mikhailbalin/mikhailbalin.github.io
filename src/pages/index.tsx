@@ -1,8 +1,9 @@
-import { Layout } from "components/Layout";
+/* eslint-disable react/display-name */
+import { Layout } from "../components/Layout";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 // import Dump from "components/Dump";
-import { useSiteMetadata } from "hooks/useSiteMetadata";
+import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
 import styled from "styled-components";
@@ -42,7 +43,7 @@ export default ({ data }) => {
           <PostWrapper key={id}>
             <Link to={fields.slug}>
               <figure>
-                {!!frontmatter.cover ? (
+                {frontmatter.cover ? (
                   <Image sizes={frontmatter.cover.childImageSharp.sizes} />
                 ) : null}
                 <figcaption>{frontmatter.coverCredit}</figcaption>
