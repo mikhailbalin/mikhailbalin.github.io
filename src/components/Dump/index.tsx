@@ -1,12 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  fontsize: 20;
-  border: "1px solid #efefef";
-  padding: 10;
-  background: "white";
-`;
+import { Wrapper } from "./Dump.styles";
 
 const Dump = props => (
   <Wrapper>
@@ -18,7 +11,7 @@ const Dump = props => (
             💩
           </span>
         </strong>
-        {JSON.stringify(val, "", " ")}
+        {JSON.stringify(val, null, " ")}
       </pre>
     ))}
   </Wrapper>

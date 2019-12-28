@@ -9,16 +9,18 @@ export const copyToClipboard = str => {
   if (!clipboard || typeof clipboard.writeText !== `function`) {
     const textarea = document.createElement(`textarea`);
     textarea.value = str;
-    textarea.setAttribute(`readonly`, true);
-    textarea.setAttribute(`contenteditable`, true);
+    textarea.setAttribute(`readonly`, "");
+    textarea.setAttribute(`contenteditable`, "");
     textarea.style.position = `absolute`;
     textarea.style.left = `-9999px`;
     document.body.appendChild(textarea);
     textarea.select();
     const range = document.createRange();
     const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
+    if (sel !== null) {
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
     textarea.setSelectionRange(0, textarea.value.length);
     document.execCommand(`copy`);
     document.body.removeChild(textarea);

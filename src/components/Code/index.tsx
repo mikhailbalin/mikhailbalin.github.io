@@ -2,44 +2,8 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/vsDark";
 import React from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
-import styled from "styled-components";
 import { copyToClipboard } from "../../utils/copy-to-clipboard";
-
-const Pre = styled.pre`
-  position: relative;
-  text-align: left;
-  margin: 1rem 0;
-  padding: 0.5rem;
-  overflow-x: auto;
-  border-radius: 3px;
-  font-family: "Courier New", Courier, monospace;
-
-  & .token-line {
-    line-height: 1.3rem;
-    height: 1.3rem;
-  }
-`;
-
-const LineNo = styled.span`
-  display: inline-block;
-  width: 2rem;
-  user-select: none;
-  opacity: 0.3;
-`;
-
-const CopyCode = styled.button`
-  position: absolute;
-  right: 0.25rem;
-  border: 0;
-  border-radius: 3px;
-  margin: 0.25em;
-  opacity: 0.3;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 1;
-  }
-`;
+import { Pre, LineNo, CopyCode } from "./Code.styles";
 
 const Code = ({ codeString, language, ...props }) => {
   if (props["react-live"]) {
@@ -67,10 +31,10 @@ const Code = ({ codeString, language, ...props }) => {
         <Pre className={className} style={style}>
           <CopyCode onClick={handleClick}>Copy</CopyCode>
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
+            <div key={i} {...getLineProps({ line, i })}>
               <LineNo>{i + 1}</LineNo>
               {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
+                <span key={key} {...getTokenProps({ token, key })} />
               ))}
             </div>
           ))}

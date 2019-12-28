@@ -1,10 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
-import styled from "styled-components";
-
-const StyledH1 = styled.h1`
-  color: rebeccapurple;
-`;
+import { StyledH1 } from "./Header.styles";
 
 export const Header = ({ siteTitle, siteDescription }) => (
   <Link to="/">
