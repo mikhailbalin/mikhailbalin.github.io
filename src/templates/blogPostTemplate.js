@@ -14,9 +14,11 @@ export default ({ data, pageContext }) => {
     twitterUsername,
     authorName
   } = useSiteMetadata();
+
   const { frontmatter, body, fields, excerpt } = data.mdx;
   const { title, date, cover } = frontmatter;
   const { previous, next } = pageContext;
+
   return (
     <Layout>
       <SEO
