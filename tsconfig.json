@@ -18,7 +18,8 @@
     "noFallthroughCasesInSwitch": true,
     "importHelpers": true,
     "removeComments": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./src/**/*"

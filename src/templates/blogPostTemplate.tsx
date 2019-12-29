@@ -2,11 +2,18 @@ import { Layout } from "../components/Layout";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
-import * as React from "react";
+import React from "react";
 import SEO from "react-seo-component";
 
+type Props = {
+  data: {
+    mdx: any;
+  };
+  pageContext: any;
+};
+
 // eslint-disable-next-line react/display-name
-export default ({ data, pageContext }) => {
+const blogPostTemplate = ({ data, pageContext }: Props) => {
   const {
     image,
     siteUrl,
@@ -61,6 +68,8 @@ export default ({ data, pageContext }) => {
     </Layout>
   );
 };
+
+export default blogPostTemplate;
 
 export const query = graphql`
   query PostBySlug($slug: String!) {

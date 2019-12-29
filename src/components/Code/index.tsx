@@ -5,7 +5,13 @@ import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 import { copyToClipboard } from "../../utils/copy-to-clipboard";
 import { Pre, LineNo, CopyCode } from "./Code.styles";
 
-const Code = ({ codeString, language, ...props }) => {
+type Props = {
+  codeString: any;
+  language: any;
+  "react-live": any;
+};
+
+const Code = ({ codeString, language, ...props }: Props) => {
   if (props["react-live"]) {
     return (
       <LiveProvider code={codeString} noInline={true} theme={theme}>
