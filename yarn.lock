@@ -1470,6 +1470,28 @@
     "@types/react-native" "*"
     csstype "^2.2.0"
 
+"@types/styletron-engine-atomic@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/styletron-engine-atomic/-/styletron-engine-atomic-1.1.0.tgz#aea5f44e946aa4641e576b13048a78e0efebdfc3"
+  integrity sha512-wEU9lwW+sEZ7y8lRmPe2NLNeJzm7AgvK72CVE0iHoT1pyzS90O9APgxaN5E83p4h8ej7wOaS3swBZtvZ08B/LQ==
+  dependencies:
+    "@types/styletron-standard" "*"
+
+"@types/styletron-react@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/styletron-react/-/styletron-react-5.0.2.tgz#541cebb147ef68e9a8ee75dcff160cf723fed710"
+  integrity sha512-jONPyzz9MRuCB71QYpkRQx4nsjGxLS/GNmudHXs8aeTj8yRHgO9wsXhUAL5uZ8LOENWUN2Gcqh/vNvlbRpfcUA==
+  dependencies:
+    "@types/react" "*"
+    "@types/styletron-standard" "*"
+
+"@types/styletron-standard@*", "@types/styletron-standard@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/styletron-standard/-/styletron-standard-2.0.0.tgz#fff4c89cb2cb1f6cc48699188fcea31a02191052"
+  integrity sha512-TCNFfgWmGLyuthLVl55Bvw6xjdflrtJ43+CIB+UfumLDRDFdANPB5fnMP/gahepI/QUaLI0nVuZYfNq/MTCjdQ==
+  dependencies:
+    csstype "^2.6.4"
+
 "@types/tmp@^0.0.32":
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.0.32.tgz#0d3cb31022f8427ea58c008af32b80da126ca4e3"
@@ -3943,7 +3965,7 @@ csso@^4.0.2:
   dependencies:
     css-tree "1.0.0-alpha.37"
 
-csstype@^2.2.0, csstype@^2.6.7:
+csstype@^2.2.0, csstype@^2.6.4, csstype@^2.6.7:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
   integrity sha512-msVS9qTuMT5zwAGCVm4mxfrZ18BNc6Csd0oJAtiFMZ1FAx1CCvy2+5MDmYoix63LM/6NDbNtodCiGYGmFgO0dA==
@@ -5892,6 +5914,15 @@ gatsby-plugin-styled-components@^3.1.14:
   integrity sha512-ixvMwMCYm70iC23+zkMBmQPNX0UmmumzK+1TtK3LSYicdaXXz7dychaBdiljKD4WMNraXYx49JuZS01yjOZiOw==
   dependencies:
     "@babel/runtime" "^7.7.6"
+
+gatsby-plugin-styletron@^4.1.22:
+  version "4.1.22"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styletron/-/gatsby-plugin-styletron-4.1.22.tgz#79392c6ecf2c005fa5db899018d8f422b3337049"
+  integrity sha512-IZI+J5F4u3HZdV+sydBlJqnNxOtLXkNoBPMN8HmJYz1XYwiF69+VttON4eV+b12ytAQv41zNAtRAQRBxdIgKxA==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    styletron-engine-atomic "^1.4.4"
+    styletron-react "^5.2.6"
 
 gatsby-plugin-typescript@^2.1.23:
   version "2.1.23"

@@ -17,10 +17,17 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-plugin-styletron",
+      options: {
+        // Prefix all generated classNames:
+        prefix: "mb_"
+      }
+    },
+    {
       resolve: `gatsby-plugin-typescript`,
       options: {
-        isTSX: true, // defaults to false
-        allExtensions: true // defaults to false
+        isTSX: true,
+        allExtensions: true
       }
     },
     {

@@ -1,4 +1,13 @@
 import "@atlaskit/css-reset";
-import { wrapRootElement as wrap } from "./root-wrapper";
+import React from "react";
+import { Client as StyletronClient } from "styletron-engine-atomic";
+import { Provider as StyletronProvider } from "styletron-react";
+import CommonRootElementWrapper from "./root-wrapper";
 
-export const wrapRootElement = wrap;
+const engine = new StyletronClient();
+
+export const wrapRootElement = ({ element }) => (
+  <StyletronProvider value={engine}>
+    <CommonRootElementWrapper element={element} />
+  </StyletronProvider>
+);
