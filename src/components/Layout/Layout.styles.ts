@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AppStyles = styled.div`
+export const AppStyles = styled.main`
   max-width: 800px;
   margin: 0 auto;
 `;
