@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { AkCode } from "@atlaskit/code";
 import { MDXProvider } from "@mdx-js/react";
-import { BaseProvider, LightTheme } from "baseui";
+import { BaseProvider, createTheme, darkThemePrimitives } from "baseui";
 import React from "react";
 import Code from "./src/components/Code";
 
@@ -23,8 +23,22 @@ const components = {
   }
 };
 
+const customTheme = createTheme(
+  {
+    ...darkThemePrimitives,
+    // add all the properties here you'd like to override from the dark theme primitives
+    primaryFontFamily: '"Comic Sans MS", cursive, sans-serif'
+  },
+  {
+    // add all the theme overrides here - under the hood it uses deep merge
+    animation: {
+      timing100: "0.50s"
+    }
+  }
+);
+
 const CommonRootElementWrapper = ({ element }) => (
-  <BaseProvider theme={LightTheme}>
+  <BaseProvider theme={customTheme}>
     <MDXProvider components={components}>{element}</MDXProvider>
   </BaseProvider>
 );
