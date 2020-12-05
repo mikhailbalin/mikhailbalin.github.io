@@ -24,7 +24,7 @@ export default ({ data }) => {
     siteUrl,
     siteLanguage,
     siteLocale,
-    twitterUsername
+    twitterUsername,
   } = useSiteMetadata();
   return (
     <Layout>

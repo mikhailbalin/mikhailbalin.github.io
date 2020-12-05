@@ -9,3 +9,11 @@ public
 .DS_Store
 yarn-error.log
 outputTheme.js
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
