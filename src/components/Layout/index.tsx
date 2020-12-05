@@ -6,7 +6,7 @@ import {
   HeaderNavigation,
   ALIGN,
   StyledNavigationItem as NavigationItem,
-  StyledNavigationList as NavigationList
+  StyledNavigationList as NavigationList,
 } from "baseui/header-navigation";
 import { StyledLink } from "baseui/link";
 import { StatefulSelect as Search, TYPE } from "baseui/select";
@@ -21,12 +21,12 @@ const options = {
     { id: "Azure", color: "#F0FFFF" },
     { id: "Beige", color: "#F5F5DC" },
     { id: "Bisque", color: "#FFE4C4" },
-    { id: "Black", color: "#000000" }
+    { id: "Black", color: "#000000" },
   ],
   labelKey: "id",
   valueKey: "color",
   placeholder: "Search colors",
-  maxDropdownHeight: "300px"
+  maxDropdownHeight: "300px",
 };
 
 type LayoutProps = {
@@ -53,10 +53,10 @@ export const Layout = ({ children }: LayoutProps) => {
               <Search
                 {...options}
                 type={TYPE.search}
-                getOptionLabel={props =>
+                getOptionLabel={(props) =>
                   props.option && props.option.id ? props.option.id : null
                 }
-                onChange={e => {
+                onChange={(e) => {
                   console.log(e);
                 }}
               />

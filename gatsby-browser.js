@@ -1,4 +1,6 @@
 import "@atlaskit/css-reset";
+import "fontsource-ibm-plex-mono/400.css";
+import "fontsource-playfair-display/400.css";
 import React from "react";
 import { Client as StyletronClient } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
