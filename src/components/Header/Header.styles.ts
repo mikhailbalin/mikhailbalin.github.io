@@ -1,5 +1,5 @@
-import styled from "styled-components";
+import { styled } from "baseui";
 
-export const StyledH1 = styled.h1`
-  color: rebeccapurple;
-`;
+export const StyledH1 = styled("h1", ({ $theme }) => ({
+  color: "rebeccapurple",
+}));

@@ -20,7 +20,7 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
     siteLanguage,
     siteLocale,
     twitterUsername,
-    authorName
+    authorName,
   } = useSiteMetadata();
 
   const { frontmatter, body, fields, excerpt } = data.mdx;
@@ -30,6 +30,7 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
   return (
     <Layout>
       <SEO
+        titleTemplate={title}
         title={title}
         description={excerpt}
         image={
@@ -41,8 +42,8 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
         twitterUsername={twitterUsername}
         author={authorName}
         article={true}
-        publishedDate={date}
-        modifiedDate={new Date(Date.now()).toISOString()}
+        datePublished={date}
+        dateModified={new Date(Date.now()).toISOString()}
       />
       <h1>{frontmatter.title}</h1>
       <p>{frontmatter.date}</p>

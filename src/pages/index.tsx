@@ -6,15 +6,15 @@ import Img from "gatsby-image";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
-import styled from "styled-components";
+import { styled } from "baseui";
 
-const IndexWrapper = styled.main``;
+const IndexWrapper = styled("main", ({ $theme }) => ({}));
 
-const PostWrapper = styled.div``;
+const PostWrapper = styled("div", ({ $theme }) => ({}));
 
-const Image = styled(Img)`
-  border-radius: 5px;
-`;
+export const Image = styled(Img, ({ $theme }) => ({
+  borderRadius: "5px",
+}));
 
 export default ({ data }) => {
   const {
@@ -26,9 +26,11 @@ export default ({ data }) => {
     siteLocale,
     twitterUsername,
   } = useSiteMetadata();
+
   return (
     <Layout>
       <SEO
+        titleTemplate={title}
         title={title}
         description={description}
         image={`${siteUrl}${image}`}
