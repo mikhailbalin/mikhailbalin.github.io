@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[63],{yFIB:function(t,n,i){"use strict";function s(t){t.languages.ini={comment:/^[ \t]*[;#].*$/m,selector:/^[ \t]*\[.*?\]/m,constant:/^[ \t]*[^\s=]+?(?=[ \t]*=)/m,"attr-value":{pattern:/=.*/,inside:{punctuation:/^[=]/}}}}t.exports=s,s.displayName="ini",s.aliases=[]}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_refractor_ini-42b431b9cff5b2944f8e.js.map
