@@ -16,7 +16,7 @@ export const Image = styled(Img, ({ $theme }) => ({
   borderRadius: "5px",
 }));
 
-export default ({ data }) => {
+export default ({ data }: any) => {
   const {
     description,
     title,
