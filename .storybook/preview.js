@@ -1,7 +1,8 @@
 import React from "react";
 import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-atomic";
-import { BaseProvider, DarkTheme } from "baseui";
+import { BaseProvider } from "baseui";
+import { customTheme } from "../src/settings/theme";
 
 const debug =
   process.env.NODE_ENV === "production" ? void 0 : new DebugEngine();
@@ -15,7 +16,7 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <StyletronProvider value={engine} debug={debug} debugAfterHydration>
-      <BaseProvider theme={DarkTheme}>
+      <BaseProvider theme={customTheme}>
         <Story />
       </BaseProvider>
     </StyletronProvider>

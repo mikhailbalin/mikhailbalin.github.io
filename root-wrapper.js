@@ -1,9 +1,10 @@
 /* eslint-disable react/display-name */
 import { Code as AtlaskitCode } from "@atlaskit/code";
 import { MDXProvider } from "@mdx-js/react";
-import { BaseProvider, createTheme, darkThemePrimitives } from "baseui";
+import { BaseProvider } from "baseui";
 import React from "react";
 import { Code } from "./src/components/Code";
+import { customTheme } from "./src/settings/theme";
 
 const components = {
   h2: ({ children }) => <h2 style={{ color: "rebeccapurple" }}>{children}</h2>,
@@ -22,20 +23,6 @@ const components = {
     }
   },
 };
-
-const customTheme = createTheme(
-  {
-    ...darkThemePrimitives,
-    // add all the properties here you'd like to override from the dark theme primitives
-    primaryFontFamily: '"Comic Sans MS", cursive, sans-serif',
-  },
-  {
-    // add all the theme overrides here - under the hood it uses deep merge
-    animation: {
-      timing100: "0.50s",
-    },
-  }
-);
 
 const CommonRootElementWrapper = ({ element }) => (
   <BaseProvider theme={customTheme}>

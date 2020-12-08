@@ -2,9 +2,9 @@ import { Breakpoints } from "baseui/theme";
 
 interface CustomBreakpoints extends Breakpoints {
   mobile: number;
+  landscape: number;
   tablet: number;
   desktop: number;
-  widescreen: number;
 }
 
 type CustomMediaQuery = Record<keyof CustomBreakpoints, string>;
@@ -14,7 +14,7 @@ export type ResponsiveTheme = {
   mediaQuery: CustomMediaQuery;
 };
 
-export const getResponsiveTheme = (
+export const createResponsiveTheme = (
   breakpoints: CustomBreakpoints
 ): ResponsiveTheme =>
   (Object.keys(breakpoints) as (keyof CustomBreakpoints)[]).reduce(
