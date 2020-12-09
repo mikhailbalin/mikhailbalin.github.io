@@ -3,11 +3,7 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    "lib": [
-      "dom",
-      "es2015",
-      "es2017"
-    ],
+    "lib": ["dom", "es2015", "es2017"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -21,12 +17,6 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "public",
-    ".cache"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "public", ".cache"]
 }
