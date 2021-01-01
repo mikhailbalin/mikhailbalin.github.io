@@ -4,7 +4,7 @@ import React from "react";
 import { MyHeadingXXLarge } from "./Typography";
 
 export default {
-  title: "Typography",
+  title: "Typography/MyHeadingXXLarge",
   component: MyHeadingXXLarge,
 } as Meta;
 
