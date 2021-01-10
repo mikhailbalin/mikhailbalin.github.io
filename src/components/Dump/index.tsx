@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper, Label } from "./Dump.styles";
 
-const Dump = (props: object) => {
+const Dump = (props: Record<string, unknown>) => {
   console.log(props);
   return (
     <Wrapper>
