@@ -1,5 +1,5 @@
 import React from "react";
-import { AppStyles, TopBarWrapper } from "./Layout.styles";
+import { AppStyles, TopBarWrapper } from "./layout.styles";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { Header } from "../Header";
 import {
@@ -10,7 +10,7 @@ import {
 } from "baseui/header-navigation";
 import { StyledLink } from "baseui/link";
 import { StatefulSelect as Search, TYPE } from "baseui/select";
-// import { ProgressBar } from "baseui/progress-bar";
+import "../../styles/globals.css";
 
 const options = {
   options: [
