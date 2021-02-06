@@ -19,6 +19,14 @@ const overrides: DeepPartial<Theme> = {
   grid: {
     unit: "rem",
   },
+  typography: {
+    HeadingXSmall: { fontFamily: primitives.primaryFontFamily },
+    HeadingSmall: { fontFamily: primitives.primaryFontFamily },
+    HeadingMedium: { fontFamily: primitives.primaryFontFamily },
+    HeadingLarge: { fontFamily: primitives.primaryFontFamily },
+    HeadingXLarge: { fontFamily: primitives.primaryFontFamily },
+    HeadingXXLarge: { fontFamily: primitives.primaryFontFamily },
+  },
 };
 
 const theme = createTheme(primitives, overrides);
