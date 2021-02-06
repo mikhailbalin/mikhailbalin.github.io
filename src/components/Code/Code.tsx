@@ -2,7 +2,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/vsDark";
 import React from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
-import { copyToClipboard } from "../../utils/copy-to-clipboard";
+import { copyToClipboard } from "../../utils/copyToClipboard";
 import { Pre, LineNo, CopyCode } from "./Code.styles";
 
 type Props = {
