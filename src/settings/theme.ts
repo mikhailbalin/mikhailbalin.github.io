@@ -20,12 +20,30 @@ const overrides: DeepPartial<Theme> = {
     unit: "rem",
   },
   typography: {
-    HeadingXSmall: { fontFamily: primitives.primaryFontFamily },
-    HeadingSmall: { fontFamily: primitives.primaryFontFamily },
-    HeadingMedium: { fontFamily: primitives.primaryFontFamily },
-    HeadingLarge: { fontFamily: primitives.primaryFontFamily },
-    HeadingXLarge: { fontFamily: primitives.primaryFontFamily },
-    HeadingXXLarge: { fontFamily: primitives.primaryFontFamily },
+    HeadingXSmall: {
+      fontFamily: primitives.primaryFontFamily,
+      fontSize: "1.151rem",
+    },
+    HeadingSmall: {
+      fontFamily: primitives.primaryFontFamily,
+      fontSize: "1.204rem",
+    },
+    HeadingMedium: {
+      fontFamily: primitives.primaryFontFamily,
+      fontSize: "1.333rem",
+    },
+    HeadingLarge: {
+      fontFamily: primitives.primaryFontFamily,
+      fontSize: "1.534rem",
+    },
+    HeadingXLarge: {
+      fontFamily: primitives.primaryFontFamily,
+      fontSize: "1.777rem",
+    },
+    HeadingXXLarge: {
+      fontFamily: primitives.primaryFontFamily,
+      fontSize: "2.045rem",
+    },
   },
 };
 
@@ -39,10 +57,10 @@ export const themedUseStyletron = createThemedUseStyletron<CustomTheme>();
 export const customTheme: CustomTheme = {
   ...theme,
   ...createResponsiveTheme({
-    small: 769,
-    medium: 1024,
-    large: 1216,
-    mobile: 350,
+    small: 320,
+    medium: 600,
+    large: 1136,
+    mobile: 360,
     landscape: 480,
     tablet: 768,
     desktop: 992,
