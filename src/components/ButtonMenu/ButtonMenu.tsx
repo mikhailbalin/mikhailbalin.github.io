@@ -27,6 +27,18 @@ export const ButtonMenu = () => {
     xyz: active ? [0, 1, 1] : [1, 1, 1],
   });
 
+  const propsTop = useSpring({
+    transform: active
+      ? "translate3d(0px, 7px, 0px) rotateZ(-45deg)"
+      : "translate3d(0px, 0px, 0px) rotateZ(0deg)",
+  });
+
+  const propsBottom = useSpring({
+    transform: active
+      ? "translate3d(0px, -7px, 0px) rotateZ(45deg)"
+      : "translate3d(0px, 0px, 0px) rotateZ(0deg)",
+  });
+
   return (
     <Button
       onClick={() => setActive(!active)}
@@ -43,16 +55,17 @@ export const ButtonMenu = () => {
       }}
     >
       <MenuIcon>
-        <MenuIconLine />
+        <MenuIconLine style={propsTop} />
         <MenuIconLine
           style={{
             opacity: (o.interpolate((o) => o) as unknown) as number,
             transform: xyz.interpolate(
-              (x: any, y: any, z: any) => `scale3d(${x}, ${y}, ${z})`
+              (x: unknown, y: unknown, z: unknown) =>
+                `scale3d(${x}, ${y}, ${z})`
             ),
           }}
         />
-        <MenuIconLine />
+        <MenuIconLine style={propsBottom} />
       </MenuIcon>
     </Button>
   );
