@@ -4,15 +4,17 @@ import {
   createThemedWithStyle,
   createThemedUseStyletron,
 } from "baseui";
-import { Theme, ThemePrimitives } from "baseui/theme";
+import { Font, Theme, ThemePrimitives, Typography } from "baseui/theme";
 import { DeepPartial } from "utility-types";
 import { createResponsiveTheme, ResponsiveTheme } from "./breakpoints";
+
+const monoFontFamily = "'IBM Plex Mono', monospace";
 
 const primitives: Partial<ThemePrimitives> = {
   primaryA: "#151515",
   accent: "#71a882",
   positive: "#71a882",
-  primaryFontFamily: "IBM Plex Mono, monospace",
+  primaryFontFamily: monoFontFamily,
 };
 
 const overrides: DeepPartial<Theme> = {
@@ -49,13 +51,29 @@ const overrides: DeepPartial<Theme> = {
 
 const theme = createTheme(primitives, overrides);
 
-export type CustomTheme = Theme & ResponsiveTheme;
+interface CustomTypography {
+  typography: {
+    font160: Font;
+  };
+}
+
+export type CustomTheme = Theme & ResponsiveTheme & CustomTypography;
 
 export const themedStyled = createThemedStyled<CustomTheme>();
 export const themedWithStyle = createThemedWithStyle<CustomTheme>();
 export const themedUseStyletron = createThemedUseStyletron<CustomTheme>();
+
 export const customTheme: CustomTheme = {
   ...theme,
+  typography: {
+    ...theme.typography,
+    font160: {
+      fontFamily: monoFontFamily,
+      fontSize: "13px",
+      fontWeight: 500,
+      lineHeight: 1.23,
+    },
+  },
   ...createResponsiveTheme({
     small: 320,
     medium: 600,
