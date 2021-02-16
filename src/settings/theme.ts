@@ -71,7 +71,7 @@ export const customTheme: CustomTheme = {
       fontFamily: monoFontFamily,
       fontSize: "13px",
       fontWeight: 500,
-      lineHeight: 1.23,
+      lineHeight: "16px",
     },
   },
   ...createResponsiveTheme({
