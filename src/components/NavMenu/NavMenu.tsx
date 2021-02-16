@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "gatsby";
 import { themedStyled } from "../../settings/theme";
+import { NavLink } from "../NavLink";
 
 const Nav = themedStyled("nav", ({ $theme }) => ({
   height: $theme.sizing.scale1600,
@@ -15,25 +15,16 @@ const NavLinks = themedStyled("div", ({ $theme }) => ({
   paddingRight: $theme.sizing.scale850,
 }));
 
-const StyledNavLink = themedStyled(Link, ({ $theme }) => ({
-  margin: `${$theme.sizing.scale0} ${$theme.sizing.scale550}`,
-  padding: `${$theme.sizing.scale0} 0`,
-  color: $theme.colors.primaryA,
-  textDecoration: "none",
-  textTransform: "uppercase",
-  ...$theme.typography.font160,
-}));
-
 export const NavMenu = () => {
   return (
     <Nav>
       <NavLinks>
-        <StyledNavLink to="/">Home</StyledNavLink>
-        <StyledNavLink to="/works">Works</StyledNavLink>
-        <StyledNavLink to="/testimonials">Testimonials</StyledNavLink>
-        <StyledNavLink to="/blog">Blog</StyledNavLink>
-        <StyledNavLink to="/about">About</StyledNavLink>
-        <StyledNavLink to="/contact">Contact</StyledNavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/works">Works</NavLink>
+        <NavLink to="/testimonials">Testimonials</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </NavLinks>
     </Nav>
   );
