@@ -1,10 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { ButtonMenu } from "./ButtonMenu";
+import { NavBar } from "./NavBar";
 
 export default {
-  title: "Buttons/ButtonMenu",
-  component: ButtonMenu,
+  title: "NavBar",
+  component: NavBar,
   parameters: {
     backgrounds: {
       default: "cararra",
@@ -12,7 +12,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<any> = (args) => <ButtonMenu {...args} />;
+const Template: Story<any> = (args) => <NavBar {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

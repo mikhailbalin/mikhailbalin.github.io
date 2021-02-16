@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Button, KIND, SHAPE } from "baseui/button";
-import { styled } from "baseui";
 import { Theme } from "baseui/theme";
 import { useSpring, animated } from "react-spring";
+import { themedStyled } from "../../settings/theme";
 
-const MenuIconLine = styled(animated.div, ({ $theme }) => ({
+const MenuIconLine = themedStyled(animated.div, ({ $theme }) => ({
   width: "100%",
   height: "2px",
   backgroundColor: $theme.colors.black,
   transformStyle: "preserve-3d",
 }));
 
-const MenuIcon = styled("div", {
+const MenuIcon = themedStyled("div", {
   flexDirection: "column",
   display: "flex",
   justifyContent: "space-evenly",
