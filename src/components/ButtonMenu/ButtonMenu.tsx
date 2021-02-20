@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, KIND, SHAPE } from "baseui/button";
 import { Theme } from "baseui/theme";
+import { StyleObject } from "styletron-react";
 import { useSpring, animated } from "react-spring";
 import { themedStyled } from "../../settings/theme";
 import { useHover } from "../../hooks/useHover";
@@ -33,7 +34,24 @@ const Circle = themedStyled(animated.div, ({ $theme }) => ({
   borderRadius: "50%",
 }));
 
-export const ButtonMenu = () => {
+const getButtonStyles = ({ $theme }: { $theme: Theme }): StyleObject => ({
+  position: "relative",
+  width: "60px",
+  height: "60px",
+  backgroundColor: $theme.colors.white,
+  ":hover": {
+    backgroundColor: "trasparent",
+  },
+  ":active": {
+    backgroundColor: "trasparent",
+  },
+});
+
+interface ButtonMenuProps {
+  onClick?: (active: boolean) => void;
+}
+
+export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
   const [active, setActive] = useState(false);
   const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
@@ -59,26 +77,21 @@ export const ButtonMenu = () => {
 
   return (
     <Button
-      onClick={() => setActive(!active)}
+      ref={hoverRef}
       kind={KIND.minimal}
       shape={SHAPE.circle}
+      onClick={() => {
+        setActive((prevState) => {
+          const newState = !prevState;
+          onClick && onClick(newState);
+          return newState;
+        });
+      }}
       overrides={{
         BaseButton: {
-          style: ({ $theme }: { $theme: Theme }) => ({
-            position: "relative",
-            width: "60px",
-            height: "60px",
-            backgroundColor: $theme.colors.white,
-            ":hover": {
-              backgroundColor: "trasparent",
-            },
-            ":active": {
-              backgroundColor: "trasparent",
-            },
-          }),
+          style: getButtonStyles,
         },
       }}
-      ref={hoverRef}
     >
       <Icon>
         <Line style={topStyles} />
