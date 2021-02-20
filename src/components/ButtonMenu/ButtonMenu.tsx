@@ -12,6 +12,7 @@ const MenuIconLine = themedStyled(animated.div, ({ $theme }) => ({
 }));
 
 const MenuIcon = themedStyled("div", {
+  position: "relative",
   flexDirection: "column",
   display: "flex",
   justifyContent: "space-evenly",
@@ -22,21 +23,22 @@ const MenuIcon = themedStyled("div", {
 
 export const ButtonMenu = () => {
   const [active, setActive] = useState(false);
-  const { o, xyz } = useSpring({
-    o: active ? 0 : 1,
-    xyz: active ? [0, 1, 1] : [1, 1, 1],
+
+  const top = useSpring({
+    transform: active
+      ? "translateY(6px) rotateZ(-45deg)"
+      : "translateY(0px) rotateZ(0deg)",
   });
 
-  const propsTop = useSpring({
-    transform: active
-      ? "translate3d(0px, 7px, 0px) rotateZ(-45deg)"
-      : "translate3d(0px, 0px, 0px) rotateZ(0deg)",
+  const middle = useSpring({
+    opacity: active ? 0 : 1,
+    transform: active ? "scale3d(0, 1, 1)" : "scale3d(1, 1, 1)",
   });
 
-  const propsBottom = useSpring({
+  const bottom = useSpring({
     transform: active
-      ? "translate3d(0px, -7px, 0px) rotateZ(45deg)"
-      : "translate3d(0px, 0px, 0px) rotateZ(0deg)",
+      ? "translateY(-6px) rotateZ(45deg)"
+      : "translateY(0px) rotateZ(0deg)",
   });
 
   return (
@@ -55,17 +57,9 @@ export const ButtonMenu = () => {
       }}
     >
       <MenuIcon>
-        <MenuIconLine style={propsTop} />
-        <MenuIconLine
-          style={{
-            opacity: (o.interpolate((o) => o) as unknown) as number,
-            transform: xyz.interpolate(
-              (x: unknown, y: unknown, z: unknown) =>
-                `scale3d(${x}, ${y}, ${z})`
-            ),
-          }}
-        />
-        <MenuIconLine style={propsBottom} />
+        <MenuIconLine style={top} />
+        <MenuIconLine style={middle} />
+        <MenuIconLine style={bottom} />
       </MenuIcon>
     </Button>
   );
