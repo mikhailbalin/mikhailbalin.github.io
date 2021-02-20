@@ -16,7 +16,7 @@ const StyledNavBar = themedStyled("div", ({ $theme }) => ({
 export const NavBar = () => {
   return (
     <StyledNavBar>
-      <ButtonMenu />
+      <ButtonMenu onClick={(active) => console.log(active)} />
       <NavMenu />
     </StyledNavBar>
   );

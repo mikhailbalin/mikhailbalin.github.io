@@ -47,7 +47,7 @@ const getButtonStyles = ({ $theme }: { $theme: Theme }): StyleObject => ({
   },
 });
 
-interface ButtonMenuProps {
+export interface ButtonMenuProps {
   onClick?: (active: boolean) => void;
 }
 

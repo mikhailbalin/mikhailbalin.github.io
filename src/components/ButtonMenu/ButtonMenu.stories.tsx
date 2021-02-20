@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { ButtonMenu } from "./ButtonMenu";
+import { ButtonMenu, ButtonMenuProps } from "./ButtonMenu";
 
 export default {
   title: "Buttons/ButtonMenu",
@@ -12,7 +12,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<any> = (args) => <ButtonMenu {...args} />;
+const Template: Story<ButtonMenuProps> = (args) => <ButtonMenu {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
