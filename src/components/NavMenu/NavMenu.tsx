@@ -1,4 +1,6 @@
 import React from "react";
+import { animated, useSpring } from "react-spring";
+import { useAppState } from "../../context";
 import { themedStyled } from "../../settings/theme";
 import { NavLink } from "../NavLink";
 
@@ -8,7 +10,7 @@ const Nav = themedStyled("nav", ({ $theme }) => ({
   paddingBottom: $theme.sizing.scale300,
 }));
 
-const NavLinks = themedStyled("div", ({ $theme }) => ({
+const NavLinks = themedStyled(animated.div, ({ $theme }) => ({
   display: "flex",
   alignItems: "center",
   height: $theme.sizing.scale1200,
@@ -16,9 +18,15 @@ const NavLinks = themedStyled("div", ({ $theme }) => ({
 }));
 
 export const NavMenu = () => {
+  const state = useAppState();
+
+  const navStyles = useSpring({
+    width: state.menuOpen ? "100%" : "0%",
+  });
+
   return (
     <Nav>
-      <NavLinks>
+      <NavLinks style={navStyles}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/works">Works</NavLink>
         <NavLink to="/testimonials">Testimonials</NavLink>

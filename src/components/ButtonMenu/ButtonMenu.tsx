@@ -38,6 +38,7 @@ const getButtonStyles = ({ $theme }: { $theme: Theme }): StyleObject => ({
   position: "relative",
   width: "60px",
   height: "60px",
+  zIndex: 1,
   backgroundColor: $theme.colors.white,
   ":hover": {
     backgroundColor: "trasparent",
@@ -80,17 +81,17 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
       ref={hoverRef}
       kind={KIND.minimal}
       shape={SHAPE.circle}
+      overrides={{
+        BaseButton: {
+          style: getButtonStyles,
+        },
+      }}
       onClick={() => {
         setActive((prevState) => {
           const newState = !prevState;
           onClick && onClick(newState);
           return newState;
         });
-      }}
-      overrides={{
-        BaseButton: {
-          style: getButtonStyles,
-        },
       }}
     >
       <Icon>
