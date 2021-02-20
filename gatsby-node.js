@@ -21,7 +21,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       throw result.errors;
     }
@@ -39,8 +39,8 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           slug: post.fields.slug,
           previous,
-          next
-        }
+          next,
+        },
       });
     });
   });
@@ -53,7 +53,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value
+      value,
     });
   }
 };
@@ -61,7 +61,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"]
-    }
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
   });
 };
