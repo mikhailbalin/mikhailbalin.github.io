@@ -38,7 +38,7 @@ function AppProvider({ children }: AppProviderProps): JSX.Element {
 function useAppState() {
   const context = React.useContext(AppStateContext);
   if (context === undefined) {
-    throw new Error("useState must be used within a AppProvider");
+    throw new Error("useAppState must be used within a AppProvider");
   }
   return context;
 }
@@ -51,8 +51,8 @@ function useDispatch() {
   return context;
 }
 
-function useContext() {
+function useAppContext(): [State, Dispatch] {
   return [useAppState(), useDispatch()];
 }
 
-export { AppProvider, useContext, useAppState, useDispatch };
+export { AppProvider, useAppContext, useAppState, useDispatch };

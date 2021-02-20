@@ -1,5 +1,6 @@
 import React from "react";
-import { useDispatch } from "../../context";
+import { useSpring, animated } from "react-spring";
+import { useAppContext } from "../../context";
 import { themedStyled } from "../../settings/theme";
 import { ButtonMenu } from "../ButtonMenu";
 import { NavMenu } from "../NavMenu";
@@ -13,7 +14,7 @@ const StyledNavBar = themedStyled("div", () => ({
   margin: "3vw",
 }));
 
-const Background = themedStyled("div", ({ $theme }) => ({
+const Background = themedStyled(animated.div, ({ $theme }) => ({
   position: "absolute",
   left: 0,
   top: 0,
@@ -24,7 +25,11 @@ const Background = themedStyled("div", ({ $theme }) => ({
 }));
 
 export const NavBar = () => {
-  const dispatch = useDispatch();
+  const [state, dispatch] = useAppContext();
+
+  const backgroundStyles = useSpring({
+    // opacity: state.menuOpen ? 1 : 0,
+  });
 
   return (
     <StyledNavBar>
@@ -34,7 +39,7 @@ export const NavBar = () => {
 
       <NavMenu />
 
-      <Background />
+      <Background style={backgroundStyles} />
     </StyledNavBar>
   );
 };

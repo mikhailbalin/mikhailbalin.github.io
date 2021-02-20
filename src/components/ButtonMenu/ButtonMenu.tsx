@@ -40,6 +40,7 @@ const getButtonStyles = ({ $theme }: { $theme: Theme }): StyleObject => ({
   height: "60px",
   zIndex: 1,
   backgroundColor: $theme.colors.white,
+  flexShrink: 0,
   ":hover": {
     backgroundColor: "trasparent",
   },
@@ -58,7 +59,7 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
 
   const topStyles = useSpring({
     transform: active ? "rotateZ(-45deg)" : "rotateZ(0deg)",
-    top: active ? "calc(50% - 1px)" : "calc(25% - 1px)",
+    top: active ? "50%" : "25%",
   });
 
   const middleStyles = useSpring({
@@ -68,7 +69,7 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
 
   const bottomStyles = useSpring({
     transform: active ? "rotateZ(45deg)" : "rotateZ(0deg)",
-    bottom: active ? "calc(50% - 1px)" : "calc(25% - 1px)",
+    bottom: active ? "50%" : "25%",
   });
 
   const circleStyles = useSpring({
