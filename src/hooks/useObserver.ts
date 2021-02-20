@@ -1,5 +1,10 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import ResizeObserver from "resize-observer-polyfill";
+
+type ObservedSize = {
+  width?: number;
+  height?: number;
+};
 
 export const useObserver = <T extends Element>({
   cb,
@@ -8,6 +13,11 @@ export const useObserver = <T extends Element>({
   cb: () => void;
   ref: MutableRefObject<T>;
 }) => {
+  const [size, setSize] = useState<ObservedSize>({
+    width: undefined,
+    height: undefined,
+  });
+
   const element = ref?.current;
 
   const observer = useRef<ResizeObserver | null>(null);
