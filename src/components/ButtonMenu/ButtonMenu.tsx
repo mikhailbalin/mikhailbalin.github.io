@@ -29,7 +29,7 @@ const Circle = themedStyled(animated.div, ({ $theme }) => ({
   top: $theme.sizing.scale100,
   right: $theme.sizing.scale100,
   bottom: $theme.sizing.scale100,
-  borderStyle: `solid 2px #d9dbd0`,
+  border: `solid 2px #d9dbd0`,
   borderRadius: "50%",
 }));
 
@@ -37,19 +37,24 @@ export const ButtonMenu = () => {
   const [active, setActive] = useState(false);
   const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
-  const top = useSpring({
+  const topStyles = useSpring({
     transform: active ? "rotateZ(-45deg)" : "rotateZ(0deg)",
     top: active ? "calc(50% - 1px)" : "calc(25% - 1px)",
   });
 
-  const middle = useSpring({
+  const middleStyles = useSpring({
     opacity: active ? 0 : 1,
     transform: active ? "scaleX(0)" : "scaleX(1)",
   });
 
-  const bottom = useSpring({
+  const bottomStyles = useSpring({
     transform: active ? "rotateZ(45deg)" : "rotateZ(0deg)",
     bottom: active ? "calc(50% - 1px)" : "calc(25% - 1px)",
+  });
+
+  const circleStyles = useSpring({
+    transform: hovered ? "scale(1)" : "scale(0.7)",
+    opacity: hovered ? 1 : 0,
   });
 
   return (
@@ -60,21 +65,28 @@ export const ButtonMenu = () => {
       overrides={{
         BaseButton: {
           style: ({ $theme }: { $theme: Theme }) => ({
+            position: "relative",
             width: "60px",
             height: "60px",
             backgroundColor: $theme.colors.white,
+            ":hover": {
+              backgroundColor: "trasparent",
+            },
+            ":active": {
+              backgroundColor: "trasparent",
+            },
           }),
         },
       }}
       ref={hoverRef}
     >
       <Icon>
-        <Line style={top} />
-        <Line style={middle} />
-        <Line style={bottom} />
+        <Line style={topStyles} />
+        <Line style={middleStyles} />
+        <Line style={bottomStyles} />
       </Icon>
 
-      <Circle />
+      <Circle style={circleStyles} />
     </Button>
   );
 };
