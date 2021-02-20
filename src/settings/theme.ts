@@ -4,7 +4,7 @@ import {
   createThemedWithStyle,
   createThemedUseStyletron,
 } from "baseui";
-import { Font, Theme, ThemePrimitives, Typography } from "baseui/theme";
+import { Font, Theme, ThemePrimitives } from "baseui/theme";
 import { DeepPartial } from "utility-types";
 import { createResponsiveTheme, ResponsiveTheme } from "./breakpoints";
 

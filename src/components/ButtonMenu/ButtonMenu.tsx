@@ -3,27 +3,39 @@ import { Button, KIND, SHAPE } from "baseui/button";
 import { Theme } from "baseui/theme";
 import { useSpring, animated } from "react-spring";
 import { themedStyled } from "../../settings/theme";
+import { useHover } from "../../hooks/useHover";
 
 const Line = themedStyled(animated.div, ({ $theme }) => ({
   position: "relative",
   width: "100%",
-  height: "2px",
+  height: $theme.sizing.scale0,
   backgroundColor: $theme.colors.black,
   transformStyle: "preserve-3d",
 }));
 
-const Icon = themedStyled("div", {
+const Icon = themedStyled("div", ({ $theme }) => ({
   position: "relative",
   flexDirection: "column",
   display: "flex",
   justifyContent: "space-between",
-  width: "32px",
-  height: "32px",
-  padding: "4px",
-});
+  width: $theme.sizing.scale900,
+  height: $theme.sizing.scale900,
+  padding: $theme.sizing.scale100,
+}));
+
+const Circle = themedStyled(animated.div, ({ $theme }) => ({
+  position: "absolute",
+  left: $theme.sizing.scale100,
+  top: $theme.sizing.scale100,
+  right: $theme.sizing.scale100,
+  bottom: $theme.sizing.scale100,
+  borderStyle: `solid 2px #d9dbd0`,
+  borderRadius: "50%",
+}));
 
 export const ButtonMenu = () => {
   const [active, setActive] = useState(false);
+  const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
   const top = useSpring({
     transform: active ? "rotateZ(-45deg)" : "rotateZ(0deg)",
@@ -54,12 +66,15 @@ export const ButtonMenu = () => {
           }),
         },
       }}
+      ref={hoverRef}
     >
       <Icon>
         <Line style={top} />
         <Line style={middle} />
         <Line style={bottom} />
       </Icon>
+
+      <Circle />
     </Button>
   );
 };
