@@ -6,21 +6,35 @@ type ObservedSize = {
   height?: number;
 };
 
+type ResizeHandler = (size: ObservedSize) => void;
+
 export const useObserver = <T extends Element>({
-  cb,
   ref,
+  cb,
+  onResize,
 }: {
-  cb: () => void;
   ref: MutableRefObject<T>;
+  cb: () => void;
+  onResize?: ResizeHandler;
 }) => {
   const [size, setSize] = useState<ObservedSize>({
     width: undefined,
     height: undefined,
   });
 
+  const onResizeRef = useRef<ResizeHandler | undefined>(undefined);
+  onResizeRef.current = onResize;
+
   const element = ref?.current;
 
-  const observer = useRef<ResizeObserver | null>(null);
+  const observer = useRef<ResizeObserver | undefined>(undefined);
+
+  const previousSizes = useRef<ObservedSize>({
+    width: undefined,
+    height: undefined,
+  });
+
+  const firstLoadRef = useRef<boolean>(true);
 
   useEffect(() => {
     // if we are already observing old element
