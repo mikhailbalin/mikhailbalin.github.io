@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 type ObservedSize = {
@@ -10,15 +10,11 @@ type ResizeHandler = (size: ObservedSize) => void;
 
 export const useObserver = <T extends Element>({
   ref,
-  cb,
   onResize,
 }: {
   ref: MutableRefObject<T>;
-  cb: () => void;
   onResize?: ResizeHandler;
 }) => {
-  const element = ref.current;
-
   const [size, setSize] = useState<ObservedSize>({
     width: undefined,
     height: undefined,
@@ -37,25 +33,55 @@ export const useObserver = <T extends Element>({
   });
 
   useEffect(() => {
-    // if we are already observing old element
-    if (observerRef?.current && element) {
-      observerRef.current.unobserve(element);
-    }
+    if (observerRef.current) return;
 
     const resizeObserverOrPolyfill = ResizeObserver;
-    observerRef.current = new resizeObserverOrPolyfill(cb);
-    observe();
+    observerRef.current = new resizeObserverOrPolyfill((entries) => {
+      if (!Array.isArray(entries) || !entries.length) return;
 
-    return () => {
-      if (observerRef?.current && element) {
-        observerRef.current.unobserve(element);
+      const entry = entries[0];
+      const newWidth = Math.round(entry.contentRect.width);
+      const newHeight = Math.round(entry.contentRect.height);
+
+      if (
+        !firstLoadRef.current &&
+        (previousSizesRef.current.width !== newWidth ||
+          previousSizesRef.current.height !== newHeight)
+      ) {
+        const newSize = { width: newWidth, height: newHeight };
+
+        previousSizesRef.current.width = newWidth;
+        previousSizesRef.current.height = newHeight;
+
+        if (onResizeRef.current) {
+          onResizeRef.current(newSize);
+        } else {
+          setSize(newSize);
+        }
       }
-    };
-  }, [element]);
 
-  const observe = () => {
-    if (element && observerRef.current) {
-      observerRef.current.observe(element);
-    }
-  };
+      firstLoadRef.current = false;
+    });
+  }, [observerRef]);
+
+  useEffect(() => {
+    if (
+      typeof ref !== "object" ||
+      ref === null ||
+      !(ref.current instanceof Element)
+    )
+      return;
+
+    const element = ref.current;
+    observerRef.current?.observe(element);
+    return () => observerRef.current?.unobserve(element);
+  }, [ref, observerRef]);
+
+  return useMemo(
+    () => ({
+      width: size.width,
+      height: size.height,
+    }),
+    [size.width, size.height]
+  );
 };
