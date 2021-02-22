@@ -8,59 +8,65 @@ type ObservedSize = {
 
 type ResizeHandler = (size: ObservedSize) => void;
 
-export const useObserver = <T extends Element>({
-  ref,
-  onResize,
-}: {
-  ref: MutableRefObject<T>;
-  onResize?: ResizeHandler;
-}) => {
+export const useObserver = <T extends HTMLElement>(
+  ref: MutableRefObject<T | null>,
+  onResize?: ResizeHandler
+): ObservedSize => {
   const [size, setSize] = useState<ObservedSize>({
     width: undefined,
     height: undefined,
   });
-
-  const firstLoadRef = useRef<boolean>(true);
-
-  const observerRef = useRef<ResizeObserver | undefined>(undefined);
-
-  const onResizeRef = useRef<ResizeHandler | undefined>(undefined);
-  onResizeRef.current = onResize;
 
   const previousSizesRef = useRef<ObservedSize>({
     width: undefined,
     height: undefined,
   });
 
+  const observerRef = useRef<ResizeObserver | undefined>(undefined);
+
+  /**
+   * In certain edge cases the RO might want to report
+   * a size change just after the component unmounted.
+   */
+  const didUnmount = useRef(false);
+
+  useEffect(() => {
+    return () => {
+      didUnmount.current = true;
+    };
+  }, []);
+
   useEffect(() => {
     if (observerRef.current) return;
 
     const resizeObserverOrPolyfill = ResizeObserver;
     observerRef.current = new resizeObserverOrPolyfill((entries) => {
-      if (!Array.isArray(entries) || !entries.length) return;
-
+      /**
+       * Since we only observe the one element,
+       * we don't need to loop over the array
+       */
       const entry = entries[0];
+
       const newWidth = Math.round(entry.contentRect.width);
       const newHeight = Math.round(entry.contentRect.height);
 
       if (
-        !firstLoadRef.current &&
-        (previousSizesRef.current.width !== newWidth ||
-          previousSizesRef.current.height !== newHeight)
+        previousSizesRef.current.width !== newWidth ||
+        previousSizesRef.current.height !== newHeight
       ) {
         const newSize = { width: newWidth, height: newHeight };
 
         previousSizesRef.current.width = newWidth;
         previousSizesRef.current.height = newHeight;
 
-        if (onResizeRef.current) {
-          onResizeRef.current(newSize);
+        if (onResize) {
+          onResize(newSize);
         } else {
-          setSize(newSize);
+          if (!didUnmount.current) {
+            setSize(newSize);
+          }
         }
       }
-
-      firstLoadRef.current = false;
     });
   }, [observerRef]);
 
