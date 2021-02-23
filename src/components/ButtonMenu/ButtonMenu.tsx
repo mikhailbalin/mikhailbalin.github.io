@@ -57,9 +57,13 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
   const [active, setActive] = useState(false);
   const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
+  const position = active ? "50%" : "25%";
+
   const topStyles = useSpring({
-    transform: active ? "rotateZ(-45deg)" : "rotateZ(0deg)",
-    top: active ? "50%" : "25%",
+    transform: active
+      ? "rotateZ(-45deg) translateY(-1px)"
+      : "rotateZ(0deg) translateY(-1px)",
+    top: position,
   });
 
   const middleStyles = useSpring({
@@ -68,8 +72,10 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
   });
 
   const bottomStyles = useSpring({
-    transform: active ? "rotateZ(45deg)" : "rotateZ(0deg)",
-    bottom: active ? "50%" : "25%",
+    transform: active
+      ? "rotateZ(45deg) translateY(1px)"
+      : "rotateZ(0deg) translateY(1px)",
+    bottom: position,
   });
 
   const circleStyles = useSpring({
