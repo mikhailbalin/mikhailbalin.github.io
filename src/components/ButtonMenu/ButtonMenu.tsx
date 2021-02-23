@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Button, KIND, SHAPE } from "baseui/button";
+import { Button, KIND, SHAPE as BASE_SHAPE } from "baseui/button";
 import { Theme } from "baseui/theme";
 import { StyleObject } from "styletron-react";
 import { useSpring, animated } from "react-spring";
 import { themedStyled } from "../../settings/theme";
 import { useHover } from "../../hooks/useHover";
+
+type SHAPE = BASE_SHAPE[keyof Pick<BASE_SHAPE, "circle" | "square">];
 
 const Line = themedStyled(animated.div, ({ $theme }) => ({
   position: "relative",
@@ -14,15 +16,23 @@ const Line = themedStyled(animated.div, ({ $theme }) => ({
   transformStyle: "preserve-3d",
 }));
 
-const Icon = themedStyled("div", ({ $theme }) => ({
-  position: "relative",
-  flexDirection: "column",
-  display: "flex",
-  justifyContent: "space-between",
-  width: $theme.sizing.scale900,
-  height: $theme.sizing.scale900,
-  padding: $theme.sizing.scale100,
-}));
+const Icon = themedStyled<"div", { $shape: SHAPE }>(
+  "div",
+  ({ $theme, $shape }) => {
+    const size =
+      $shape === "circle" ? $theme.sizing.scale900 : $theme.sizing.scale950;
+
+    return {
+      position: "relative",
+      flexDirection: "column",
+      display: "flex",
+      justifyContent: "space-between",
+      width: size,
+      height: size,
+      padding: $theme.sizing.scale100,
+    };
+  }
+);
 
 const Circle = themedStyled(animated.div, ({ $theme }) => ({
   position: "absolute",
@@ -34,26 +44,38 @@ const Circle = themedStyled(animated.div, ({ $theme }) => ({
   borderRadius: "50%",
 }));
 
-const getButtonStyles = ({ $theme }: { $theme: Theme }): StyleObject => ({
-  position: "relative",
-  width: "60px",
-  height: "60px",
-  zIndex: 1,
-  backgroundColor: $theme.colors.white,
-  flexShrink: 0,
-  ":hover": {
-    backgroundColor: "trasparent",
-  },
-  ":active": {
-    backgroundColor: "trasparent",
-  },
-});
+const getButtonStyles = ({
+  $theme,
+  $shape,
+}: {
+  $theme: Theme;
+  $shape: SHAPE;
+}): StyleObject => {
+  const size = $shape === "circle" ? "60px" : "80px";
+
+  return {
+    position: "relative",
+    width: size,
+    height: size,
+    alignItems: "center",
+    zIndex: 1,
+    backgroundColor: $theme.colors.white,
+    flexShrink: 0,
+    ":hover": {
+      backgroundColor: "trasparent",
+    },
+    ":active": {
+      backgroundColor: "trasparent",
+    },
+  };
+};
 
 export interface ButtonMenuProps {
+  shape: SHAPE;
   onClick?: (active: boolean) => void;
 }
 
-export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
+export const ButtonMenu = ({ shape = "circle", onClick }: ButtonMenuProps) => {
   const [active, setActive] = useState(false);
   const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
@@ -87,10 +109,11 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
     <Button
       ref={hoverRef}
       kind={KIND.minimal}
-      shape={SHAPE.circle}
+      shape={shape}
       overrides={{
         BaseButton: {
-          style: getButtonStyles,
+          style: ({ $theme }: { $theme: Theme }) =>
+            getButtonStyles({ $theme, $shape: shape }),
         },
       }}
       onClick={() => {
@@ -101,13 +124,13 @@ export const ButtonMenu = ({ onClick }: ButtonMenuProps) => {
         });
       }}
     >
-      <Icon>
+      <Icon $shape={shape}>
         <Line style={topStyles} />
         <Line style={middleStyles} />
         <Line style={bottomStyles} />
       </Icon>
 
-      <Circle style={circleStyles} />
+      {shape === "square" && <Circle style={circleStyles} />}
     </Button>
   );
 };

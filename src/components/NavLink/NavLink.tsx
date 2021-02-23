@@ -21,13 +21,16 @@ const HoverLine = themedStyled<"div", { $hovered: boolean }>(
 const StyledNavLink = themedStyled(Link, ({ $theme }) => ({
   position: "relative",
   display: "block",
-  margin: `${$theme.sizing.scale0} ${$theme.sizing.scale550}`,
-  padding: `${$theme.sizing.scale0} 0`,
+  marginLeft: $theme.sizing.scale550,
+  marginRight: $theme.sizing.scale550,
   color: $theme.colors.primaryA,
   textDecoration: "none",
   textTransform: "uppercase",
   overflow: "hidden",
   ...$theme.typography.font160,
+  ":last-child": {
+    marginRight: $theme.sizing.scale1200,
+  },
 }));
 
 export const NavLink = ({ children, ...rest }: GatsbyLinkProps<unknown>) => {
