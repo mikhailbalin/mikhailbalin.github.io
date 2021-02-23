@@ -1,7 +1,8 @@
 import { MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
+import isNull from "lodash/isNull";
 import ResizeObserver from "resize-observer-polyfill";
 
-type ObservedSize = {
+export type ObservedSize = {
   width: number | undefined;
   height: number | undefined;
 };
@@ -28,19 +29,18 @@ export const useObserver = <T extends HTMLElement>(
    * In certain edge cases the RO might want to report
    * a size change just after the component unmounted.
    */
-  const didUnmount = useRef(false);
+  const didUnmountRef = useRef(false);
 
   useEffect(() => {
     return () => {
-      didUnmount.current = true;
+      didUnmountRef.current = true;
     };
   }, []);
 
   useEffect(() => {
     if (observerRef.current) return;
 
-    const resizeObserverOrPolyfill = ResizeObserver;
-    observerRef.current = new resizeObserverOrPolyfill((entries) => {
+    observerRef.current = new ResizeObserver((entries) => {
       /**
        * Since we only observe the one element,
        * we don't need to loop over the array
@@ -62,7 +62,7 @@ export const useObserver = <T extends HTMLElement>(
         if (onResize) {
           onResize(newSize);
         } else {
-          if (!didUnmount.current) {
+          if (!didUnmountRef.current) {
             setSize(newSize);
           }
         }
@@ -71,14 +71,10 @@ export const useObserver = <T extends HTMLElement>(
   }, [observerRef]);
 
   useEffect(() => {
-    if (
-      typeof ref !== "object" ||
-      ref === null ||
-      !(ref.current instanceof Element)
-    )
-      return;
+    if (isNull(ref) || !(ref.current instanceof HTMLElement)) return;
 
     const element = ref.current;
+
     observerRef.current?.observe(element);
     return () => observerRef.current?.unobserve(element);
   }, [ref, observerRef]);
