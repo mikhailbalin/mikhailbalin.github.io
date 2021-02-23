@@ -15328,6 +15328,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
+  languageName: node
+  linkType: hard
+
 "logalot@npm:^2.0.0, logalot@npm:^2.1.0":
   version: 2.1.0
   resolution: "logalot@npm:2.1.0"
@@ -16173,6 +16180,7 @@ fsevents@~2.1.2:
     gatsby-remark-images: ^3.9.0
     gatsby-source-filesystem: ^2.9.0
     gatsby-transformer-sharp: ^2.10.0
+    lodash: ^4.17.21
     prettier: ^2.2.1
     prism-react-renderer: ^1.1.1
     react: ^17.0.1
