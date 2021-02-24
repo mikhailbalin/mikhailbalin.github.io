@@ -47,6 +47,9 @@ const overrides: DeepPartial<Theme> = {
       fontSize: "2.045rem",
     },
   },
+  colors: {
+    buttonPrimaryFill: "#71a882",
+  },
 };
 
 const theme = createTheme(primitives, overrides);
