@@ -10,7 +10,6 @@ const Nav = themedStyled(animated.nav, ({ $theme }) => ({
   paddingTop: $theme.sizing.scale300,
   paddingBottom: $theme.sizing.scale300,
   zIndex: 1,
-  backgroundColor: $theme.colors.white,
 }));
 
 export const NavMenu = () => {

@@ -59,7 +59,7 @@ const getButtonStyles = ({
     height: size,
     alignItems: "center",
     zIndex: 1,
-    backgroundColor: $theme.colors.white,
+    backgroundColor: $shape === "circle" ? $theme.colors.white : "transparent",
     flexShrink: 0,
     ":hover": {
       backgroundColor: "trasparent",
