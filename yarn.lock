@@ -2106,6 +2106,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookstate/core@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "@hookstate/core@npm:3.0.6"
+  peerDependencies:
+    react: ^16.8.6
+  checksum: 26385acec4debe89a85eca6e1e22d7983c922a1e9cdeb6ad0a53c895f9bdd9c1ee90d6b8009f68346b24c62b0a2d969547102624a5b05c1e047554994b3feb25
+  languageName: node
+  linkType: hard
+
+"@hookstate/devtools@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@hookstate/devtools@npm:3.0.0"
+  dependencies:
+    redux: 4.0.5
+    redux-devtools-extension: 2.13.8
+  peerDependencies:
+    "@hookstate/core": 3.0.0
+  checksum: 477d7c6c46fb91ff85acd55cbd0e56d2607190993b2160fb205da34bc2e582ef9c4d475eca3a227d3f9cb939bb3e111a294f509e8db0194f4f8d6243dda8ef84
+  languageName: node
+  linkType: hard
+
 "@iarna/toml@npm:^2.2.5":
   version: 2.2.5
   resolution: "@iarna/toml@npm:2.2.5"
@@ -16141,6 +16162,8 @@ fsevents@~2.1.2:
     "@atlaskit/css-reset": ^6.0.5
     "@atlaskit/tree": ^8.2.0
     "@babel/core": ^7.12.10
+    "@hookstate/core": ^3.0.6
+    "@hookstate/devtools": ^3.0.0
     "@mdx-js/mdx": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@storybook/addon-actions": ^6.1.11
@@ -19876,6 +19899,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"redux-devtools-extension@npm:2.13.8":
+  version: 2.13.8
+  resolution: "redux-devtools-extension@npm:2.13.8"
+  peerDependencies:
+    redux: ^3.1.0 || ^4.0.0
+  checksum: 4375a0698238f658ca93e35209e488e2c493e1cbb449c52bbd4a6a0d118547bc38e0a0af594801cb3abe7d460508792f095614b54006bb7373e14515cd110a4f
+  languageName: node
+  linkType: hard
+
 "redux-thunk@npm:^2.3.0":
   version: 2.3.0
   resolution: "redux-thunk@npm:2.3.0"
@@ -19883,7 +19915,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.1, redux@npm:^4.0.5":
+"redux@npm:4.0.5, redux@npm:^4.0.1, redux@npm:^4.0.5":
   version: 4.0.5
   resolution: "redux@npm:4.0.5"
   dependencies:

@@ -19,6 +19,8 @@
     "@atlaskit/code": "^13.1.1",
     "@atlaskit/css-reset": "^6.0.5",
     "@atlaskit/tree": "^8.2.0",
+    "@hookstate/core": "^3.0.6",
+    "@hookstate/devtools": "^3.0.0",
     "babel-plugin-styled-components": "^1.12.0",
     "baseui": "^9.107.0",
     "fontsource-ibm-plex-mono": "^4.0.0",
