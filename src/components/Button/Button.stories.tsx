@@ -6,9 +6,9 @@ import { Button } from "./Button";
 export default {
   title: "Buttons/Button",
   component: Button,
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
+  // argTypes: {
+  //   backgroundColor: { control: "color" },
+  // },
   parameters: {
     backgrounds: {
       default: "cararra",

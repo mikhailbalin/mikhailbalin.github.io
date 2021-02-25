@@ -49,6 +49,8 @@ const overrides: DeepPartial<Theme> = {
   colors: {
     buttonPrimaryFill: "#71a882",
     buttonPrimaryHover: "#ef7c54",
+    buttonSecondaryFill: "transparent",
+    buttonSecondaryHover: "#ef7c54",
     buttonSecondaryText: primitives.primaryA,
   },
 };
