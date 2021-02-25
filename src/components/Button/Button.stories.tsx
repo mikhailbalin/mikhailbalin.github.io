@@ -6,9 +6,6 @@ import { Button } from "./Button";
 export default {
   title: "Buttons/Button",
   component: Button,
-  // argTypes: {
-  //   backgroundColor: { control: "color" },
-  // },
   parameters: {
     backgrounds: {
       default: "cararra",
@@ -27,14 +24,4 @@ export const Secondary = Template.bind({});
 Secondary.args = {
   ...Primary.args,
   kind: KIND.secondary,
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  isLoading: true,
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  isLoading: true,
 };
