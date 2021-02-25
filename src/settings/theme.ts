@@ -6,6 +6,7 @@ import {
 } from "baseui";
 import { Font, Theme, ThemePrimitives } from "baseui/theme";
 import { DeepPartial } from "utility-types";
+import { interpolate } from "../utils/interpolate";
 import { createResponsiveTheme, ResponsiveTheme } from "./breakpoints";
 
 const monoFontFamily = "'IBM Plex Mono', monospace";
@@ -17,6 +18,8 @@ const primitives: Partial<ThemePrimitives> = {
   primaryFontFamily: monoFontFamily,
 };
 
+const size = (size: number) => interpolate`calc(${size}rem + 1.5vw)`;
+
 const overrides: DeepPartial<Theme> = {
   grid: {
     unit: "rem",
@@ -24,31 +27,29 @@ const overrides: DeepPartial<Theme> = {
   typography: {
     HeadingXSmall: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: "1.151rem",
     },
     HeadingSmall: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: "1.204rem",
     },
     HeadingMedium: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: "1.333rem",
     },
     HeadingLarge: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: "1.534rem",
     },
     HeadingXLarge: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: "1.777rem",
+      fontSize: size(1.07),
     },
     HeadingXXLarge: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: "2.045rem",
+      fontSize: size(1.35),
     },
   },
   colors: {
     buttonPrimaryFill: "#71a882",
+    buttonPrimaryHover: "#ef7c54",
+    buttonSecondaryText: primitives.primaryA,
   },
 };
 

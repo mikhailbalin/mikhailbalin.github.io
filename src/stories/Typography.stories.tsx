@@ -10,6 +10,11 @@ import { BlockProps } from "baseui/block";
 
 export default {
   title: "Typography/Heading",
+  parameters: {
+    backgrounds: {
+      default: "white",
+    },
+  },
   argTypes: {
     color: {
       description: "Color of text",
