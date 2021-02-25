@@ -49,8 +49,10 @@ const overrides: DeepPartial<Theme> = {
   colors: {
     buttonPrimaryFill: "#71a882",
     buttonPrimaryHover: "#ef7c54",
+    buttonPrimaryActive: "#ef7c54",
     buttonSecondaryFill: "transparent",
     buttonSecondaryHover: "#ef7c54",
+    buttonSecondaryActive: "#ef7c54",
     buttonSecondaryText: primitives.primaryA,
   },
 };
@@ -60,6 +62,7 @@ const theme = createTheme(primitives, overrides);
 interface CustomTypography {
   typography: {
     font160: Font;
+    font260: Font;
   };
 }
 
@@ -79,6 +82,12 @@ export const customTheme: CustomTheme = {
       fontWeight: 500,
       lineHeight: "16px",
     },
+    font260: {
+      fontFamily: monoFontFamily,
+      fontSize: "15px",
+      fontWeight: 500,
+      lineHeight: "20px",
+    },
   },
   ...createResponsiveTheme({
     small: 320,
@@ -90,3 +99,5 @@ export const customTheme: CustomTheme = {
     desktop: 992,
   }),
 };
+
+console.log({ typography: customTheme.typography });

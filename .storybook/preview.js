@@ -6,6 +6,9 @@ import { action } from "@storybook/addon-actions";
 import { customTheme } from "../src/settings/theme";
 import "@hookstate/devtools";
 import "../src/styles/globals.css";
+import "fontsource-ibm-plex-mono/400.css";
+import "fontsource-ibm-plex-mono/500.css";
+import "fontsource-playfair-display/400.css";
 
 /**
  * Gatsby's Link overrides:
