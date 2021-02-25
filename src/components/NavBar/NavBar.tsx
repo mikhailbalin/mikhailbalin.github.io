@@ -1,6 +1,6 @@
 import React from "react";
 import { animated, config, useSpring } from "react-spring";
-import { useAppContext } from "../../context";
+import { useGlobalState } from "../../hooks/useState";
 import { themedStyled } from "../../settings/theme";
 import { ButtonMenu } from "../ButtonMenu";
 import { NavMenu } from "../NavMenu";
@@ -25,20 +25,17 @@ const Background = themedStyled(animated.div, ({ $theme }) => ({
 }));
 
 export const NavBar = () => {
-  const [state, dispatch] = useAppContext();
+  const { menuOpen, toogleMenu } = useGlobalState();
 
   const backgroundStyles = useSpring({
     config: config.stiff,
-    width: state.menuOpen ? "100%" : "0%",
-    opacity: state.menuOpen ? 1 : 0,
+    width: menuOpen ? "100%" : "0%",
+    opacity: menuOpen ? 1 : 0,
   });
 
   return (
     <StyledNavBar>
-      <ButtonMenu
-        shape="square"
-        onClick={(active) => dispatch({ type: "toggle_menu", payload: active })}
-      />
+      <ButtonMenu shape="square" onClick={() => toogleMenu()} />
 
       <NavMenu />
 

@@ -3,7 +3,6 @@ import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { BaseProvider } from "baseui";
 import { action } from "@storybook/addon-actions";
-import { AppProvider } from "../src/context";
 import { customTheme } from "../src/settings/theme";
 import "../src/styles/globals.css";
 
@@ -125,11 +124,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <StyletronProvider value={engine} debug={debug} debugAfterHydration>
-      <AppProvider>
-        <BaseProvider theme={customTheme}>
-          <Story />
-        </BaseProvider>
-      </AppProvider>
+      <BaseProvider theme={customTheme}>
+        <Story />
+      </BaseProvider>
     </StyletronProvider>
   ),
 ];

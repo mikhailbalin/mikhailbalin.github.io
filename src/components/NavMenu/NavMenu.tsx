@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { animated, useSpring, config } from "react-spring";
-import { useAppState } from "../../context";
+import { useGlobalState } from "../../hooks/useState";
 import { themedStyled } from "../../settings/theme";
 import { NavLink } from "../NavLink";
 
@@ -13,12 +13,12 @@ const Nav = themedStyled(animated.nav, ({ $theme }) => ({
 }));
 
 export const NavMenu = () => {
-  const state = useAppState();
+  const { menuOpen } = useGlobalState();
   const navRef = useRef<HTMLElement | null>(null);
 
   const navStyles = useSpring({
     config: config.slow,
-    width: state.menuOpen ? "100%" : "0%",
+    width: menuOpen ? "100%" : "0%",
   });
 
   return (

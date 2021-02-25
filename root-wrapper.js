@@ -5,7 +5,6 @@ import { BaseProvider } from "baseui";
 import React from "react";
 import { Code } from "./src/components/Code";
 import { customTheme } from "./src/settings/theme";
-import { AppProvider } from "./src/context";
 
 const components = {
   h2: ({ children }) => <h2 style={{ color: "rebeccapurple" }}>{children}</h2>,
@@ -26,11 +25,9 @@ const components = {
 };
 
 const CommonRootElementWrapper = ({ element }) => (
-  <AppProvider>
-    <BaseProvider theme={customTheme}>
-      <MDXProvider components={components}>{element}</MDXProvider>
-    </BaseProvider>
-  </AppProvider>
+  <BaseProvider theme={customTheme}>
+    <MDXProvider components={components}>{element}</MDXProvider>
+  </BaseProvider>
 );
 
 export default CommonRootElementWrapper;
