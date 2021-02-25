@@ -25,7 +25,7 @@ const Background = themedStyled(animated.div, ({ $theme }) => ({
 }));
 
 export const NavBar = () => {
-  const { menuOpen, toogleMenu } = useGlobalState();
+  const { menuOpen } = useGlobalState();
 
   const backgroundStyles = useSpring({
     config: config.stiff,
@@ -35,7 +35,7 @@ export const NavBar = () => {
 
   return (
     <StyledNavBar>
-      <ButtonMenu shape="square" onClick={() => toogleMenu()} />
+      <ButtonMenu shape="square" />
 
       <NavMenu />
 

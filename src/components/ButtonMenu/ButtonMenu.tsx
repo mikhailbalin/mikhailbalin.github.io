@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, KIND, SHAPE as BASE_SHAPE } from "baseui/button";
 import { Theme } from "baseui/theme";
 import { StyleObject } from "styletron-react";
 import { useSpring, animated } from "react-spring";
 import { themedStyled } from "../../settings/theme";
 import { useHover } from "../../hooks/useHover";
+import { useGlobalState } from "../../hooks/useState";
 
 type SHAPE = BASE_SHAPE[keyof Pick<BASE_SHAPE, "circle" | "square">];
 
@@ -72,29 +73,28 @@ const getButtonStyles = ({
 
 export interface ButtonMenuProps {
   shape: SHAPE;
-  onClick?: (active: boolean) => void;
 }
 
-export const ButtonMenu = ({ shape = "circle", onClick }: ButtonMenuProps) => {
-  const [active, setActive] = useState(false);
+export const ButtonMenu = ({ shape = "circle" }: ButtonMenuProps) => {
+  const { menuOpen, toogleMenu } = useGlobalState();
   const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
-  const position = active ? "50%" : "25%";
+  const position = menuOpen ? "50%" : "25%";
 
   const topStyles = useSpring({
-    transform: active
+    transform: menuOpen
       ? "rotateZ(-45deg) translateY(-1px)"
       : "rotateZ(0deg) translateY(-1px)",
     top: position,
   });
 
   const middleStyles = useSpring({
-    opacity: active ? 0 : 1,
-    transform: active ? "scaleX(0)" : "scaleX(1)",
+    opacity: menuOpen ? 0 : 1,
+    transform: menuOpen ? "scaleX(0)" : "scaleX(1)",
   });
 
   const bottomStyles = useSpring({
-    transform: active
+    transform: menuOpen
       ? "rotateZ(45deg) translateY(1px)"
       : "rotateZ(0deg) translateY(1px)",
     bottom: position,
@@ -116,13 +116,7 @@ export const ButtonMenu = ({ shape = "circle", onClick }: ButtonMenuProps) => {
             getButtonStyles({ $theme, $shape: shape }),
         },
       }}
-      onClick={() => {
-        setActive((prevState) => {
-          const newState = !prevState;
-          onClick && onClick(newState);
-          return newState;
-        });
-      }}
+      onClick={() => toogleMenu()}
     >
       <Icon $shape={shape}>
         <Line style={topStyles} />

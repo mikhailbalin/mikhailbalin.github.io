@@ -4,6 +4,7 @@ import { Client as Styletron } from "styletron-engine-atomic";
 import { BaseProvider } from "baseui";
 import { action } from "@storybook/addon-actions";
 import { customTheme } from "../src/settings/theme";
+import "@hookstate/devtools";
 import "../src/styles/globals.css";
 
 /**

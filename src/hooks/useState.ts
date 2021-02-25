@@ -1,7 +1,7 @@
 import { createState, useState } from "@hookstate/core";
 
 const globalState = createState({
-  menuOpen: true,
+  menuOpen: false,
 });
 
 export function useGlobalState() {
