@@ -19,7 +19,8 @@ const primitives: Partial<ThemePrimitives> = {
   primaryFontFamily: monoFontFamily,
 };
 
-const size = (size: string | number) => interpolate`calc(${size} + 1.5vw)`;
+const size = (size: string | number, base = 1.5) =>
+  interpolate`calc(${size} + ${base}vw)`;
 
 const overrides: DeepPartial<Theme> = {
   grid: {
