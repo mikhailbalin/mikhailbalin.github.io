@@ -45,6 +45,10 @@ const overrides: DeepPartial<Theme> = {
       fontFamily: primitives.primaryFontFamily,
       fontSize: size(1.35),
     },
+    ParagraphMedium: {
+      fontSize: "0.9375rem",
+      lineHeight: 1.6,
+    },
   },
   colors: {
     buttonPrimaryFill: "#71a882",
