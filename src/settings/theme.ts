@@ -10,40 +10,45 @@ import { interpolate } from "../utils/interpolate";
 import { createResponsiveTheme, ResponsiveTheme } from "./breakpoints";
 
 const monoFontFamily = "'IBM Plex Mono', monospace";
+const sansSerifFontFamily = "'Playfair Display', sans-serif";
 
 const primitives: Partial<ThemePrimitives> = {
   primaryA: "#151515",
-  accent: "#71a882",
   positive: "#71a882",
+  negative: "#ef7c54",
   primaryFontFamily: monoFontFamily,
 };
 
-const size = (size: number) => interpolate`calc(${size}rem + 1.5vw)`;
+const size = (size: string | number) => interpolate`calc(${size} + 1.5vw)`;
 
 const overrides: DeepPartial<Theme> = {
   grid: {
     unit: "rem",
   },
   typography: {
-    HeadingXSmall: {
+    HeadingXXLarge: {
       fontFamily: primitives.primaryFontFamily,
+      fontSize: size("1.35rem"),
+      lineHeight: size(1.3),
+      fontWeight: 500,
     },
-    HeadingSmall: {
+    HeadingXLarge: {
+      fontFamily: sansSerifFontFamily,
+      fontSize: size("1.07rem"),
+      lineHeight: size(1.3),
+      fontWeight: 400,
+    },
+    HeadingLarge: {
       fontFamily: primitives.primaryFontFamily,
     },
     HeadingMedium: {
       fontFamily: primitives.primaryFontFamily,
     },
-    HeadingLarge: {
+    HeadingSmall: {
       fontFamily: primitives.primaryFontFamily,
     },
-    HeadingXLarge: {
+    HeadingXSmall: {
       fontFamily: primitives.primaryFontFamily,
-      fontSize: size(1.07),
-    },
-    HeadingXXLarge: {
-      fontFamily: primitives.primaryFontFamily,
-      fontSize: size(1.35),
     },
     ParagraphMedium: {
       fontSize: "0.9375rem",
@@ -51,12 +56,12 @@ const overrides: DeepPartial<Theme> = {
     },
   },
   colors: {
-    buttonPrimaryFill: "#71a882",
-    buttonPrimaryHover: "#ef7c54",
-    buttonPrimaryActive: "#ef7c54",
+    buttonPrimaryFill: primitives.positive,
+    buttonPrimaryHover: primitives.negative,
+    buttonPrimaryActive: primitives.negative,
     buttonSecondaryFill: "transparent",
-    buttonSecondaryHover: "#ef7c54",
-    buttonSecondaryActive: "#ef7c54",
+    buttonSecondaryHover: primitives.negative,
+    buttonSecondaryActive: primitives.negative,
     buttonSecondaryText: primitives.primaryA,
   },
 };
@@ -103,5 +108,3 @@ export const customTheme: CustomTheme = {
     desktop: 992,
   }),
 };
-
-console.log({ typography: customTheme.typography });
