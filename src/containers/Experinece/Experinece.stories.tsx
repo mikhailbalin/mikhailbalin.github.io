@@ -5,11 +5,6 @@ import { Experinece } from "./Experinece";
 export default {
   title: "Containers/Experinece",
   component: Experinece,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 export const Primary: Story = () => <Experinece />;
