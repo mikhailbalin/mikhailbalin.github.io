@@ -5,11 +5,6 @@ import { Instagram } from "./Instagram";
 export default {
   title: "Containers/Instagram",
   component: Instagram,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 export const Primary: Story = () => <Instagram />;
