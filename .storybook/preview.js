@@ -5,6 +5,7 @@ import { BaseProvider } from "baseui";
 import { action } from "@storybook/addon-actions";
 import { customTheme } from "../src/settings/theme";
 import "@hookstate/devtools";
+import "@atlaskit/css-reset";
 import "../src/styles/globals.css";
 import "fontsource-ibm-plex-mono/400.css";
 import "fontsource-ibm-plex-mono/500.css";

@@ -6,14 +6,14 @@ import Img from "gatsby-image";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
-import { styled } from "baseui";
 import { FlexGrid, FlexGridItem, FlexGridItemProps } from "baseui/flex-grid";
+import { themedStyled } from "../settings/theme";
 
-const IndexWrapper = styled("main", ({ $theme }) => ({}));
+const IndexWrapper = themedStyled("main", ({ $theme }) => ({}));
 
-const PostWrapper = styled("div", ({ $theme }) => ({}));
+const PostWrapper = themedStyled("div", ({ $theme }) => ({}));
 
-export const Image = styled(Img, ({ $theme }) => ({
+export const Image = themedStyled(Img, ({ $theme }) => ({
   borderRadius: "5px",
 }));
 
