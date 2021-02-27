@@ -5,11 +5,6 @@ import { Footer } from "./Footer";
 export default {
   title: "Containers/Footer",
   component: Footer,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 export const Primary: Story = () => <Footer />;

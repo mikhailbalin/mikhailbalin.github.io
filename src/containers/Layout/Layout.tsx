@@ -1,9 +1,8 @@
 import React from "react";
-import { useSiteMetadata } from "../../hooks/useSiteMetadata";
-import { Header } from "../../components/Header";
+// import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { themedStyled } from "../../settings/theme";
 
-const AppStyles = themedStyled("main", {
+const Main = themedStyled("main", {
   // maxWidth: "800px",
   // margin: "0 auto",
 });
@@ -13,11 +12,6 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { title, description } = useSiteMetadata();
-  return (
-    <AppStyles>
-      <Header siteTitle={title} siteDescription={description} />
-      {children}
-    </AppStyles>
-  );
+  // const { title, description } = useSiteMetadata();
+  return <Main>{children}</Main>;
 };
