@@ -1,4 +1,4 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/vsDark";
 import React from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
@@ -6,9 +6,9 @@ import { copyToClipboard } from "../../utils/copyToClipboard";
 import { Pre, LineNo, CopyCode } from "./Code.styles";
 
 export type CodeProps = {
-  codeString: any;
-  language: any;
-  "react-live": any;
+  codeString: string;
+  language: Language;
+  "react-live": boolean;
 };
 
 export const Code = ({ codeString, language, ...props }: CodeProps) => {

@@ -7,4 +7,28 @@ export default {
   component: Code,
 } as Meta;
 
-export const Primary: Story<CodeProps> = (props) => <Code {...props} />;
+const Template: Story<CodeProps> = (props) => <Code {...props} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  codeString: `const Component = props => (
+  <div
+    style={{
+      fontSize: 20,
+      padding: 10,
+      fontFamily: "'IBM Plex Mono', monospace",
+    }}
+  >
+      {props.test}
+  </div>
+);
+
+render(<Component test={'Hello World'} />);`,
+  language: "jsx",
+};
+
+export const ReactLive = Template.bind({});
+ReactLive.args = {
+  ...Primary.args,
+  "react-live": true,
+};
