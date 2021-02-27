@@ -90,7 +90,7 @@ export type CustomTheme = Theme &
 
 export const themedStyled = createThemedStyled<CustomTheme>();
 export const themedWithStyle = createThemedWithStyle<CustomTheme>();
-export const themedUseStyletron = createThemedUseStyletron<CustomTheme>();
+export const useThemedStyletron = createThemedUseStyletron<CustomTheme>();
 
 export const customTheme: CustomTheme = {
   ...theme,
