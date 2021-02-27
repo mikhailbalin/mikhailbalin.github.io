@@ -5,11 +5,6 @@ import { ContactMe } from "./ContactMe";
 export default {
   title: "Containers/ContactMe",
   component: ContactMe,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 export const Primary: Story = () => <ContactMe />;
