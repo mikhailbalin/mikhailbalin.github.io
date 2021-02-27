@@ -13617,14 +13617,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"graphql@npm:14.0.2 - 14.2.0 || ^14.3.1 || ^15.0.0":
-  version: 15.5.0
-  resolution: "graphql@npm:15.5.0"
-  checksum: 789cdcb069a3e00592e779002217a6bc5fd09efad63ee8c4190c4b3ea96c89010e74f085fb1cba876a0bb0e324e01df2eddb84d79dca90a28e582bc425fef9ef
-  languageName: node
-  linkType: hard
-
-"graphql@npm:^14.5.8, graphql@npm:^14.6.0":
+"graphql@npm:^14.6.0":
   version: 14.7.0
   resolution: "graphql@npm:14.7.0"
   dependencies:
