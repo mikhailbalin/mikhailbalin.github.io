@@ -21,7 +21,7 @@ export const Layout = ({ children }: LayoutProps) => {
         flexGridColumnCount={[1, 1, 1, 1, 1, 2, 2, 3]}
         flexGridColumnGap="scale800"
         flexGridRowGap="scale800"
-        $style={{ height: "100vh" }}
+        $style={{ minHeight: "100vh" }}
       >
         <FlexGridItem>1</FlexGridItem>
         <FlexGridItem>{children}</FlexGridItem>
