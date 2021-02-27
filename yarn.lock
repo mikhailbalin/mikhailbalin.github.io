@@ -5950,6 +5950,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"base16@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "base16@npm:1.0.0"
+  checksum: adc3f12a6b363a2bfa4062d45e2782791737f7ceb0857c027486fc90fd3fc8eaf1829c55cc7a4afd6e482105282ffc18362bc10b2a4c788f3102de3054558eba
+  languageName: node
+  linkType: hard
+
 "base64-arraybuffer@npm:0.1.4":
   version: 0.1.4
   resolution: "base64-arraybuffer@npm:0.1.4"
@@ -10578,6 +10585,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fbemitter@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "fbemitter@npm:3.0.0"
+  dependencies:
+    fbjs: ^3.0.0
+  checksum: fd3c2ee762f3702888d9977c8ff72995ac32ecd4ecf29b2046c000369dbe4ce932c5492d4b51059e6b8fb6eccebb1c2fbe277ab9eb1cebef3aef2fb00a8179f0
+  languageName: node
+  linkType: hard
+
 "fbjs-css-vars@npm:^1.0.0":
   version: 1.0.2
   resolution: "fbjs-css-vars@npm:1.0.2"
@@ -10987,6 +11003,18 @@ __metadata:
     inherits: ^2.0.3
     readable-stream: ^2.3.6
   checksum: b8fa1fbfadd5c4b6df3cf2c34b3c408fe508a2899c536bafa339f679de545689997e907bd4ff61dd292942f8044fb2f293a5956dd8b601f6a5601617842d0dda
+  languageName: node
+  linkType: hard
+
+"flux@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "flux@npm:4.0.1"
+  dependencies:
+    fbemitter: ^3.0.0
+    fbjs: ^3.0.0
+  peerDependencies:
+    react: ^15.0.2 || ^16.0.0 || ^17.0.0
+  checksum: f2f6bd106c2bbd2de98ddf5d88152066268958dc4a9186d997ed37e293290b46bd23d0de73870a361813b7ba810adfe5f5f32267ada08608fc1834b3b7108d79
   languageName: node
   linkType: hard
 
@@ -15209,6 +15237,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"lodash.curry@npm:^4.0.1":
+  version: 4.1.1
+  resolution: "lodash.curry@npm:4.1.1"
+  checksum: 081f9214b5d65030e66d0219c330de5a07089096f20362fc965c671b70b2bdb7b8f4cbac45546f79afed3bf17ae46434ffea9db1dbcbe043a09b722e2834ac3d
+  languageName: node
+  linkType: hard
+
 "lodash.deburr@npm:^4.1.0":
   version: 4.1.0
   resolution: "lodash.deburr@npm:4.1.0"
@@ -15248,6 +15283,13 @@ fsevents@~2.1.2:
   version: 4.4.0
   resolution: "lodash.flattendeep@npm:4.4.0"
   checksum: 941b709524bb7f16a06237a9b7041d8fc93054b5d3770bdf9e0edfaccf5666ef0c4dcc6866676774d8819cc1ec3a882eacafd42156befd470c35899e96fa4272
+  languageName: node
+  linkType: hard
+
+"lodash.flow@npm:^3.3.0":
+  version: 3.5.0
+  resolution: "lodash.flow@npm:3.5.0"
+  checksum: 52204602c6ec53e78497387751bf2cf432a9db7b0982e62b01b489be847b68efde8f7efed6fbeaeaeb66d7c7bd171d389c32d548908eafc00958bba8d462e55a
   languageName: node
   linkType: hard
 
@@ -16209,6 +16251,7 @@ fsevents@~2.1.2:
     react: ^17.0.1
     react-dom: ^17.0.1
     react-helmet: ^6.1.0
+    react-json-view: ^1.21.1
     react-live: ^2.2.3
     react-seo-component: ^2.0.2
     react-spring: ^8.0.27
@@ -18948,6 +18991,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"pure-color@npm:^1.2.0":
+  version: 1.3.0
+  resolution: "pure-color@npm:1.3.0"
+  checksum: 73ceb18cf945bd632e98b068dff16fb50178a067df3af8c7aa5c2bbd847ed3f3d158e7dd0f6ff705c23fe69bf215ca94af36cd4ca7cef4da0ce57031f8238a7a
+  languageName: node
+  linkType: hard
+
 "q@npm:^1.1.2":
   version: 1.5.1
   resolution: "q@npm:1.5.1"
@@ -19123,6 +19173,18 @@ fsevents@~2.1.2:
   bin:
     rc: ./cli.js
   checksum: ea2b7f7cee201a67923a2240de594a5d9b59bd312b814b06536d3d609a416dfd6fb9b85ea2abfd3b8a4eb5ed33eaff946ee75a8f2b7fb10941073c5cfee6b7a5
+  languageName: node
+  linkType: hard
+
+"react-base16-styling@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "react-base16-styling@npm:0.6.0"
+  dependencies:
+    base16: ^1.0.0
+    lodash.curry: ^4.0.1
+    lodash.flow: ^3.3.0
+    pure-color: ^1.2.0
+  checksum: 3f0f6105e6d72fa95b5ac3958b06ad6fcd9fbc386fda89a9cb1fb1331f4d03332f430fd55fd8eecd1d6833b18a2d15267f029aecdbfb6be55232eae7f7d196d7
   languageName: node
   linkType: hard
 
@@ -19463,6 +19525,21 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"react-json-view@npm:^1.21.1":
+  version: 1.21.1
+  resolution: "react-json-view@npm:1.21.1"
+  dependencies:
+    flux: ^4.0.1
+    react-base16-styling: ^0.6.0
+    react-lifecycles-compat: ^3.0.4
+    react-textarea-autosize: ^6.1.0
+  peerDependencies:
+    react: ^17.0.0 || ^16.3.0 || ^15.5.4
+    react-dom: ^17.0.0 || ^16.3.0 || ^15.5.4
+  checksum: 5f3348d4affa7f855cf27d9746e70ba1203ac387bc7a56e1808dd506c88b547bd5f7350fb21629f8446b79df81ab13fcfaf6587b8f1272e8e17650b011c232ed
+  languageName: node
+  linkType: hard
+
 "react-lifecycles-compat@npm:^3.0.4":
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
@@ -19653,6 +19730,17 @@ fsevents@~2.1.2:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: a23c1544c73f4d8ebfdf479291a775a880db29634dfabfaff728b14dc91166f9b57c2cf2f66e1d44bddafd0884716457a7de9e979ca6e721a4f0e9636ca25b30
+  languageName: node
+  linkType: hard
+
+"react-textarea-autosize@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "react-textarea-autosize@npm:6.1.0"
+  dependencies:
+    prop-types: ^15.6.0
+  peerDependencies:
+    react: ">=0.14.0 <17.0.0"
+  checksum: ea85b3d2380badd7efa777d9de702b8a11a79fcae7502a45c7c52bb8a5b38ce3bae2d6b60a0a1f6801bc52e0b0efb5808d4ea48d62abb00b99b4c832a223738f
   languageName: node
   linkType: hard
 
