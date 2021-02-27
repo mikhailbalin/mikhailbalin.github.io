@@ -38,15 +38,18 @@ export default ({ data }: any) => {
 
       <div>
         <Dump data={data}></Dump>
+
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }: any) => (
-          <div key={id}>
+          <div key={id} style={{ marginTop: "30px", marginBottom: "30px" }}>
             <Link to={fields.slug}>
               <figure>
                 {frontmatter.cover ? (
                   <Image sizes={frontmatter.cover.childImageSharp.sizes} />
                 ) : null}
+
                 <figcaption>{frontmatter.coverCredit}</figcaption>
               </figure>
+
               <h1>{frontmatter.title}</h1>
               <p>{frontmatter.date}</p>
               <p>{excerpt}</p>
