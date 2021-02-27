@@ -5,11 +5,6 @@ import { Main } from "./Main";
 export default {
   title: "Containers/Main",
   component: Main,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 export const Primary: Story = () => <Main />;
