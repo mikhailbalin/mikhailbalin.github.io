@@ -5,13 +5,17 @@ import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
 import { themedStyled } from "../settings/theme";
+import {
+  SiteIndexQuery,
+  SiteIndexQuery_allMdx_nodes,
+} from "./__generated__/SiteIndexQuery";
 
 export const Image = themedStyled(Img, () => ({
   borderRadius: "5px",
 }));
 
 // eslint-disable-next-line react/display-name
-export default ({ data }: any) => {
+export default ({ allMdx }: SiteIndexQuery) => {
   const {
     description,
     title,
@@ -36,30 +40,39 @@ export default ({ data }: any) => {
       />
 
       <div>
-        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }: any) => (
-          <div key={id} style={{ marginTop: "30px", marginBottom: "30px" }}>
-            <Link to={fields.slug}>
-              <figure>
-                {frontmatter.cover ? (
-                  <Image sizes={frontmatter.cover.childImageSharp.sizes} />
-                ) : null}
+        {allMdx.nodes.map(
+          ({
+            id,
+            excerpt,
+            frontmatter,
+            fields,
+          }: SiteIndexQuery_allMdx_nodes) => (
+            <div key={id} style={{ marginTop: "30px", marginBottom: "30px" }}>
+              <Link to={fields?.slug || ""}>
+                <figure>
+                  {/* {frontmatter?.cover?.childImageSharp?.fluid?.sizes ? (
+                    <Image
+                      sizes={frontmatter.cover.childImageSharp.fluid.sizes!}
+                    />
+                  ) : null} */}
 
-                <figcaption>{frontmatter.coverCredit}</figcaption>
-              </figure>
+                  <figcaption>{frontmatter?.coverCredit}</figcaption>
+                </figure>
 
-              <h1>{frontmatter.title}</h1>
-              <p>{frontmatter.date}</p>
-              <p>{excerpt}</p>
-            </Link>
-          </div>
-        ))}
+                <h1>{frontmatter?.title}</h1>
+                <p>{frontmatter?.date}</p>
+                <p>{excerpt}</p>
+              </Link>
+            </div>
+          )
+        )}
       </div>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query SiteIndex {
+  query SiteIndexQuery {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
