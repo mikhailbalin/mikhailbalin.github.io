@@ -108,7 +108,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: "white",
+    default: "cararra",
     values: [
       {
         name: "dark",
