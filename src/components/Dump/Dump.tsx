@@ -1,35 +1,17 @@
 import React from "react";
-import { styled } from "baseui";
-import { themedStyled } from "../../settings/theme";
+import ReactJson from "react-json-view";
+import { customTheme as $theme } from "../../settings/theme";
 
-export const Wrapper = themedStyled("div", ({ $theme }) => ({
-  fontSize: "1rem",
-  border: "1px solid #efefef",
-  padding: "0.5rem",
-  backgroundColor: "#2c2c2c",
-  color: "#e0e0e0",
-  overflowX: "auto",
-  margin: "1rem 0",
-  borderTopLeftRadius: "5px",
-  borderTopRightRadius: "5px",
-}));
+export type DumpProps = Record<string, unknown>;
 
-export const Label = styled("strong", ({ $theme }) => ({}));
-
-export const Dump = (props: Record<string, unknown>) => {
+export const Dump = (props: DumpProps) => {
   return (
-    <Wrapper>
-      {Object.entries(props).map(([key, val]) => (
-        <pre key={key}>
-          <Label>
-            <span role="img" aria-label="Data">
-              {"💾 "}
-            </span>
-            {`${key} `}
-          </Label>
-          {JSON.stringify(val, null, " ")}
-        </pre>
-      ))}
-    </Wrapper>
+    <ReactJson
+      src={props}
+      theme="codeschool"
+      iconStyle="square"
+      style={{ overflow: "auto", padding: $theme.sizing.scale400 }}
+      collapsed={1}
+    />
   );
 };
