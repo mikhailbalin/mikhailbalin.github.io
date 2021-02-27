@@ -1,5 +1,4 @@
-/* eslint-disable react/display-name */
-import { Layout } from "../components/Layout";
+import { Layout } from "../containers/Layout";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 // import Dump from "components/Dump";
@@ -25,6 +24,7 @@ const itemProps: FlexGridItemProps = {
   justifyContent: "center",
 };
 
+// eslint-disable-next-line react/display-name
 export default ({ data }: any) => {
   const {
     description,
@@ -74,7 +74,7 @@ export default ({ data }: any) => {
 
       <IndexWrapper>
         {/* <Dump data={data}></Dump> */}
-        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
+        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }: any) => (
           <PostWrapper key={id}>
             <Link to={fields.slug}>
               <figure>

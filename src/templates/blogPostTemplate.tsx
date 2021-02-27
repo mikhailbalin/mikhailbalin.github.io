@@ -1,4 +1,4 @@
-import { Layout } from "../components/Layout";
+import { Layout } from "../containers/Layout";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";

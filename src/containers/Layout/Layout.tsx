@@ -1,6 +1,6 @@
 import React from "react";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
-import { Header } from "../Header";
+import { Header } from "../../components/Header";
 import { themedStyled } from "../../settings/theme";
 
 const AppStyles = themedStyled("main", {
