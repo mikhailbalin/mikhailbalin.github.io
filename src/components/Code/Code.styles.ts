@@ -1,6 +1,6 @@
-import { styled } from "baseui";
+import { themedStyled } from "../../settings/theme";
 
-export const Pre = styled("pre", ({ $theme }) => ({
+export const Pre = themedStyled("pre", ({ $theme }) => ({
   position: "relative",
   textAlign: "left",
   margin: "1rem 0",
@@ -15,14 +15,14 @@ export const Pre = styled("pre", ({ $theme }) => ({
   },
 }));
 
-export const LineNo = styled("span", ({ $theme }) => ({
+export const LineNo = themedStyled("span", ({ $theme }) => ({
   display: "inline-block",
   width: "2rem",
   userSelect: "none",
   opacity: " 0.3",
 }));
 
-export const CopyCode = styled("button", ({ $theme }) => ({
+export const CopyCode = themedStyled("button", ({ $theme }) => ({
   position: "absolute",
   right: "0.25rem",
   border: "0",
