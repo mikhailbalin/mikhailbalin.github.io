@@ -1,16 +1,27 @@
 import { HeadingXLarge } from "baseui/typography";
 import React from "react";
+import { themedStyled } from "../../settings/theme";
 
-interface SectionTitleProps {
+const SectionTop = themedStyled("div", ({ $theme }) => ({
+  paddingBottom: $theme.sizing.scale500,
+  marginBottom: $theme.sizing.scale900,
+  borderBottom: "1px solid #d9dbd0",
+  [$theme.mediaQuery.desktop]: {
+    paddingBottom: $theme.sizing.scale700,
+    marginBottom: $theme.sizing.scale1000,
+  },
+}));
+
+export interface SectionTitleProps {
   title: string;
   children?: React.ReactNode;
 }
 
 export const SectionTitle = ({ title, children }: SectionTitleProps) => {
   return (
-    <div>
-      <HeadingXLarge>{title}</HeadingXLarge>
+    <SectionTop>
+      <HeadingXLarge $style={{ marginBottom: "8px" }}>{title}</HeadingXLarge>
       {children}
-    </div>
+    </SectionTop>
   );
 };

@@ -10,11 +10,6 @@ import { BlockProps } from "baseui/block";
 
 export default {
   title: "Typography/Heading",
-  parameters: {
-    backgrounds: {
-      default: "white",
-    },
-  },
   argTypes: {
     color: {
       description: "Color of text",
@@ -27,8 +22,7 @@ export default {
       },
     },
     children: {
-      defaultValue:
-        "We ignite opportunity by setting the world in motion.We ignite opportunity by setting the world in motion. We ignite opportunity by setting the world in motion.",
+      defaultValue: "We ignite opportunity by setting the world in motion.",
       description: "React children",
       table: {
         type: { summary: "React.ReactNode" },
