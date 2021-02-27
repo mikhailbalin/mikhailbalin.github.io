@@ -56,5 +56,9 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: { path: `${__dirname}/posts`, name: "posts" },
     },
+    {
+      resolve: "gatsby-plugin-codegen",
+      options: {},
+    },
   ],
 };
