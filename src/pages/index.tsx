@@ -1,7 +1,6 @@
 import { Layout } from "../containers/Layout";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
-import { Dump } from "../components/Dump";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
@@ -37,8 +36,6 @@ export default ({ data }: any) => {
       />
 
       <div>
-        <Dump data={data}></Dump>
-
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }: any) => (
           <div key={id} style={{ marginTop: "30px", marginBottom: "30px" }}>
             <Link to={fields.slug}>
@@ -62,7 +59,7 @@ export default ({ data }: any) => {
 };
 
 export const query = graphql`
-  query SITE_INDEX_QUERY {
+  query SiteIndex {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
@@ -76,8 +73,8 @@ export const query = graphql`
           cover {
             publicURL
             childImageSharp {
-              sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
-                ...GatsbyImageSharpSizes_tracedSVG
+              fluid(maxWidth: 2000, traceSVG: { color: "#639" }) {
+                ...GatsbyImageSharpFluid_tracedSVG
               }
             }
           }
