@@ -76,7 +76,17 @@ interface CustomTypography {
   };
 }
 
-export type CustomTheme = Theme & ResponsiveTheme & CustomTypography;
+interface CustomSizing {
+  sizing: {
+    scale2000: string;
+    scale2500: string;
+  };
+}
+
+export type CustomTheme = Theme &
+  ResponsiveTheme &
+  CustomTypography &
+  CustomSizing;
 
 export const themedStyled = createThemedStyled<CustomTheme>();
 export const themedWithStyle = createThemedWithStyle<CustomTheme>();
@@ -84,6 +94,11 @@ export const themedUseStyletron = createThemedUseStyletron<CustomTheme>();
 
 export const customTheme: CustomTheme = {
   ...theme,
+  sizing: {
+    ...theme.sizing,
+    scale2000: "80px",
+    scale2500: "100px",
+  },
   typography: {
     ...theme.typography,
     font160: {
