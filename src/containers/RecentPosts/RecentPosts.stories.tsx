@@ -5,11 +5,6 @@ import { RecentPosts } from "./RecentPosts";
 export default {
   title: "Containers/RecentPosts",
   component: RecentPosts,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 export const Primary: Story = () => <RecentPosts />;
