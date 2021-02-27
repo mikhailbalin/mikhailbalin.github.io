@@ -5,11 +5,6 @@ import { NavBar } from "./NavBar";
 export default {
   title: "NavBar",
   component: NavBar,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 const Template: Story<any> = (args) => <NavBar {...args} />;
