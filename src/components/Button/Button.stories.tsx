@@ -6,11 +6,6 @@ import { Button } from "./Button";
 export default {
   title: "Buttons/Button",
   component: Button,
-  parameters: {
-    backgrounds: {
-      default: "cararra",
-    },
-  },
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
