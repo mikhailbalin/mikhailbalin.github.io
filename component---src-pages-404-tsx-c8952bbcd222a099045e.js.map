@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/404.tsx"],"names":[],"mappings":"6FAAA,gCAGe,qBACb,OAAO","file":"component---src-pages-404-tsx-c8952bbcd222a099045e.js","sourcesContent":["import React from \"react\";\n\n// eslint-disable-next-line react/display-name\nexport default () => {\n  return <div>404</div>;\n};\n"],"sourceRoot":""}
