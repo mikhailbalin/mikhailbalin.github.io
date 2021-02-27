@@ -19,7 +19,7 @@ const primitives: Partial<ThemePrimitives> = {
   primaryFontFamily: monoFontFamily,
 };
 
-const size = (size: string | number, base = 1.5) =>
+const size = (size: string, base = 1.5) =>
   interpolate`calc(${size} + ${base}vw)`;
 
 const overrides: DeepPartial<Theme> = {
@@ -28,15 +28,15 @@ const overrides: DeepPartial<Theme> = {
   },
   typography: {
     HeadingXXLarge: {
-      fontFamily: primitives.primaryFontFamily,
+      fontFamily: sansSerifFontFamily,
       fontSize: size("1.35rem"),
-      lineHeight: size(1.3),
+      lineHeight: size("30px"),
       fontWeight: 500,
     },
     HeadingXLarge: {
       fontFamily: sansSerifFontFamily,
       fontSize: size("1.07rem"),
-      lineHeight: size(1.3),
+      lineHeight: size("25px"),
       fontWeight: 400,
     },
     HeadingLarge: {

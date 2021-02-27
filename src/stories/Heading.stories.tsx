@@ -27,7 +27,8 @@ export default {
       },
     },
     children: {
-      defaultValue: "We ignite opportunity by setting the world in motion.",
+      defaultValue:
+        "We ignite opportunity by setting the world in motion.We ignite opportunity by setting the world in motion. We ignite opportunity by setting the world in motion.",
       description: "React children",
       table: {
         type: { summary: "React.ReactNode" },
