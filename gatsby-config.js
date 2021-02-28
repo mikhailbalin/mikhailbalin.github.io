@@ -12,7 +12,6 @@ module.exports = {
     icon: `src/images/favicon.ico`,
   },
   plugins: [
-    "gatsby-plugin-styled-components",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
