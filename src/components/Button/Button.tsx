@@ -10,11 +10,10 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
       overrides={{
         BaseButton: {
           style: ({ $theme }: { $theme: CustomTheme }) => ({
-            paddingTop: "12px",
-            paddingRight: "23px",
-            paddingBottom: "12px",
-            paddingLeft: "23px",
-
+            paddingTop: kind === "tertiary" ? "18px" : "12px",
+            paddingBottom: kind === "tertiary" ? "18px" : "12px",
+            paddingRight: kind === "tertiary" ? "32px" : "23px",
+            paddingLeft: kind === "tertiary" ? "32px" : "23px",
             borderColor: "transparent",
             borderTopStyle: "solid",
             borderRightStyle: "solid",
@@ -24,11 +23,9 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
             borderRightWidth: "1px",
             borderBottomWidth: "1px",
             borderLeftWidth: "1px",
-
             textTransform: "uppercase",
             letterSpacing: "0.8px",
             transitionProperty: "background color",
-
             ...(kind === "secondary" && {
               borderColor: "#d9dbd0",
               ":hover": {

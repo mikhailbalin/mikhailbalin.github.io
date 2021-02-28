@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { ButtonProps, KIND } from "baseui/button";
+import { ButtonProps, KIND, SIZE } from "baseui/button";
 import { Button } from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
@@ -21,6 +21,7 @@ export const Secondary = Template.bind({});
 Secondary.args = {
   ...Primary.args,
   kind: KIND.secondary,
+  size: SIZE.default,
 };
 
 export const Tertiary = Template.bind({});
