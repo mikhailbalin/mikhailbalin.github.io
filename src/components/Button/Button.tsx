@@ -35,6 +35,15 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
                 color: $theme.colors.white,
               },
             }),
+            ...(kind === "tertiary" && {
+              boxShadow: $theme.lighting.shadow600,
+              transitionDuration: $theme.animation.timing400,
+              transitionTimingFunction: $theme.animation.easeInOutCurve,
+              ":hover": {
+                boxShadow: $theme.lighting.shadow700,
+                transform: "translateY(-3px) scale(1.02)",
+              },
+            }),
             ...$theme.typography.font260,
           }),
         },
