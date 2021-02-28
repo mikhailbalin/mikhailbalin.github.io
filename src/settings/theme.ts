@@ -64,6 +64,9 @@ const overrides: DeepPartial<Theme> = {
     buttonSecondaryHover: primitives.negative,
     buttonSecondaryActive: primitives.negative,
     buttonSecondaryText: primitives.primaryA,
+    buttonTertiaryFill: "#ffffff",
+    buttonTertiaryHover: "#ffffff",
+    buttonTertiaryActive: "#ffffff",
     backgroundPrimary: "#edeee8",
   },
 };
