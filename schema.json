@@ -17001,6 +17001,16 @@
               "defaultValue": null
             },
             {
+              "name": "globalTypesFile",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "watch",
               "description": "",
               "type": {
@@ -18694,6 +18704,18 @@
             },
             {
               "name": "tsFileExtension",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "globalTypesFile",
               "description": null,
               "args": [],
               "type": {
@@ -20626,6 +20648,12 @@
             },
             {
               "name": "pluginCreator___pluginOptions___tsFileExtension",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___globalTypesFile",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -25965,6 +25993,12 @@
             },
             {
               "name": "pluginOptions___tsFileExtension",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___globalTypesFile",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

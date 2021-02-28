@@ -60,6 +60,7 @@ module.exports = {
       resolve: "gatsby-plugin-codegen",
       options: {
         tsFileExtension: "ts",
+        globalTypesFile: "./src/__generated__/globalTypes.ts",
         watch: process.env.NODE_ENV === "development" ? true : false,
         includes: ["./src/**/*.tsx", "./src/**/*.ts"],
       },
