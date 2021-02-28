@@ -10,7 +10,7 @@ import {
   SiteIndexQuery_allMdx_nodes,
 } from "./__generated__/SiteIndexQuery";
 
-export const Image = themedStyled(Img, () => ({
+export const StyledImg = themedStyled(Img, () => ({
   borderRadius: "5px",
 }));
 
@@ -51,7 +51,7 @@ export default ({ data }: { data: SiteIndexQuery }) => {
               <Link to={fields?.slug || ""}>
                 <figure>
                   {/* {frontmatter?.cover?.childImageSharp?.fluid?.sizes ? (
-                    <Image
+                    <StyledImg 
                       sizes={frontmatter.cover.childImageSharp.fluid.sizes!}
                     />
                   ) : null} */}
