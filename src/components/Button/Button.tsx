@@ -24,7 +24,7 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
             borderBottomWidth: "1px",
             borderLeftWidth: "1px",
             textTransform: "uppercase",
-            letterSpacing: "0.8px",
+            letterSpacing: "0.06em",
             transitionProperty: "background color",
             ...(kind === "secondary" && {
               borderColor: "#d9dbd0",
