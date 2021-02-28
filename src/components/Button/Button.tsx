@@ -14,11 +14,9 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
             paddingRight: "23px",
             paddingBottom: "12px",
             paddingLeft: "23px",
-            textTransform: "uppercase",
-            letterSpacing: "0.8px",
-            transitionProperty: "background color",
-            borderTopStyle: "solid",
+
             borderColor: "transparent",
+            borderTopStyle: "solid",
             borderRightStyle: "solid",
             borderBottomStyle: "solid",
             borderLeftStyle: "solid",
@@ -26,18 +24,26 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
             borderRightWidth: "1px",
             borderBottomWidth: "1px",
             borderLeftWidth: "1px",
-            ...(kind === "secondary"
-              ? {
-                  borderColor: "#d9dbd0",
-                  ":hover": {
-                    color: $theme.colors.white,
-                  },
-                  ":active": {
-                    color: $theme.colors.white,
-                  },
-                }
-              : {}),
+
+            textTransform: "uppercase",
+            letterSpacing: "0.8px",
+            transitionProperty: "background color",
+
+            ...(kind === "secondary" && {
+              borderColor: "#d9dbd0",
+              ":hover": {
+                color: $theme.colors.white,
+              },
+              ":active": {
+                color: $theme.colors.white,
+              },
+            }),
             ...$theme.typography.font260,
+          }),
+        },
+        EndEnhancer: {
+          style: ({ $theme }: { $theme: CustomTheme }) => ({
+            marginLeft: $theme.sizing.scale550,
           }),
         },
       }}
