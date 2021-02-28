@@ -15,7 +15,7 @@ export const Image = themedStyled(Img, () => ({
 }));
 
 // eslint-disable-next-line react/display-name
-export default ({ allMdx }: SiteIndexQuery) => {
+export default ({ data }: { data: SiteIndexQuery }) => {
   const {
     description,
     title,
@@ -40,7 +40,7 @@ export default ({ allMdx }: SiteIndexQuery) => {
       />
 
       <div>
-        {allMdx.nodes.map(
+        {data.allMdx.nodes.map(
           ({
             id,
             excerpt,

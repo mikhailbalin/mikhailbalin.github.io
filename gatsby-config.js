@@ -12,6 +12,7 @@ module.exports = {
     icon: `src/images/favicon.ico`,
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
@@ -61,6 +62,13 @@ module.exports = {
         tsFileExtension: "ts",
         watch: process.env.NODE_ENV === "development" ? true : false,
         includes: ["./src/**/*.tsx", "./src/**/*.ts"],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/src/pages`,
+        ignore: ["__generated__/**"],
       },
     },
   ],

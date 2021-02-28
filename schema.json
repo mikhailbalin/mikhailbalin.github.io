@@ -967,26 +967,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "port",
-                  "description": "",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "IntQueryOperatorInput",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "host",
-                  "description": "",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "StringQueryOperatorInput",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "polyfill",
                   "description": "",
                   "type": {
@@ -15026,30 +15006,6 @@
               "deprecationReason": null
             },
             {
-              "name": "port",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "host",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "polyfill",
               "description": null,
               "args": [],
@@ -15299,26 +15255,6 @@
               "defaultValue": null
             },
             {
-              "name": "port",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "IntQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "host",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "polyfill",
               "description": "",
               "type": {
@@ -15486,18 +15422,6 @@
             },
             {
               "name": "siteMetadata___icon",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "port",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "host",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -16767,6 +16691,16 @@
               "defaultValue": null
             },
             {
+              "name": "namespace",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "transpileTemplateLiterals",
               "description": "",
               "type": {
@@ -16898,6 +16832,16 @@
             },
             {
               "name": "mediaTypes",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "root",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -17077,11 +17021,11 @@
               "defaultValue": null
             },
             {
-              "name": "outputFlat",
+              "name": "ignore",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "BooleanQueryOperatorInput",
+                "name": "StringQueryOperatorInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -18377,6 +18321,18 @@
               "deprecationReason": null
             },
             {
+              "name": "namespace",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "transpileTemplateLiterals",
               "description": null,
               "args": [],
@@ -18552,6 +18508,18 @@
                   "name": "String",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "root",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -18765,13 +18733,17 @@
               "deprecationReason": null
             },
             {
-              "name": "outputFlat",
+              "name": "ignore",
               "description": null,
               "args": [],
               "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -20467,6 +20439,12 @@
               "deprecationReason": null
             },
             {
+              "name": "pluginCreator___pluginOptions___namespace",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginCreator___pluginOptions___transpileTemplateLiterals",
               "description": null,
               "isDeprecated": false,
@@ -20552,6 +20530,12 @@
             },
             {
               "name": "pluginCreator___pluginOptions___mediaTypes",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___root",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -20659,7 +20643,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginCreator___pluginOptions___outputFlat",
+              "name": "pluginCreator___pluginOptions___ignore",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -25788,6 +25772,12 @@
               "deprecationReason": null
             },
             {
+              "name": "pluginOptions___namespace",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginOptions___transpileTemplateLiterals",
               "description": null,
               "isDeprecated": false,
@@ -25879,6 +25869,12 @@
             },
             {
               "name": "pluginOptions___mediaTypes",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___root",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -25986,7 +25982,7 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginOptions___outputFlat",
+              "name": "pluginOptions___ignore",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
