@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { ButtonMenu, ButtonMenuProps } from "./ButtonMenu";
 
 export default {
-  title: "Buttons/ButtonMenu",
+  title: "Buttons/Menu",
   component: ButtonMenu,
 } as Meta;
 
