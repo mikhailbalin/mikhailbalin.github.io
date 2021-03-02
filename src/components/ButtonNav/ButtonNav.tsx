@@ -3,6 +3,7 @@ import { Button as BaseButton, SHAPE, SIZE } from "baseui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
 import { CustomTheme, themedStyled } from "../../settings/theme";
+import { useScroll } from "../../hooks/useScroll";
 
 const CircleOuter = themedStyled("div", ({ $theme }) => ({
   position: "absolute",
@@ -32,6 +33,8 @@ export interface ButtonNavProps {
 }
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
+  const { scrollX, scrollY, scrollDirection } = useScroll();
+  console.log({ scrollX, scrollY, scrollDirection });
   return (
     <BaseButton
       shape={SHAPE.circle}
@@ -39,7 +42,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
       overrides={{
         BaseButton: {
           style: ({ $theme }: { $theme: CustomTheme }) => ({
-            position: "relative",
+            position: "fixed",
             backgroundColor: "transparent",
             width: size === SIZE.mini ? "60px" : "80px",
             height: size === SIZE.mini ? "60px" : "80px",
@@ -57,7 +60,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
         <CircleInner>
           <FontAwesomeIcon
             icon={faReply}
-            rotation={90}
+            rotation={scrollDirection === "up" ? 90 : undefined}
             size="lg"
             color="#000"
           />

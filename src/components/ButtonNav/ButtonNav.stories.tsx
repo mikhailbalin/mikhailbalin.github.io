@@ -6,6 +6,13 @@ import { SIZE } from "baseui/button";
 export default {
   title: "Buttons/Nav",
   component: ButtonNav,
+  decorators: [
+    (Story) => (
+      <div style={{ height: "150vh" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const Template: Story<ButtonNavProps> = (args) => <ButtonNav {...args} />;
