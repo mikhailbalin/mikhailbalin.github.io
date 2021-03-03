@@ -13,6 +13,7 @@ const CircleOuter = themedStyled("div", ({ $theme }) => ({
   bottom: $theme.sizing.scale300,
   borderRadius: "50%",
   backgroundColor: "#ccc",
+  overflow: "hidden",
 }));
 
 const CircleInner = themedStyled("div", ({ $theme }) => ({
@@ -28,13 +29,46 @@ const CircleInner = themedStyled("div", ({ $theme }) => ({
   backgroundColor: $theme.colors.backgroundPrimary,
 }));
 
+const ProgressBlock = themedStyled<
+  "div",
+  {
+    $left?: string | number;
+    $right?: string | number;
+    $top?: string | number;
+    $bottom?: string | number;
+  }
+>("div", ({ $left, $right, $top, $bottom }) => ({
+  position: "absolute",
+  width: "50%",
+  height: "50%",
+  left: $left,
+  right: $right,
+  top: $top,
+  bottom: $bottom,
+  overflow: "hidden",
+}));
+
+const Loader = themedStyled<
+  "div",
+  {
+    $origin: string;
+  }
+>("div", ({ $origin }) => ({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+  transform: "rotateZ(-90deg)",
+  transformOrigin: $origin,
+  backgroundColor: "#000",
+}));
+
 export interface ButtonNavProps {
   size?: SIZE[keyof Pick<SIZE, "default" | "mini">];
 }
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
   const { scrollX, scrollY, scrollDirection } = useScroll();
-  console.log({ scrollX, scrollY, scrollDirection });
+
   return (
     <BaseButton
       shape={SHAPE.circle}
@@ -57,6 +91,22 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
       }}
     >
       <CircleOuter>
+        <ProgressBlock $right={0} $top={0}>
+          <Loader $origin="bottom left" />
+        </ProgressBlock>
+
+        <ProgressBlock $right={0} $bottom={0}>
+          <Loader $origin="top left" />
+        </ProgressBlock>
+
+        <ProgressBlock $left={0} $bottom={0}>
+          <Loader $origin="top right" />
+        </ProgressBlock>
+
+        <ProgressBlock $left={0} $top={0}>
+          <Loader $origin="bottom right" />
+        </ProgressBlock>
+
         <CircleInner>
           <FontAwesomeIcon
             icon={faReply}

@@ -1,4 +1,3 @@
-import debounce from "lodash/debounce";
 import { useState, useEffect } from "react";
 
 const EmptySSRRect = {
@@ -49,10 +48,9 @@ export const useScroll = () => {
   };
 
   useEffect(() => {
-    const debounceWrapper = debounce(listener, 2000);
-    window.addEventListener("scroll", debounceWrapper);
+    window.addEventListener("scroll", listener);
     return () => {
-      window.removeEventListener("scroll", debounceWrapper);
+      window.removeEventListener("scroll", listener);
     };
   });
 
