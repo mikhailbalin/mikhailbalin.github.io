@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Edge against localhost",
       "type": "edge",
       "request": "launch",
       "version": "beta",
-      "name": "Launch Edge against localhost",
       "url": "http://localhost:9988",
       "webRoot": "${workspaceFolder}"
     },
@@ -18,13 +18,9 @@
       "request": "launch",
       "protocol": "inspector",
       "program": "${workspaceRoot}/node_modules/gatsby/dist/bin/gatsby",
-      "args": [
-        "develop"
-      ],
+      "args": ["develop"],
       "stopOnEntry": false,
-      "runtimeArgs": [
-        "--nolazy"
-      ],
+      "runtimeArgs": ["--nolazy"],
       "sourceMaps": false
     },
     {
@@ -33,13 +29,9 @@
       "request": "launch",
       "protocol": "inspector",
       "program": "${workspaceRoot}/node_modules/gatsby/dist/bin/gatsby",
-      "args": [
-        "build"
-      ],
+      "args": ["build"],
       "stopOnEntry": false,
-      "runtimeArgs": [
-        "--nolazy"
-      ],
+      "runtimeArgs": ["--nolazy"],
       "sourceMaps": false
     }
   ]
