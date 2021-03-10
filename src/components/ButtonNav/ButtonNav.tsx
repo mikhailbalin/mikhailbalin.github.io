@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button as BaseButton, SHAPE, SIZE } from "baseui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
 import { CustomTheme, themedStyled } from "../../settings/theme";
-import { useScroll } from "../../hooks/useScroll";
+import { useWindowScroll } from "react-use";
 
 const CircleOuter = themedStyled("div", ({ $theme }) => ({
   position: "absolute",
@@ -67,7 +67,13 @@ export interface ButtonNavProps {
 }
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
-  const { scrollX, scrollY, scrollDirection } = useScroll();
+  const { y } = useWindowScroll();
+  const [height, setHeight] = useState<number>();
+
+  useEffect(() => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    setHeight(scrollHeight);
+  });
 
   return (
     <BaseButton
@@ -108,12 +114,10 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
         </ProgressBlock>
 
         <CircleInner>
-          <FontAwesomeIcon
-            icon={faReply}
-            rotation={scrollDirection === "up" ? 90 : undefined}
-            size="lg"
-            color="#000"
-          />
+          {/* <FontAwesomeIcon icon={faReply} size="lg" color="#000" /> */}
+          <div>
+            {y.toFixed()} / {height}
+          </div>
         </CircleInner>
       </CircleOuter>
     </BaseButton>
