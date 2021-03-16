@@ -1,10 +1,38 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
 
 export default {
   title: "Controls/Formik",
 } as Meta;
+
+export const SignupForm = () => {
+  // Pass the useFormik() hook initial form values and a submit function that will
+  // be called when the form is submitted
+  const { handleSubmit, handleChange, values } = useFormik({
+    initialValues: {
+      email: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="email">Email Address</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        onChange={handleChange}
+        value={values.email}
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
 
 export const Basic: Story = () => (
   <Formik
