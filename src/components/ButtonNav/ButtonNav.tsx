@@ -68,11 +68,13 @@ export interface ButtonNavProps {
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
   const { y } = useWindowScroll();
-  const [height, setHeight] = useState<number>();
+  const [percentSrcolled, setPercentSrcolled] = useState<string>();
 
   useEffect(() => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    setHeight(scrollHeight);
+    const scrollTop =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    setPercentSrcolled(((y / scrollTop) * 100).toFixed());
   });
 
   return (
@@ -114,10 +116,8 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
         </ProgressBlock>
 
         <CircleInner>
-          {/* <FontAwesomeIcon icon={faReply} size="lg" color="#000" /> */}
-          <div>
-            {y.toFixed()} / {height}
-          </div>
+          <FontAwesomeIcon icon={faReply} size="lg" color="#000" />
+          <div>{percentSrcolled}</div>
         </CircleInner>
       </CircleOuter>
     </BaseButton>
