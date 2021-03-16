@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Formik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 export default {
   title: "Controls/Formik",
@@ -27,39 +27,18 @@ export const Basic: Story = () => (
       }, 400);
     }}
   >
-    {({
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      isSubmitting,
-      /* and other goodies */
-    }) => (
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-        />
-        {errors.email && touched.email && errors.email}
+    {({ isSubmitting }) => (
+      <Form>
+        <Field type="email" name="email" />
+        <ErrorMessage name="email" component="div" />
 
-        <input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-        />
-        {errors.password && touched.password && errors.password}
+        <Field type="password" name="password" />
+        <ErrorMessage name="password" component="div" />
 
         <button type="submit" disabled={isSubmitting}>
           Submit
         </button>
-      </form>
+      </Form>
     )}
   </Formik>
 );
