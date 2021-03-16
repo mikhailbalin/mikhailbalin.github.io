@@ -10,7 +10,13 @@ export default {
 export const SignupForm = () => {
   return (
     <Formik
-      initialValues={{ firstName: "", lastName: "", email: "" }}
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+        colors: "",
+      }}
       validationSchema={Yup.object({
         firstName: Yup.string()
           .max(15, "Must be 15 characters or less")
@@ -19,6 +25,9 @@ export const SignupForm = () => {
           .max(20, "Must be 20 characters or less")
           .required("Required"),
         email: Yup.string().email("Invalid email address").required("Required"),
+        colors: Yup.string()
+          .oneOf(["red", "green"], "Invalid color")
+          .required("Required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -39,6 +48,18 @@ export const SignupForm = () => {
         <label htmlFor="email">Email Address</label>
         <Field name="email" type="email" />
         <ErrorMessage name="email" />
+
+        <label htmlFor="message">Message</label>
+        <Field name="message" as="textarea" />
+        <ErrorMessage name="message" />
+
+        <label htmlFor="colors">Colors</label>
+        <Field name="colors" as="select">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+        </Field>
+        <ErrorMessage name="colors" />
 
         <button type="submit">Submit</button>
       </Form>
