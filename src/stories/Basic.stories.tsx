@@ -3,6 +3,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Input } from "../components/Input";
+import { Textarea } from "../components/Textarea";
 
 export default {
   title: "Controls/Formik",
@@ -39,21 +40,9 @@ export const SignupForm = () => {
     >
       <Form>
         <Input name="firstName" label="First Name" />
-        {/* <label htmlFor="firstName">First Name</label>
-        <Field name="firstName" type="text" />
-        <ErrorMessage name="firstName" /> */}
-
-        <label htmlFor="lastName">Last Name</label>
-        <Field name="lastName" type="text" />
-        <ErrorMessage name="lastName" />
-
-        <label htmlFor="email">Email Address</label>
-        <Field name="email" type="email" />
-        <ErrorMessage name="email" />
-
-        <label htmlFor="message">Message</label>
-        <Field name="message" as="textarea" />
-        <ErrorMessage name="message" />
+        <Input name="lastName" label="Last Name" />
+        <Input name="email" label="Email Address" type="email" />
+        <Textarea name="message" label="Message" />
 
         <label htmlFor="colors">Colors</label>
         <Field name="colors" as="select">
