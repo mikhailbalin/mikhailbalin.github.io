@@ -7,9 +7,15 @@ interface CustomInputProps {
   label: string;
   name: string;
   caption?: string;
+  type?: "email" | "number" | "search" | "text";
 }
 
-export const CustomInput = ({ label, name, caption }: CustomInputProps) => {
+export const CustomInput = ({
+  label,
+  name,
+  caption,
+  type = "text",
+}: CustomInputProps) => {
   const [field, meta] = useField(name);
   const error = meta.touched && meta.error;
 
@@ -26,6 +32,7 @@ export const CustomInput = ({ label, name, caption }: CustomInputProps) => {
         onChange={field.onChange}
         value={field.value}
         error={!!error}
+        type={type}
       />
     </FormControl>
   );
