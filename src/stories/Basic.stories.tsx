@@ -2,7 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { MyInput } from "../components/Input/Input";
+import { Input } from "../components/Input";
 
 export default {
   title: "Controls/Formik",
@@ -38,7 +38,7 @@ export const SignupForm = () => {
       }}
     >
       <Form>
-        <MyInput name="firstName" label="First Name" />
+        <Input name="firstName" label="First Name" />
         {/* <label htmlFor="firstName">First Name</label>
         <Field name="firstName" type="text" />
         <ErrorMessage name="firstName" /> */}
