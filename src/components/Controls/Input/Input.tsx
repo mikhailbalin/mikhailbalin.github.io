@@ -3,19 +3,19 @@ import { FormControl } from "baseui/form-control";
 import { Input } from "baseui/input";
 import { useField } from "formik";
 
-interface CustomInputProps {
+interface MyInputProps {
   label: string;
   name: string;
   caption?: string;
   type?: "email" | "number" | "search" | "text";
 }
 
-export const CustomInput = ({
+export const MyInput = ({
   label,
   name,
   caption,
   type = "text",
-}: CustomInputProps) => {
+}: MyInputProps) => {
   const [field, meta] = useField(name);
   const error = meta.touched && meta.error;
 

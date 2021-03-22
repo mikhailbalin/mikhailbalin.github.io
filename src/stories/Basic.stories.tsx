@@ -2,8 +2,9 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Input } from "../components/Input";
-import { Textarea } from "../components/Textarea";
+import { Input } from "../components/Controls/Input";
+import { Textarea } from "../components/Controls/Textarea";
+import { Select } from "../components/Controls/Select";
 
 export default {
   title: "Controls/Formik",
@@ -44,6 +45,17 @@ export const SignupForm = () => {
         <Input name="email" label="Email Address" type="email" />
         <Textarea name="message" label="Message" />
 
+        <Select
+          label="Colors"
+          name="colors"
+          options={[
+            { id: "red", color: "Red" },
+            { id: "green", color: "Green" },
+            { id: "blue", color: "Blue" },
+          ]}
+          labelKey="color"
+          valueKey="id"
+        />
         <label htmlFor="colors">Colors</label>
         <Field name="colors" as="select">
           <option value="red">Red</option>
