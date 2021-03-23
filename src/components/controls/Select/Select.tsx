@@ -1,6 +1,12 @@
 import * as React from "react";
 import { FormControl } from "baseui/form-control";
-import { OnChangeParams, Select, SelectProps } from "baseui/select";
+import {
+  OnChangeParams,
+  Select,
+  SelectProps,
+  Option,
+  Value,
+} from "baseui/select";
 import { useField } from "formik";
 
 interface MySelectProps
@@ -18,6 +24,7 @@ export const MySelect = ({
   labelKey,
   valueKey,
 }: MySelectProps) => {
+  const [value, setValue] = React.useState<Value>();
   const [field, meta] = useField(name);
   const error = meta.touched && meta.error;
 
@@ -26,8 +33,21 @@ export const MySelect = ({
       <Select
         id={field.name}
         onBlur={field.onBlur}
-        onChange={(params: OnChangeParams) => field.onChange(params.value)}
-        value={field.value}
+        onChange={(params: OnChangeParams) => {
+          console.log({ params });
+          setValue(params.value);
+          // field.onChange(params.value);
+        }}
+        // overrides={{
+        //   DropdownOption: {
+        //     props: {
+        //       onClick(e: Event) {
+        //         console.log(e.type);
+        //       },
+        //     },
+        //   },
+        // }}
+        value={value}
         options={options}
         labelKey={labelKey}
         valueKey={valueKey}
