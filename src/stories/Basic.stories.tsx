@@ -10,16 +10,24 @@ export default {
   title: "Controls/Formik",
 } as Meta;
 
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  message: "",
+  colors: [],
+};
+
+const options = [
+  { id: "red", color: "Red" },
+  { id: "green", color: "Green" },
+  { id: "blue", color: "Blue" },
+];
+
 export const SignupForm = () => {
   return (
     <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
-        colors: "",
-      }}
+      initialValues={initialValues}
       validationSchema={Yup.object({
         firstName: Yup.string()
           .max(15, "Must be 15 characters or less")
@@ -28,9 +36,7 @@ export const SignupForm = () => {
           .max(20, "Must be 20 characters or less")
           .required("Required"),
         email: Yup.string().email("Invalid email address").required("Required"),
-        colors: Yup.string()
-          .oneOf(["red", "green"], "Invalid color")
-          .required("Required"),
+        colors: Yup.array().max(1).required("Required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -48,11 +54,7 @@ export const SignupForm = () => {
         <Select
           label="Colors"
           name="colors"
-          options={[
-            { id: "red", color: "Red" },
-            { id: "green", color: "Green" },
-            { id: "blue", color: "Blue" },
-          ]}
+          options={options}
           labelKey="color"
           valueKey="id"
         />
