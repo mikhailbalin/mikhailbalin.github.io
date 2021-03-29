@@ -13,11 +13,9 @@ export const RecentPosts = ({
     <Section>
       <SectionTitle title="Recent Posts" />
 
-      <div>
-        {posts.map((post) => (
-          <PostPreview key={post.id} post={post} />
-        ))}
-      </div>
+      {posts.map((post) => (
+        <PostPreview key={post.id} post={post} />
+      ))}
     </Section>
   );
 };
