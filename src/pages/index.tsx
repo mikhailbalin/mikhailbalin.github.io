@@ -1,18 +1,11 @@
 import { Layout } from "../containers/Layout";
-import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
-import { themedStyled } from "../settings/theme";
-import {
-  SiteIndexQuery,
-  SiteIndexQuery_allMdx_nodes,
-} from "./__generated__/SiteIndexQuery";
-
-export const StyledImg = themedStyled(Img, () => ({
-  borderRadius: "5px",
-}));
+import { Main } from "../containers/Main";
+import { graphql } from "gatsby";
+import { RecentPosts } from "../containers/RecentPosts";
+import { SiteIndexQuery } from "./__generated__/SiteIndexQuery";
 
 // eslint-disable-next-line react/display-name
 export default ({ data }: { data: SiteIndexQuery }) => {
@@ -39,34 +32,8 @@ export default ({ data }: { data: SiteIndexQuery }) => {
         twitterUsername={twitterUsername}
       />
 
-      <div>
-        {data.allMdx.nodes.map(
-          ({
-            id,
-            excerpt,
-            frontmatter,
-            fields,
-          }: SiteIndexQuery_allMdx_nodes) => (
-            <div key={id} style={{ marginTop: "30px", marginBottom: "30px" }}>
-              <Link to={fields?.slug || ""}>
-                <figure>
-                  {/* {frontmatter?.cover?.childImageSharp?.fluid?.sizes ? (
-                    <StyledImg 
-                      sizes={frontmatter.cover.childImageSharp.fluid.sizes!}
-                    />
-                  ) : null} */}
-
-                  <figcaption>{frontmatter?.coverCredit}</figcaption>
-                </figure>
-
-                <h1>{frontmatter?.title}</h1>
-                <p>{frontmatter?.date}</p>
-                <p>{excerpt}</p>
-              </Link>
-            </div>
-          )
-        )}
-      </div>
+      <Main />
+      <RecentPosts posts={data.allMdx.nodes} />
     </Layout>
   );
 };
