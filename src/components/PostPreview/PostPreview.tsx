@@ -8,22 +8,42 @@ export const StyledImg = themedStyled(Img, () => ({
   borderRadius: "5px",
 }));
 
+export const PostWrapper = themedStyled("div", () => ({
+  marginTop: "30px",
+  marginBottom: "30px",
+}));
+
+export const StyledLink = themedStyled(Link, () => ({
+  display: "flex",
+  minHeight: "22vw",
+  marginBottom: "32px",
+  backgroundColor: "#e1e3d9",
+  transition: "box-shadow 400ms ease",
+  color: "#151515",
+  textDecoration: "none",
+}));
+
 export interface PostPreviewProps {
   post: SiteIndexQuery_allMdx_nodes;
 }
 
 export const PostPreview = ({
-  post: { id, excerpt, frontmatter, fields },
+  post: { excerpt, frontmatter, fields },
 }: PostPreviewProps) => {
+  const fluid = frontmatter?.cover?.childImageSharp?.fluid;
+
   return (
-    <div key={id} style={{ marginTop: "30px", marginBottom: "30px" }}>
-      <Link to={fields?.slug || ""}>
+    <PostWrapper role="listitem">
+      <StyledLink to={fields?.slug || ""}>
         <figure>
-          {/* {frontmatter?.cover?.childImageSharp?.fluid?.sizes ? (
-          <StyledImg 
-            sizes={frontmatter.cover.childImageSharp.fluid.sizes!}
-          />
-        ) : null} */}
+          {fluid ? (
+            <StyledImg
+              sizes={{
+                ...fluid,
+                tracedSVG: fluid.tracedSVG ? fluid.tracedSVG : undefined,
+              }}
+            />
+          ) : null}
 
           <figcaption>{frontmatter?.coverCredit}</figcaption>
         </figure>
@@ -31,7 +51,7 @@ export const PostPreview = ({
         <h1>{frontmatter?.title}</h1>
         <p>{frontmatter?.date}</p>
         <p>{excerpt}</p>
-      </Link>
-    </div>
+      </StyledLink>
+    </PostWrapper>
   );
 };
