@@ -7,6 +7,6 @@ export default {
   component: PostPreview,
 } as Meta;
 
-export const Primary: Story<PostPreviewProps> = (args) => (
+export const Template: Story<PostPreviewProps> = (args) => (
   <PostPreview {...args} />
 );
