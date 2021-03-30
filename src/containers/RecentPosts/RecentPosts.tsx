@@ -10,19 +10,28 @@ export const PostsWrapper = themedStyled("div", () => ({
   marginBottom: "30px",
 }));
 
-export const RecentPosts = ({
-  posts,
-}: {
+interface RecentPostsProps {
   posts: SiteIndexQuery_allMdx_nodes[];
-}) => {
+}
+
+export const RecentPosts = ({ posts }: RecentPostsProps) => {
   return (
     <Section>
       <SectionTitle title="Recent Posts" />
 
       <PostsWrapper role="list">
-        {posts.map((post) => (
-          <PostPreview key={post.id} post={post} />
-        ))}
+        {posts.map(({ id, frontmatter, fields, excerpt }) =>
+          frontmatter ? (
+            <PostPreview
+              key={id}
+              post={{
+                excerpt,
+                slug: fields?.slug || "",
+                frontmatter: frontmatter,
+              }}
+            />
+          ) : null
+        )}
       </PostsWrapper>
     </Section>
   );

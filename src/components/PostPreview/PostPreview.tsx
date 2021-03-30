@@ -1,6 +1,9 @@
 import { Link } from "gatsby";
 import React from "react";
-import { SiteIndexQuery_allMdx_nodes } from "../../pages/__generated__/SiteIndexQuery";
+import {
+  SiteIndexQuery_allMdx_nodes,
+  SiteIndexQuery_allMdx_nodes_frontmatter,
+} from "../../pages/__generated__/SiteIndexQuery";
 import Img from "gatsby-image";
 import { themedStyled } from "../../settings/theme";
 
@@ -24,32 +27,36 @@ export const StyledLink = themedStyled(Link, () => ({
 }));
 
 export interface PostPreviewProps {
-  post: SiteIndexQuery_allMdx_nodes;
+  post: Pick<SiteIndexQuery_allMdx_nodes, "excerpt"> & {
+    slug: string;
+    frontmatter: SiteIndexQuery_allMdx_nodes_frontmatter;
+  };
 }
 
 export const PostPreview = ({
-  post: { excerpt, frontmatter, fields },
+  post: { excerpt, frontmatter, slug },
 }: PostPreviewProps) => {
-  const fluid = frontmatter?.cover?.childImageSharp?.fluid;
+  const { cover, coverCredit, date, title } = frontmatter;
+  const fluid = cover?.childImageSharp?.fluid;
 
   return (
     <PostWrapper role="listitem">
-      <StyledLink to={fields?.slug || ""}>
-        <figure>
-          {fluid ? (
+      <StyledLink to={slug}>
+        {fluid ? (
+          <figure>
             <StyledImg
               sizes={{
                 ...fluid,
                 tracedSVG: fluid.tracedSVG ? fluid.tracedSVG : undefined,
               }}
             />
-          ) : null}
 
-          <figcaption>{frontmatter?.coverCredit}</figcaption>
-        </figure>
+            {coverCredit && <figcaption>{coverCredit}</figcaption>}
+          </figure>
+        ) : null}
 
-        <h1>{frontmatter?.title}</h1>
-        <p>{frontmatter?.date}</p>
+        <h1>{title}</h1>
+        {date && <p>{date}</p>}
         <p>{excerpt}</p>
       </StyledLink>
     </PostWrapper>
