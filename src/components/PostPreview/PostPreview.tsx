@@ -7,10 +7,6 @@ import {
 import Img from "gatsby-image";
 import { themedStyled } from "../../settings/theme";
 
-export const StyledImg = themedStyled(Img, () => ({
-  borderRadius: "5px",
-}));
-
 export const PostWrapper = themedStyled("div", () => ({
   marginTop: "30px",
   marginBottom: "30px",
@@ -39,15 +35,17 @@ export const PostPreview = ({
   const { cover, coverCredit, date, title } = frontmatter;
   const fluid = cover?.childImageSharp?.fluid;
 
+  console.log({ excerpt, frontmatter, slug });
+
   return (
     <PostWrapper role="listitem">
       <StyledLink to={slug}>
         {fluid ? (
           <figure>
-            <StyledImg
-              sizes={{
+            <Img
+              fluid={{
                 ...fluid,
-                tracedSVG: fluid.tracedSVG ? fluid.tracedSVG : undefined,
+                tracedSVG: fluid.tracedSVG ?? undefined,
               }}
             />
 

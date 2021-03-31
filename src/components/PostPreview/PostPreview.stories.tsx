@@ -7,6 +7,11 @@ export default {
   component: PostPreview,
 } as Meta;
 
-export const Template: Story<PostPreviewProps> = (args) => (
-  <PostPreview {...args} />
-);
+const Template: Story<PostPreviewProps> = (args) => <PostPreview {...args} />;
+
+// export const Primary = Template.bind({});
+// Primary.args = {
+//   post: {
+//     excerpt
+//   },
+// };
