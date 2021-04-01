@@ -7,23 +7,11 @@
 // GraphQL query operation: SiteIndexQuery
 // ====================================================
 
-export interface SiteIndexQuery_allMdx_nodes_frontmatter_cover_childImageSharp_fluid {
-  tracedSVG: string | null;
-  aspectRatio: number;
-  src: string;
-  srcSet: string;
-  sizes: string;
-}
-
 export interface SiteIndexQuery_allMdx_nodes_frontmatter_cover_childImageSharp {
-  fluid: SiteIndexQuery_allMdx_nodes_frontmatter_cover_childImageSharp_fluid | null;
+  gatsbyImageData: any;
 }
 
 export interface SiteIndexQuery_allMdx_nodes_frontmatter_cover {
-  /**
-   * Copy file to static directory and return public url to it
-   */
-  publicURL: string | null;
   /**
    * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
    */
@@ -33,8 +21,8 @@ export interface SiteIndexQuery_allMdx_nodes_frontmatter_cover {
 export interface SiteIndexQuery_allMdx_nodes_frontmatter {
   title: string;
   date: any | null;
-  cover: SiteIndexQuery_allMdx_nodes_frontmatter_cover | null;
   coverCredit: string | null;
+  cover: SiteIndexQuery_allMdx_nodes_frontmatter_cover | null;
 }
 
 export interface SiteIndexQuery_allMdx_nodes_fields {

@@ -50,15 +50,12 @@ export const query = graphql`
         frontmatter {
           title
           date(formatString: "YYYY MMMM Do")
+          coverCredit
           cover {
-            publicURL
             childImageSharp {
-              fluid(maxWidth: 2000, traceSVG: { color: "#639" }) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
+              gatsbyImageData(tracedSVGOptions: { color: "#639" })
             }
           }
-          coverCredit
         }
         fields {
           slug
