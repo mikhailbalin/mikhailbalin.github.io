@@ -4,7 +4,7 @@ import {
   SiteIndexQuery_allMdx_nodes,
   SiteIndexQuery_allMdx_nodes_frontmatter,
 } from "../../pages/__generated__/SiteIndexQuery";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { themedStyled } from "../../settings/theme";
 
 export const PostWrapper = themedStyled("div", () => ({
@@ -30,28 +30,25 @@ export interface PostPreviewProps {
 }
 
 export const PostPreview = ({
-  post: { excerpt, frontmatter, slug },
+  post: {
+    excerpt,
+    frontmatter: { cover, coverCredit, date, title },
+    slug,
+  },
 }: PostPreviewProps) => {
-  const { cover, coverCredit, date, title } = frontmatter;
-  const fluid = cover?.childImageSharp?.fluid;
-
-  console.log({ excerpt, frontmatter, slug });
-
   return (
     <PostWrapper role="listitem">
       <StyledLink to={slug}>
-        {fluid ? (
+        {cover?.childImageSharp && (
           <figure>
-            <Img
-              fluid={{
-                ...fluid,
-                tracedSVG: fluid.tracedSVG ?? undefined,
-              }}
+            <GatsbyImage
+              image={cover.childImageSharp.gatsbyImageData}
+              alt="Alt"
             />
 
             {coverCredit && <figcaption>{coverCredit}</figcaption>}
           </figure>
-        ) : null}
+        )}
 
         <h1>{title}</h1>
         {date && <p>{date}</p>}
