@@ -1,39 +1,20 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import { PostPreview, PostPreviewProps } from "./PostPreview";
+// import React from "react";
+import {
+  Meta,
+  // Story
+} from "@storybook/react/types-6-0";
+import {
+  PostPreview,
+  // PostPreviewProps
+} from "./PostPreview";
 
 export default {
   title: "PostPreview",
   component: PostPreview,
 } as Meta;
 
-const Template: Story<PostPreviewProps> = (args) => <PostPreview {...args} />;
+// const Template: Story<PostPreviewProps> = (args) => <PostPreview {...args} />;
 
 // export const Primary = Template.bind({});
 // Primary.args = {
-//   post: {
-//     slug: "/",
-//     frontmatter: {
-//       title: "Code Blocks",
-//       date: "2019 July 1st",
-//       cover: {
-//         publicURL:
-//           "/static/d5c9bb5762c7735fa81963e5ace6305b/sam-diener-BpaclO4E8WU-unsplash.jpg",
-//         childImageSharp: {
-//           fluid: {
-//             tracedSVG:
-//               "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='267'%20viewBox='0%200%20400%20267'%20preserveAspectRatio='none'%3e%3cpath%20d='M0%20134v133h401V133l-1-114v20l-6%202-6%201c-3-2-18%2010-18%2014l-4%204c-11%209-14%2011-22%2013l-8%203-4%201-5%201h-3l-2-1%202-1%203-1h5c3-1%203-2-1-3-2-1-4%200-6%201l-4%202-4%204h2c1%201%202%202%200%203l-6%203h-1l-2-3h-2l2-1c3%200%205-3%202-3s-9%203-7%203l1%201-2%201c-2-1-3-1-3%201l-2%202v1h3l3-1c1%201%200%201-3%203l-3%202%203-1%205-2%204-2c2%201-5%207-7%207l-3%202-4%201-3%201-2%201-1%201-2%201c-1%200-2%201-1%202l-1%201v1l-1%201-1-2c1-3%200-3-2%200l-2%202-6%203-10%206-6%206c-1%202-4%203-6%204-3%201-4%203-1%203l-3%201-6%202-3%202c-5%200-11%201-15%203l-7%202-6%202-2%201-3%201-4%203c-3%202-3%202-1%202l4%201c0%202-5%201-6%200-2-2-5-3-5-1l-8-1-3-1c-6%202-8%202-8%201l2-1c3%200%207-2%206-4h-3c-1%202-9%200-9-1s-2-3-4-3l-4-3-2-1c-2%200-3%200-2-1%200-2-1-2-3-2s-3%200-2-1c2-1%201-4-1-5l-4-3-3-2-1-1%207%201a178%20178%200%200014%204c15%205%2019%206%2021%205%202%200%202%200%200-2-2-3-1-3%207-2h7c2-1-2-2-7-2-6-1-6-1%200-3%205-1%206-1%207%201s3%200%203-3c0-2-5-4-7-2-1%201-3%201-4-1l1-1c2%200%202-1%200-3v-1l4%202%202%201c1-1-1-5-3-5-1-1-2-2-1-3h-2l-3%201c-1%203-2%201-1-2v-5c-2%202-2%202-3-1v-3c2%200%201-2-1-2v1l-1%201-4%203c-2%202-5%203-3%201v-3l-2%201-1%201v-1h-3l-3%202-2%203-2%202c1%201%200%201-2%201h-1c1%201%201%201-2%201l-5-1-3-1c-2%200-8-5-9-9%200-2-5-5-7-5l-5-4-5-4-16-12c-4-3-10-6-13-6-4%200-19-12-29-24l-7-7a54%2054%200%2001-14-15l-2-3c-1-2-2-3-4-3l-6-3c-3-3-4-4-15-1h-6l-3-1-5-2C6%201%204%200%202%200H0v134m85%2010c1%204%201%204-9%203h-3l5%202%203%201h3l3-2h25l-6-2-12-4c-8-3-9-3-9%202m175%2032l-5%202c-5%201-9%207-5%207l5%201v-2c-2-3-2-3%200-4%201-1%202%200%204%202%201%202%204%203%204%201l1-1v2h2c2-1%202-1%202%201l3%201h1l-7%204c-4%202-5%202-6%201h-3l-6-2c-6-3-7-3-15%206l-11%209-10%207c-2%202-2%202-7-3-6-4-7-5-11-5l-5-2h-7l-7%201c2-2%202-2%201-3-2-2-3-3-1-2l1-1c0-1-14-4-15-3l-3%201%206%201c7%201%2010%202%2010%206l-4-1c-4-2-14-2-19%200l-4%201-5%204c0%201%2018%204%2030%204%2012%201%2013%201%2019%204l7%203%2011%204%2010%204%202%201c2%203%206%204%2010%204l5%201%201%201%201-2c0-2%202-1%207%201%203%202%2018%203%2027%202a554%20554%200%200145-7l11-1%2015-1h7l-6-2h-19l-5-2-3-2c-1-2-2-2-4-2-6%201-10-2-24-16a155%20155%200%2000-19-17c-5-5-11-7-12-6'%20fill='%23639'%20fill-rule='evenodd'/%3e%3c/svg%3e",
-//             aspectRatio: 1.5015015015015014,
-//             src:
-//               "posts/2019/2019-07-01-code-blocks/sam-diener-BpaclO4E8WU-unsplash.jpg",
-//             srcSet:
-//               "/static/d5c9bb5762c7735fa81963e5ace6305b/0f3a1/sam-diener-BpaclO4E8WU-unsplash.jpg 500w,\n/static/d5c9bb5762c7735fa81963e5ace6305b/a7715/sam-diener-BpaclO4E8WU-unsplash.jpg 1000w,\n/static/d5c9bb5762c7735fa81963e5ace6305b/a41d1/sam-diener-BpaclO4E8WU-unsplash.jpg 2000w,\n/static/d5c9bb5762c7735fa81963e5ace6305b/b2131/sam-diener-BpaclO4E8WU-unsplash.jpg 3000w,\n/static/d5c9bb5762c7735fa81963e5ace6305b/d2452/sam-diener-BpaclO4E8WU-unsplash.jpg 4000w,\n/static/d5c9bb5762c7735fa81963e5ace6305b/2c5ae/sam-diener-BpaclO4E8WU-unsplash.jpg 5040w",
-//             sizes: "(max-width: 2000px) 100vw, 2000px",
-//           },
-//         },
-//       },
-//       coverCredit: "Photo by Sam Diener on Unsplash",
-//     },
-//     excerpt: "This is h2 heading Here is the  Dump  component!",
-//   },
 // };

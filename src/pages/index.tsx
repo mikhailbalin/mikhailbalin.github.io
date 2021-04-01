@@ -53,7 +53,10 @@ export const query = graphql`
           coverCredit
           cover {
             childImageSharp {
-              gatsbyImageData(tracedSVGOptions: { color: "#639" })
+              gatsbyImageData(
+                tracedSVGOptions: { color: "#639" }
+                placeholder: TRACED_SVG
+              )
             }
           }
         }
