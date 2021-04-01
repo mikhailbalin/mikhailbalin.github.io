@@ -12626,17 +12626,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-image@npm:^2.11.0":
-  version: 2.11.0
-  resolution: "gatsby-image@npm:2.11.0"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    object-fit-images: ^3.2.4
-    prop-types: ^15.7.2
-  checksum: fb7e3bd8641c43872b1c8c8e665b9919fc972f04ecc4a6699d166585337ca359b498ba17352175352cfa248d8e49be9dd01e1c61ab32f50d683d439695c8bd40
-  languageName: node
-  linkType: hard
-
 "gatsby-legacy-polyfills@npm:^0.7.0":
   version: 0.7.0
   resolution: "gatsby-legacy-polyfills@npm:0.7.0"
@@ -17822,7 +17811,6 @@ fsevents@~2.3.1:
     fontsource-playfair-display: ^4.0.0
     formik: ^2.2.6
     gatsby: ^2.32.8
-    gatsby-image: ^2.11.0
     gatsby-plugin-codegen: ^1.2.14
     gatsby-plugin-image: ^1.2.0
     gatsby-plugin-mdx: ^1.10.1
@@ -18510,13 +18498,6 @@ fsevents@~2.3.1:
     define-property: ^0.2.5
     kind-of: ^3.0.3
   checksum: d91d46e54297cad0544f04e4dff4694f92aca9661f59ad7e803a1ba94a2bb24b38ca4fd59ea827d24c9bdc6f7148d5c838287ee4b2b9c5df9b445b1c0d7a066c
-  languageName: node
-  linkType: hard
-
-"object-fit-images@npm:^3.2.4":
-  version: 3.2.4
-  resolution: "object-fit-images@npm:3.2.4"
-  checksum: 0647ea1746d99098e4c0b1fc7ce5188a777f7968786f324079cf27fed96cb4789b8c9c7ddbaf7db55e123c42c30da648f71cd9071f969260215bfd93cbca8492
   languageName: node
   linkType: hard
 
