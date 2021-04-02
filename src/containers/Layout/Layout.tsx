@@ -1,6 +1,6 @@
 import React from "react";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { themedStyled } from "../../settings/theme";
+import { CustomTheme, themedStyled } from "../../settings/theme";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 
 const Main = themedStyled("main", ({ $theme }) => ({
@@ -23,9 +23,42 @@ export const Layout = ({ children }: LayoutProps) => {
         flexGridRowGap="scale800"
         $style={{ minHeight: "100vh" }}
       >
-        <FlexGridItem>1</FlexGridItem>
+        <FlexGridItem
+          overrides={{
+            Block: {
+              style: ({ $theme }: { $theme: CustomTheme }) => ({
+                [$theme.mediaQuery.tablet]: {
+                  width: $theme.sizing.scale2500,
+                  flexGrow: 0,
+                },
+                [$theme.mediaQuery.desktop]: {
+                  width: $theme.sizing.scale2500,
+                  // flexGrow: 0,
+                },
+                [$theme.mediaQuery.large]: {
+                  width: $theme.sizing.scale2500,
+                  // flexGrow: 0,
+                },
+              }),
+            },
+          }}
+        >
+          1
+        </FlexGridItem>
         <FlexGridItem>{children}</FlexGridItem>
-        <FlexGridItem>3</FlexGridItem>
+        <FlexGridItem
+          overrides={{
+            Block: {
+              style: ({ $theme }: { $theme: CustomTheme }) => ({
+                [$theme.mediaQuery.large]: {
+                  width: $theme.sizing.scale2000,
+                },
+              }),
+            },
+          }}
+        >
+          3
+        </FlexGridItem>
       </FlexGrid>
     </Main>
   );
