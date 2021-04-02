@@ -5000,6 +5000,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@urql/devtools@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@urql/devtools@npm:2.0.3"
+  dependencies:
+    wonka: ">= 4.0.9"
+  peerDependencies:
+    "@urql/core": ">= 1.14.0"
+    graphql: ">= 0.11.0"
+  checksum: f422d6350b3fa0e422e43b8042a2a2b58b1504c7a957279d7f138bb3396e9d4eb8b8b4ca8086cb3c8c6ceff4a53235959a9e3993a4d012ba2375d8fc12e7ca12
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.9.0":
   version: 1.9.0
   resolution: "@webassemblyjs/ast@npm:1.9.0"
@@ -17819,6 +17831,7 @@ fsevents@~2.3.1:
     "@types/styletron-standard": ^2.0.1
     "@typescript-eslint/eslint-plugin": ^4.15.2
     "@typescript-eslint/parser": ^4.15.2
+    "@urql/devtools": ^2.0.3
     babel-loader: ^8.2.2
     babel-plugin-styled-components: ^1.12.0
     baseui: ^9.110.0
@@ -26372,7 +26385,7 @@ typescript@^4.1.3:
   languageName: node
   linkType: hard
 
-"wonka@npm:^4.0.14":
+"wonka@npm:>= 4.0.9, wonka@npm:^4.0.14":
   version: 4.0.15
   resolution: "wonka@npm:4.0.15"
   checksum: df4fd51c15744570e6737975b9cff3e27c39840c1f2c4d4a01cb0b0a6641ff672c96475eb8df8276da2873147e46d8bdd3c3cddcf8f258ef5e97ae55c031f8f9
