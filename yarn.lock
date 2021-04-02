@@ -2362,6 +2362,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graphql-typed-document-node/core@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@graphql-typed-document-node/core@npm:3.1.0"
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+  checksum: f1c90f749b516ad67aa1eaeca1fdbe915ed1737464c6f99fb8571e301ade486587711b7bbdda4994068fd652992de7ed03538c7b6e585194edfa25feedf73e04
+  languageName: node
+  linkType: hard
+
 "@hapi/address@npm:2.x.x":
   version: 2.1.4
   resolution: "@hapi/address@npm:2.1.4"
@@ -4976,6 +4985,18 @@ __metadata:
     "@typescript-eslint/types": 4.15.2
     eslint-visitor-keys: ^2.0.0
   checksum: 9a4c23925a189722618488f8db8452ca738fecbb704393ddb17d25938f034cfbe47e25bd75744967ae942528aeb79e98ed65f703384070b14d33f5f3134fde90
+  languageName: node
+  linkType: hard
+
+"@urql/core@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@urql/core@npm:2.0.0"
+  dependencies:
+    "@graphql-typed-document-node/core": ^3.1.0
+    wonka: ^4.0.14
+  peerDependencies:
+    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+  checksum: 43890e0dc975591665a47195604337aaeadc06a2da65d0b7fd0553a71a11e848a0dd41eaf55f2e915ef3be0c514dd4069dd1dbc69222ea3d83e9cc4902f8c147
   languageName: node
   linkType: hard
 
@@ -17840,6 +17861,7 @@ fsevents@~2.3.1:
     styletron-react: ^6.0.0
     tslib: ^2.1.0
     typescript: ^4.1.3
+    urql: ^2.0.2
     utility-types: ^3.10.0
     yup: ^0.32.9
   languageName: unknown
@@ -25662,6 +25684,19 @@ typescript@^4.1.3:
   languageName: node
   linkType: hard
 
+"urql@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "urql@npm:2.0.2"
+  dependencies:
+    "@urql/core": ^2.0.0
+    wonka: ^4.0.14
+  peerDependencies:
+    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    react: ">= 16.8.0"
+  checksum: 2299eb45af0e9d140f8e55d42940d0664ab221509300d9783601b2cef77348aa3171f506120a70ea14abde92bbb95c7b235dfd607f589daae872a0fee4ac7758
+  languageName: node
+  linkType: hard
+
 "use-callback-ref@npm:^1.2.1":
   version: 1.2.4
   resolution: "use-callback-ref@npm:1.2.4"
@@ -26334,6 +26369,13 @@ typescript@^4.1.3:
   dependencies:
     string-width: ^4.0.0
   checksum: 729c30582e49bdcb1372216eedfd71d1640a1344a4b4e970bc9f33d575b56b130f530b383fbab2cf2bcffb76ea4357e6a66939778d8de91ca66037651d94e01a
+  languageName: node
+  linkType: hard
+
+"wonka@npm:^4.0.14":
+  version: 4.0.15
+  resolution: "wonka@npm:4.0.15"
+  checksum: df4fd51c15744570e6737975b9cff3e27c39840c1f2c4d4a01cb0b0a6641ff672c96475eb8df8276da2873147e46d8bdd3c3cddcf8f258ef5e97ae55c031f8f9
   languageName: node
   linkType: hard
 

@@ -50,6 +50,7 @@
     "styletron-engine-atomic": "^1.4.7",
     "styletron-react": "^6.0.0",
     "tslib": "^2.1.0",
+    "urql": "^2.0.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {
