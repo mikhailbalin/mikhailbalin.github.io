@@ -4,13 +4,8 @@ import {
   SiteIndexQuery_allMdx_nodes,
   SiteIndexQuery_allMdx_nodes_frontmatter,
 } from "../../pages/__generated__/SiteIndexQuery";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { themedStyled } from "../../settings/theme";
-
-export const PostWrapper = themedStyled("div", () => ({
-  marginTop: "30px",
-  marginBottom: "30px",
-}));
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { themedStyled, useThemedStyletron } from "../../settings/theme";
 
 export const StyledLink = themedStyled(Link, () => ({
   display: "flex",
@@ -36,24 +31,44 @@ export const PostPreview = ({
     slug,
   },
 }: PostPreviewProps) => {
+  const [css] = useThemedStyletron();
+  const image = getImage(cover?.childImageSharp?.gatsbyImageData);
+
   return (
-    <PostWrapper role="listitem">
-      <StyledLink to={slug}>
-        {cover?.childImageSharp && (
-          <figure>
-            <GatsbyImage
-              image={cover.childImageSharp.gatsbyImageData}
-              alt="Alt"
-            />
+    <StyledLink to={slug} role="listitem">
+      {image && (
+        <figure
+          className={css({ position: "relative", width: "calc(100% / 3)" })}
+        >
+          <GatsbyImage
+            image={image}
+            alt="Alt"
+            className={css({
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+            })}
+          />
 
-            {coverCredit && <figcaption>{coverCredit}</figcaption>}
-          </figure>
-        )}
+          {/* {coverCredit && <figcaption>{coverCredit}</figcaption>} */}
+        </figure>
+      )}
 
+      <div
+        className={css({
+          display: "flex",
+          flexDirection: "column",
+          margin: "32px 8%",
+          justifyContent: "center",
+          alignItems: "flex-start",
+        })}
+      >
         <h1>{title}</h1>
-        {date && <p>{date}</p>}
         <p>{excerpt}</p>
-      </StyledLink>
-    </PostWrapper>
+        {date && <p>{date}</p>}
+      </div>
+    </StyledLink>
   );
 };

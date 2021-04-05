@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { PostPreview, PostPreviewProps } from "./PostPreview";
-import { createClient, Provider, useQuery, defaultExchanges } from "urql";
+import { createClient, Provider, useQuery, defaultExchanges, gql } from "urql";
 import { devtoolsExchange } from "@urql/devtools";
 
 const client = createClient({
@@ -9,7 +9,7 @@ const client = createClient({
   exchanges: [devtoolsExchange, ...defaultExchanges],
 });
 
-const MyQuery = `
+const MyQuery = gql`
   query MyQuery {
     allFile {
       nodes {
@@ -36,7 +36,7 @@ export default {
 // export const Primary = Template.bind({});
 // Primary.args = {};
 
-export const Todos = () => {
+export const Primary = () => {
   const [result] = useQuery({
     query: MyQuery,
   });
