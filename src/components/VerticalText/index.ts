@@ -1,0 +1,1 @@
+export { VerticalText } from "./VerticalText";
