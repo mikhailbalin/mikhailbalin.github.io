@@ -26,10 +26,19 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
             textTransform: "uppercase",
             letterSpacing: "0.06em",
             transitionProperty: "background color",
+            textDecoration: "none",
+            ":hover": {
+              color: $theme.colors.white,
+              textDecoration: "none",
+            },
+            ":active": {
+              color: $theme.colors.white,
+            },
             ...(kind === "secondary" && {
               borderColor: "#d9dbd0",
               ":hover": {
                 color: $theme.colors.white,
+                textDecoration: "none",
               },
               ":active": {
                 color: $theme.colors.white,
