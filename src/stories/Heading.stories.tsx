@@ -1,12 +1,12 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import {
-  HeadingXXLarge,
-  HeadingXLarge,
-  HeadingLarge,
-  HeadingMedium,
-} from "baseui/typography";
 import { BlockProps } from "baseui/block";
+import {
+  MyHeadingLarge,
+  MyHeadingMedium,
+  MyHeadingXLarge,
+  MyHeadingXXLarge,
+} from "../components/typography";
 
 export default {
   title: "Typography/Heading",
@@ -35,11 +35,15 @@ export default {
 } as Meta;
 
 export const XXLarge: Story<BlockProps> = (args) => (
-  <HeadingXXLarge {...args} />
+  <MyHeadingXXLarge {...args} />
 );
 
-export const XLarge: Story<BlockProps> = (args) => <HeadingXLarge {...args} />;
+export const XLarge: Story<BlockProps> = (args) => (
+  <MyHeadingXLarge {...args} />
+);
 
-export const Large: Story<BlockProps> = (args) => <HeadingLarge {...args} />;
+export const Large: Story<BlockProps> = (args) => <MyHeadingLarge {...args} />;
 
-export const Medium: Story<BlockProps> = (args) => <HeadingMedium {...args} />;
+export const Medium: Story<BlockProps> = (args) => (
+  <MyHeadingMedium {...args} />
+);
