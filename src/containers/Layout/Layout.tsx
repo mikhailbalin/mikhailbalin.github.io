@@ -2,6 +2,7 @@ import React from "react";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { CustomTheme, themedStyled } from "../../settings/theme";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+import { NavBar } from "../../components/NavBar";
 
 const Main = themedStyled("main", ({ $theme }) => ({
   backgroundColor: $theme.colors.backgroundPrimary,
@@ -43,7 +44,7 @@ export const Layout = ({ children }: LayoutProps) => {
             },
           }}
         >
-          1
+          <NavBar />
         </FlexGridItem>
         <FlexGridItem>{children}</FlexGridItem>
         <FlexGridItem

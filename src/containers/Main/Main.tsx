@@ -1,5 +1,5 @@
-import { HeadingXXLarge, ParagraphMedium } from "baseui/typography";
 import React from "react";
+import { HeadingXXLarge, ParagraphMedium } from "baseui/typography";
 import { Button } from "../../components/Button";
 import { themedStyled } from "../../settings/theme";
 
@@ -23,7 +23,7 @@ export const Main = () => (
     </ParagraphMedium>
 
     <ButtonsWrapper>
-      <Button $as="a">view Portfolio</Button>
+      <Button $as="a">View Portfolio</Button>
       <Button $as="a" kind="secondary">
         Contact Me
       </Button>
