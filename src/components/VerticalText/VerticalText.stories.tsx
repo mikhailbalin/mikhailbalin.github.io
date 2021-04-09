@@ -7,9 +7,7 @@ export default {
   component: VerticalText,
 } as Meta;
 
-export const Template: Story<VerticalTextProps> = (args) => (
-  <VerticalText {...args} />
-);
+const Template: Story<VerticalTextProps> = (args) => <VerticalText {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
