@@ -987,6 +987,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "flags",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "SiteFlagsFilterInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "polyfill",
                   "description": "",
                   "type": {
@@ -14960,6 +14970,27 @@
           "possibleTypes": null
         },
         {
+          "kind": "INPUT_OBJECT",
+          "name": "SiteFlagsFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "PRESERVE_WEBPACK_CACHE",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
           "name": "Site",
           "description": null,
@@ -15048,6 +15079,18 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "flags",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SiteFlags",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -15277,6 +15320,29 @@
           "possibleTypes": null
         },
         {
+          "kind": "OBJECT",
+          "name": "SiteFlags",
+          "description": null,
+          "fields": [
+            {
+              "name": "PRESERVE_WEBPACK_CACHE",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "INPUT_OBJECT",
           "name": "SiteFilterInput",
           "description": null,
@@ -15318,6 +15384,16 @@
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "flags",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "SiteFlagsFilterInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -15502,6 +15578,12 @@
             },
             {
               "name": "host",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "flags___PRESERVE_WEBPACK_CACHE",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -17071,26 +17153,6 @@
               "defaultValue": null
             },
             {
-              "name": "ignore",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "pathCheck",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "BooleanQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "tsFileExtension",
               "description": "",
               "type": {
@@ -17126,6 +17188,26 @@
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ignore",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "pathCheck",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -18783,34 +18865,6 @@
               "deprecationReason": null
             },
             {
-              "name": "ignore",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pathCheck",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "tsFileExtension",
               "description": null,
               "args": [],
@@ -18858,6 +18912,34 @@
                   "name": "String",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ignore",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pathCheck",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -20727,18 +20809,6 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginCreator___pluginOptions___ignore",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pluginCreator___pluginOptions___pathCheck",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "pluginCreator___pluginOptions___tsFileExtension",
               "description": null,
               "isDeprecated": false,
@@ -20758,6 +20828,18 @@
             },
             {
               "name": "pluginCreator___pluginOptions___includes",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___ignore",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___pathCheck",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -26072,18 +26154,6 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginOptions___ignore",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pluginOptions___pathCheck",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "pluginOptions___tsFileExtension",
               "description": null,
               "isDeprecated": false,
@@ -26103,6 +26173,18 @@
             },
             {
               "name": "pluginOptions___includes",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___ignore",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___pathCheck",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
