@@ -7,64 +7,84 @@ import {
   ParagraphMedium,
 } from "baseui/typography";
 import { BlockProps } from "baseui/block";
-import { customTheme as theme } from "../../settings/theme";
+import { useThemedStyletron } from "../../settings/theme";
 
 export const MyHeadingXXLarge = ({
   color,
   marginBottom,
   ...rest
-}: BlockProps) => (
-  <HeadingXXLarge
-    color={color || theme.colors.primaryA}
-    marginBottom={marginBottom ?? theme.sizing.scale600}
-    {...rest}
-  />
-);
+}: BlockProps) => {
+  const [, theme] = useThemedStyletron();
+
+  return (
+    <HeadingXXLarge
+      color={color || theme.colors.primaryA}
+      marginBottom={marginBottom ?? theme.sizing.scale600}
+      {...rest}
+    />
+  );
+};
 
 export const MyHeadingXLarge = ({
   color,
   marginBottom,
   ...rest
-}: BlockProps) => (
-  <HeadingXLarge
-    color={color || theme.colors.primaryA}
-    marginBottom={marginBottom ?? theme.sizing.scale600}
-    {...rest}
-  />
-);
+}: BlockProps) => {
+  const [, theme] = useThemedStyletron();
+
+  return (
+    <HeadingXLarge
+      color={color || theme.colors.primaryA}
+      marginBottom={marginBottom ?? theme.sizing.scale600}
+      {...rest}
+    />
+  );
+};
 
 export const MyHeadingLarge = ({
   color,
   marginBottom,
   ...rest
-}: BlockProps) => (
-  <HeadingLarge
-    color={color || theme.colors.primaryA}
-    marginBottom={marginBottom ?? theme.sizing.scale600}
-    {...rest}
-  />
-);
+}: BlockProps) => {
+  const [, theme] = useThemedStyletron();
+
+  return (
+    <HeadingLarge
+      color={color || theme.colors.primaryA}
+      marginBottom={marginBottom ?? theme.sizing.scale600}
+      {...rest}
+    />
+  );
+};
 
 export const MyHeadingMedium = ({
   color,
   marginBottom,
   ...rest
-}: BlockProps) => (
-  <HeadingMedium
-    color={color || theme.colors.primaryA}
-    marginBottom={marginBottom ?? theme.sizing.scale600}
-    {...rest}
-  />
-);
+}: BlockProps) => {
+  const [, theme] = useThemedStyletron();
+
+  return (
+    <HeadingMedium
+      color={color || theme.colors.primaryA}
+      marginBottom={marginBottom ?? theme.sizing.scale600}
+      {...rest}
+    />
+  );
+};
 
 export const MyParagraphMedium = ({
   color,
   marginBottom,
   ...rest
-}: BlockProps) => (
-  <ParagraphMedium
-    color={color || theme.colors.primaryA}
-    marginBottom={marginBottom ?? theme.sizing.scale800}
-    {...rest}
-  />
-);
+}: BlockProps) => {
+  const [, theme] = useThemedStyletron();
+
+  return (
+    <ParagraphMedium
+      color={color || theme.colors.primaryA}
+      marginBottom={marginBottom ?? theme.sizing.scale800}
+      {...rest}
+    />
+  );
+};

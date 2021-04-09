@@ -1,10 +1,12 @@
 import React from "react";
 import ReactJson from "react-json-view";
-import { customTheme as theme } from "../../settings/theme";
+import { useThemedStyletron } from "../../settings/theme";
 
 export type DumpProps = Record<string, unknown>;
 
 export const Dump = (props: DumpProps) => {
+  const [, theme] = useThemedStyletron();
+
   return (
     <ReactJson
       src={props}
