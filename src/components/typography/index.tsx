@@ -9,42 +9,62 @@ import {
 import { BlockProps } from "baseui/block";
 import { customTheme as theme } from "../../settings/theme";
 
-export const MyHeadingXXLarge = ({ color, ...rest }: BlockProps) => (
+export const MyHeadingXXLarge = ({
+  color,
+  marginBottom,
+  ...rest
+}: BlockProps) => (
   <HeadingXXLarge
     color={color || theme.colors.primaryA}
-    marginBottom={theme.sizing.scale600}
+    marginBottom={marginBottom ?? theme.sizing.scale600}
     {...rest}
   />
 );
 
-export const MyHeadingXLarge = ({ color, ...rest }: BlockProps) => (
+export const MyHeadingXLarge = ({
+  color,
+  marginBottom,
+  ...rest
+}: BlockProps) => (
   <HeadingXLarge
     color={color || theme.colors.primaryA}
-    marginBottom={theme.sizing.scale600}
+    marginBottom={marginBottom ?? theme.sizing.scale600}
     {...rest}
   />
 );
 
-export const MyHeadingLarge = ({ color, ...rest }: BlockProps) => (
+export const MyHeadingLarge = ({
+  color,
+  marginBottom,
+  ...rest
+}: BlockProps) => (
   <HeadingLarge
     color={color || theme.colors.primaryA}
-    marginBottom={theme.sizing.scale600}
+    marginBottom={marginBottom ?? theme.sizing.scale600}
     {...rest}
   />
 );
 
-export const MyHeadingMedium = ({ color, ...rest }: BlockProps) => (
+export const MyHeadingMedium = ({
+  color,
+  marginBottom,
+  ...rest
+}: BlockProps) => (
   <HeadingMedium
     color={color || theme.colors.primaryA}
-    marginBottom={theme.sizing.scale600}
+    marginBottom={marginBottom ?? theme.sizing.scale600}
     {...rest}
   />
 );
 
-export const MyParagraphMedium = ({ color, ...rest }: BlockProps) => (
+export const MyParagraphMedium = ({
+  color,
+  marginBottom,
+  ...rest
+}: BlockProps) => (
   <ParagraphMedium
     color={color || theme.colors.primaryA}
-    marginBottom={theme.sizing.scale800}
+    marginBottom={marginBottom ?? theme.sizing.scale800}
     {...rest}
   />
 );

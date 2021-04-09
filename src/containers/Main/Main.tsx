@@ -1,6 +1,9 @@
 import React from "react";
-import { HeadingXXLarge, ParagraphMedium } from "baseui/typography";
 import { Button } from "../../components/Button";
+import {
+  MyHeadingXXLarge,
+  MyParagraphMedium,
+} from "../../components/typography";
 import { themedStyled } from "../../settings/theme";
 
 const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
@@ -11,16 +14,16 @@ const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
 
 export const Main = () => (
   <section>
-    <HeadingXXLarge color="#151515" marginBottom="16px">
+    <MyHeadingXXLarge>
       Hi there! 🌻 My name is Abbie Wilson. I’m a professional photographer &
       designer based in Bali, Indonesia
-    </HeadingXXLarge>
+    </MyHeadingXXLarge>
 
-    <ParagraphMedium marginBottom="24px">
+    <MyParagraphMedium>
       Aoluta nobis laborum et fortibus viris commemorandis. Certe, inquam,
       pertinax non quo minus id, de voluptate velit esse. At magnum periculum
       adiit in quo enim inter argumentum conclusionemque rationis et dolorum.
-    </ParagraphMedium>
+    </MyParagraphMedium>
 
     <ButtonsWrapper>
       <Button $as="a">View Portfolio</Button>
