@@ -7,7 +7,4 @@ export default {
   component: NavBar,
 } as Meta;
 
-const Template: Story<any> = (args) => <NavBar {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary: Story = () => <NavBar />;
