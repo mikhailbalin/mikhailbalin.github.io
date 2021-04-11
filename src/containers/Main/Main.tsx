@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../components/Button";
+import { Section } from "../../components/styled";
 import {
   MyHeadingXXLarge,
   MyParagraphMedium,
@@ -13,7 +14,7 @@ const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
 }));
 
 export const Main = () => (
-  <section>
+  <Section>
     <MyHeadingXXLarge>
       Hi there! 🌻 My name is Abbie Wilson. I’m a professional photographer &
       designer based in Bali, Indonesia
@@ -31,5 +32,5 @@ export const Main = () => (
         Contact Me
       </Button>
     </ButtonsWrapper>
-  </section>
+  </Section>
 );
