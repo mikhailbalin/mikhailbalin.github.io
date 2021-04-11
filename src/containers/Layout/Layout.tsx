@@ -3,6 +3,7 @@ import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { CustomTheme, themedStyled } from "../../settings/theme";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { NavBar } from "../../components/NavBar";
+import { SidebarMedia } from "../../components/SidebarMedia";
 
 const Main = themedStyled("main", ({ $theme }) => ({
   backgroundColor: $theme.colors.backgroundPrimary,
@@ -46,7 +47,9 @@ export const Layout = ({ children }: LayoutProps) => {
         >
           <NavBar />
         </FlexGridItem>
+
         <FlexGridItem>{children}</FlexGridItem>
+
         <FlexGridItem
           overrides={{
             Block: {
@@ -58,7 +61,7 @@ export const Layout = ({ children }: LayoutProps) => {
             },
           }}
         >
-          3
+          <SidebarMedia />
         </FlexGridItem>
       </FlexGrid>
     </Main>
