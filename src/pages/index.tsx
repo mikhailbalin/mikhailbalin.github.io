@@ -6,6 +6,7 @@ import { Main } from "../containers/Main";
 import { graphql } from "gatsby";
 import { RecentPosts } from "../containers/RecentPosts";
 import { SiteIndexQuery } from "./__generated__/SiteIndexQuery";
+import { AboutMe } from "../containers/AboutMe";
 
 // eslint-disable-next-line react/display-name
 export default ({ data }: { data: SiteIndexQuery }) => {
@@ -33,6 +34,7 @@ export default ({ data }: { data: SiteIndexQuery }) => {
       />
 
       <Main />
+      <AboutMe />
       <RecentPosts posts={data.allMdx.nodes} />
     </Layout>
   );
