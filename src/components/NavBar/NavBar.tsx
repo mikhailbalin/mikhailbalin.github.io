@@ -8,7 +8,10 @@ import { NavMenu } from "../NavMenu";
 const StyledNavBar = themedStyled(
   animated.div,
   ({ $width }: { $theme?: CustomTheme; $width?: string }) => ({
-    position: "relative",
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
     display: "inline-flex",
     alignItems: "stretch",
     width: $width,

@@ -10,7 +10,15 @@ const Main = themedStyled("main", ({ $theme }) => ({
   backgroundColor: $theme.colors.backgroundPrimary,
 }));
 
+const NavWrapper = themedStyled("div", ({ $theme }) => ({
+  position: "relative",
+  width: "80px",
+  height: "80px",
+  margin: `${$theme.sizing.scale1000} auto`,
+}));
+
 const Wrapper = themedStyled("div", ({ $theme }) => ({
+  textAlign: "center",
   [$theme.mediaQuery.tablet]: {
     position: "fixed",
     width: "10vw",
@@ -58,8 +66,10 @@ export const Layout = ({ children }: LayoutProps) => {
           }}
         >
           <Wrapper>
-            <NavBar />
-            <VerticalText>Title</VerticalText>
+            <NavWrapper>
+              <NavBar />
+            </NavWrapper>
+            <VerticalText>Mikhail B.</VerticalText>
           </Wrapper>
         </FlexGridItem>
 
