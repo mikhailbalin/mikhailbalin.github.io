@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { animated, useSpring, config } from "react-spring";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled } from "../../settings/theme";
@@ -14,7 +14,6 @@ const Nav = themedStyled(animated.nav, ({ $theme }) => ({
 
 export const NavMenu = () => {
   const { menuOpen } = useGlobalState();
-  const navRef = useRef<HTMLElement | null>(null);
 
   const navStyles = useSpring({
     config: config.slow,
@@ -22,7 +21,7 @@ export const NavMenu = () => {
   });
 
   return (
-    <Nav ref={navRef} style={navStyles}>
+    <Nav style={navStyles}>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/works">Works</NavLink>
       <NavLink to="/testimonials">Testimonials</NavLink>

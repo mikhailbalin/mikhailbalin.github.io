@@ -9,6 +9,7 @@ const Text = themedStyled("div", ({ $theme }) => ({
   fontWeight: 700,
   fontSize: "48px",
   lineHeight: "48px",
+  position: "sticky",
 }));
 
 export interface VerticalTextProps {

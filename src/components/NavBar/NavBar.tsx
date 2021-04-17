@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { animated, config, useSpring } from "react-spring";
 import { useGlobalState } from "../../hooks/useState";
-import { themedStyled } from "../../settings/theme";
+import { CustomTheme, themedStyled } from "../../settings/theme";
 import { ButtonMenu } from "../ButtonMenu";
 import { NavMenu } from "../NavMenu";
 
-const StyledNavBar = themedStyled("div", {
-  display: "flex",
-  alignItems: "stretch",
-  position: "fixed",
-  left: 0,
-  top: 0,
-  margin: "3vw",
-});
+const StyledNavBar = themedStyled(
+  animated.div,
+  ({ $width }: { $theme?: CustomTheme; $width?: string }) => ({
+    position: "relative",
+    display: "inline-flex",
+    alignItems: "stretch",
+    width: $width,
+  })
+);
 
 const Background = themedStyled(animated.div, ({ $theme }) => ({
   position: "absolute",
@@ -26,15 +27,24 @@ const Background = themedStyled(animated.div, ({ $theme }) => ({
 
 export const NavBar = () => {
   const { menuOpen } = useGlobalState();
+  const [barWidth, setBarWidth] = useState<string | undefined>(undefined);
 
   const backgroundStyles = useSpring({
     config: config.stiff,
     width: menuOpen ? "100%" : "0%",
     opacity: menuOpen ? 1 : 0,
+    onStart() {
+      menuOpen && setBarWidth(undefined);
+    },
+    onRest() {
+      !menuOpen && setBarWidth("80px");
+    },
   });
 
+  console.log({ barWidth, menuOpen });
+
   return (
-    <StyledNavBar>
+    <StyledNavBar $width={barWidth}>
       <ButtonMenu shape="square" />
 
       <NavMenu />

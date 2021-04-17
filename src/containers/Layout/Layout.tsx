@@ -4,9 +4,23 @@ import { CustomTheme, themedStyled } from "../../settings/theme";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
+import { VerticalText } from "../../components/VerticalText";
 
 const Main = themedStyled("main", ({ $theme }) => ({
   backgroundColor: $theme.colors.backgroundPrimary,
+}));
+
+const Wrapper = themedStyled("div", ({ $theme }) => ({
+  [$theme.mediaQuery.tablet]: {
+    position: "fixed",
+    width: "10vw",
+  },
+  [$theme.mediaQuery.desktop]: {
+    width: "10vw",
+  },
+  [$theme.mediaQuery.large]: {
+    width: "12vw",
+  },
 }));
 
 type LayoutProps = {
@@ -30,22 +44,23 @@ export const Layout = ({ children }: LayoutProps) => {
             Block: {
               style: ({ $theme }: { $theme: CustomTheme }) => ({
                 [$theme.mediaQuery.tablet]: {
-                  width: $theme.sizing.scale2500,
+                  width: "10vw",
                   flexGrow: 0,
                 },
                 [$theme.mediaQuery.desktop]: {
-                  width: $theme.sizing.scale2500,
-                  // flexGrow: 0,
+                  width: "10vw",
                 },
                 [$theme.mediaQuery.large]: {
-                  width: $theme.sizing.scale2500,
-                  // flexGrow: 0,
+                  width: "12vw",
                 },
               }),
             },
           }}
         >
-          <NavBar />
+          <Wrapper>
+            <NavBar />
+            <VerticalText>Title</VerticalText>
+          </Wrapper>
         </FlexGridItem>
 
         <FlexGridItem>{children}</FlexGridItem>
@@ -55,7 +70,8 @@ export const Layout = ({ children }: LayoutProps) => {
             Block: {
               style: ({ $theme }: { $theme: CustomTheme }) => ({
                 [$theme.mediaQuery.large]: {
-                  width: $theme.sizing.scale2000,
+                  flexGrow: 0,
+                  width: "30vw",
                 },
               }),
             },
