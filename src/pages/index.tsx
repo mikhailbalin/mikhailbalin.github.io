@@ -7,6 +7,7 @@ import { graphql } from "gatsby";
 import { RecentPosts } from "../containers/RecentPosts";
 import { SiteIndexQuery } from "./__generated__/SiteIndexQuery";
 import { AboutMe } from "../containers/AboutMe";
+import { Instagram } from "../containers/Instagram";
 
 // eslint-disable-next-line react/display-name
 export default ({ data }: { data: SiteIndexQuery }) => {
@@ -36,6 +37,7 @@ export default ({ data }: { data: SiteIndexQuery }) => {
       <Main />
       <AboutMe />
       <RecentPosts posts={data.allMdx.nodes} />
+      <Instagram />
     </Layout>
   );
 };
