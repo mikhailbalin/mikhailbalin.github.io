@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { themedStyled } from "../../settings/theme";
 
 const Text = themedStyled("span", ({ $theme }) => ({
+  display: "none",
   writingMode: "vertical-lr",
   transform: "rotate(-180deg)",
   fontFamily: "'Playfair Display', sans-serif",
@@ -11,6 +12,10 @@ const Text = themedStyled("span", ({ $theme }) => ({
   lineHeight: 1,
   position: "sticky",
   whiteSpace: "nowrap",
+
+  [$theme.mediaQuery.tablet]: {
+    display: "inline",
+  },
 }));
 
 export interface VerticalTextProps {
