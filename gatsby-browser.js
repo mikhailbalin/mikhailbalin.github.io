@@ -7,6 +7,7 @@ import React from "react";
 import { Client as StyletronClient } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import CommonRootElementWrapper from "./root-wrapper";
+import "@hookstate/devtools";
 
 const engine = new StyletronClient();
 
