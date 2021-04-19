@@ -52,7 +52,7 @@ export const Layout = ({ children }: LayoutProps) => {
             Block: {
               style: ({ $theme }: { $theme: CustomTheme }) => ({
                 [$theme.mediaQuery.tablet]: {
-                  width: "10vw",
+                  width: "12vw",
                   flexGrow: 0,
                 },
                 [$theme.mediaQuery.desktop]: {
@@ -69,6 +69,7 @@ export const Layout = ({ children }: LayoutProps) => {
             <NavWrapper>
               <NavBar />
             </NavWrapper>
+
             <VerticalText>Mikhail B.</VerticalText>
           </Wrapper>
         </FlexGridItem>

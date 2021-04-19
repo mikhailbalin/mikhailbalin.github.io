@@ -5,7 +5,11 @@ import {
   MyHeadingXXLarge,
   MyParagraphMedium,
 } from "../../components/typography";
-import { themedStyled } from "../../settings/theme";
+import {
+  CustomTheme,
+  themedStyled,
+  themedWithStyle,
+} from "../../settings/theme";
 
 const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
   display: "grid",
@@ -13,8 +17,12 @@ const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
   gridTemplateColumns: "max-content max-content",
 }));
 
+const MainSection = themedWithStyle(Section, ({ $theme }: any) => ({
+  paddingTop: $theme.sizing.scale3200,
+}));
+
 export const Main = () => (
-  <Section>
+  <MainSection>
     <MyHeadingXXLarge>
       Hi there! 🌻 My name is Abbie Wilson. I’m a professional photographer &
       designer based in Bali, Indonesia
@@ -32,5 +40,5 @@ export const Main = () => (
         Contact Me
       </Button>
     </ButtonsWrapper>
-  </Section>
+  </MainSection>
 );
