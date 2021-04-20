@@ -6,7 +6,7 @@ import {
   MyParagraphMedium,
 } from "../../components/typography";
 import {
-  CustomTheme,
+  CustomThemeProps,
   themedStyled,
   themedWithStyle,
 } from "../../settings/theme";
@@ -17,7 +17,10 @@ const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
   gridTemplateColumns: "max-content max-content",
 }));
 
-const MainSection = themedWithStyle(Section, ({ $theme }: any) => ({
+const MainSection = themedWithStyle<
+  typeof Section,
+  { children?: React.ReactNode }
+>(Section, ({ $theme }: CustomThemeProps) => ({
   paddingTop: $theme.sizing.scale3200,
 }));
 
