@@ -1,15 +1,18 @@
 import React from "react";
 import { Button as BaseButton, ButtonProps } from "baseui/button";
-import { CustomTheme } from "../../settings/theme";
+import { CustomThemeProps } from "../../settings/theme";
 
-export const Button = ({ children, kind, ...rest }: ButtonProps) => {
+export const Button = ({
+  children,
+  kind,
+  ...rest
+}: Omit<ButtonProps, "overrides">) => {
   return (
     <BaseButton
-      {...rest}
       kind={kind}
       overrides={{
         BaseButton: {
-          style: ({ $theme }: { $theme: CustomTheme }) => ({
+          style: ({ $theme }: CustomThemeProps) => ({
             paddingTop: kind === "tertiary" ? "18px" : "12px",
             paddingBottom: kind === "tertiary" ? "18px" : "12px",
             paddingRight: kind === "tertiary" ? "32px" : "23px",
@@ -57,11 +60,12 @@ export const Button = ({ children, kind, ...rest }: ButtonProps) => {
           }),
         },
         EndEnhancer: {
-          style: ({ $theme }: { $theme: CustomTheme }) => ({
+          style: ({ $theme }: CustomThemeProps) => ({
             marginLeft: $theme.sizing.scale550,
           }),
         },
       }}
+      {...rest}
     >
       {children}
     </BaseButton>

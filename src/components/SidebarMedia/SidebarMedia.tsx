@@ -1,35 +1,38 @@
 import React from "react";
-import {
-  CustomTheme,
-  themedStyled,
-  useThemedStyletron,
-} from "../../settings/theme";
+import { themedStyled } from "../../settings/theme";
 import { Button } from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
 
-const Wrapper = themedStyled("div", {
-  position: "relative",
+const Root = themedStyled("div", {
   padding: "3vw",
 });
 
-export const SidebarMedia = () => {
-  const [css] = useThemedStyletron();
-  return (
-    <Wrapper>
-      <img src="https://source.unsplash.com/-NjWIMfTIqI/1000x1500" />
+const Wrapper = themedStyled("div", {
+  position: "relative",
+});
 
-      <Button
-        kind="tertiary"
-        endEnhancer={<FontAwesomeIcon icon={faFilePdf} size="2x" />}
-        $style={{
-          position: "absolute",
-          right: "10px",
-          bottom: "10px",
-        }}
-      >
-        Download CV
-      </Button>
-    </Wrapper>
+const ButtonWrapper = themedStyled("div", ({ $theme }) => ({
+  position: "absolute",
+  right: `-${$theme.sizing.scale800}`,
+  bottom: $theme.sizing.scale800,
+}));
+
+export const SidebarMedia = () => {
+  return (
+    <Root>
+      <Wrapper>
+        <img src="https://source.unsplash.com/-NjWIMfTIqI/1000x1500" />
+
+        <ButtonWrapper>
+          <Button
+            kind="tertiary"
+            endEnhancer={<FontAwesomeIcon icon={faFilePdf} size="2x" />}
+          >
+            Download CV
+          </Button>
+        </ButtonWrapper>
+      </Wrapper>
+    </Root>
   );
 };

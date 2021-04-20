@@ -92,6 +92,10 @@ export type CustomTheme = Theme &
   CustomTypography &
   CustomSizing;
 
+export interface CustomThemeProps {
+  $theme: CustomTheme;
+}
+
 export const themedStyled = createThemedStyled<CustomTheme>();
 export const themedWithStyle = createThemedWithStyle<CustomTheme>();
 export const useThemedStyletron = createThemedUseStyletron<CustomTheme>();
