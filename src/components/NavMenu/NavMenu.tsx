@@ -2,7 +2,7 @@ import React from "react";
 import { animated, useSpring, config } from "react-spring";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled } from "../../settings/theme";
-import { NavLink } from "../NavLink";
+import { Link } from "../Link";
 
 const Nav = themedStyled(animated.nav, ({ $theme }) => ({
   display: "flex",
@@ -22,12 +22,12 @@ export const NavMenu = () => {
 
   return (
     <Nav style={navStyles}>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/works">Works</NavLink>
-      <NavLink to="/testimonials">Testimonials</NavLink>
-      <NavLink to="/blog">Blog</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+      <Link to="/">Home</Link>
+      <Link to="/works">Works</Link>
+      <Link to="/testimonials">Testimonials</Link>
+      <Link to="/blog">Blog</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
     </Nav>
   );
 };
