@@ -6,9 +6,9 @@ export default {
   title: "Sidebar/Media",
   component: SidebarMedia,
   decorators: [
-    (Story) => (
+    (StoryComponent) => (
       <div style={{ maxWidth: "300px" }}>
-        <Story />
+        <StoryComponent />
       </div>
     ),
   ],

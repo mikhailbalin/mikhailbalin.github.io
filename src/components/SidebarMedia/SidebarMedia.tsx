@@ -4,10 +4,6 @@ import { Button } from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
 
-const Root = themedStyled("div", {
-  padding: "3vw",
-});
-
 const Wrapper = themedStyled("div", {
   position: "relative",
 });
@@ -20,19 +16,17 @@ const ButtonWrapper = themedStyled("div", ({ $theme }) => ({
 
 export const SidebarMedia = () => {
   return (
-    <Root>
-      <Wrapper>
-        <img src="https://source.unsplash.com/-NjWIMfTIqI/1000x1500" />
+    <Wrapper>
+      <img src="https://source.unsplash.com/-NjWIMfTIqI/1000x1500" />
 
-        <ButtonWrapper>
-          <Button
-            kind="tertiary"
-            endEnhancer={<FontAwesomeIcon icon={faFilePdf} size="2x" />}
-          >
-            Download CV
-          </Button>
-        </ButtonWrapper>
-      </Wrapper>
-    </Root>
+      <ButtonWrapper>
+        <Button
+          kind="tertiary"
+          endEnhancer={<FontAwesomeIcon icon={faFilePdf} size="2x" />}
+        >
+          Download CV
+        </Button>
+      </ButtonWrapper>
+    </Wrapper>
   );
 };
