@@ -1,12 +1,13 @@
 import React from "react";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { CustomTheme, themedStyled } from "../../settings/theme";
+import { CustomThemeProps, themedStyled } from "../../settings/theme";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
 import { VerticalText } from "../../components/VerticalText";
+import { Address } from "../../components/Address";
 
-const Main = themedStyled("main", ({ $theme }) => ({
+const Main = themedStyled("div", ({ $theme }) => ({
   backgroundColor: $theme.colors.backgroundPrimary,
 }));
 
@@ -48,9 +49,10 @@ export const Layout = ({ children }: LayoutProps) => {
         $style={{ minHeight: "100vh" }}
       >
         <FlexGridItem
+          as="header"
           overrides={{
             Block: {
-              style: ({ $theme }: { $theme: CustomTheme }) => ({
+              style: ({ $theme }: CustomThemeProps) => ({
                 [$theme.mediaQuery.tablet]: {
                   width: "12vw",
                   flexGrow: 0,
@@ -74,21 +76,24 @@ export const Layout = ({ children }: LayoutProps) => {
           </Wrapper>
         </FlexGridItem>
 
-        <FlexGridItem>{children}</FlexGridItem>
+        <FlexGridItem as="main">{children}</FlexGridItem>
 
         <FlexGridItem
+          as="aside"
           overrides={{
             Block: {
-              style: ({ $theme }: { $theme: CustomTheme }) => ({
+              style: ({ $theme }: CustomThemeProps) => ({
                 [$theme.mediaQuery.large]: {
                   flexGrow: 0,
                   width: "30vw",
+                  padding: "3vw",
                 },
               }),
             },
           }}
         >
           <SidebarMedia />
+          <Address />
         </FlexGridItem>
       </FlexGrid>
     </Main>
