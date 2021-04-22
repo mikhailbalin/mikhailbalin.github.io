@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[76],{M876:function(e,n,t){"use strict";function a(e){e.languages.gcode={comment:/;.*|\B\(.*?\)\B/,string:{pattern:/"(?:""|[^"])*"/,greedy:!0},keyword:/\b[GM]\d+(?:\.\d+)?\b/,property:/\b[A-Z]/,checksum:{pattern:/\*\d+/,alias:"punctuation"},punctuation:/:/}}e.exports=a,a.displayName="gcode",a.aliases=[]}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_refractor_gcode-996122cc9ebf2f9c5f96.js.map

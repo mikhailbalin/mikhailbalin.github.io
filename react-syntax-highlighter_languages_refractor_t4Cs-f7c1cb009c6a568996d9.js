@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[205],{kk9f:function(s,a,e){"use strict";var t=e("YHgv"),n=e("EGRD");function g(s){s.register(t),s.register(n),s.languages.t4=s.languages["t4-cs"]=s.languages["t4-templating"].createT4("csharp")}s.exports=g,g.displayName="t4Cs",g.aliases=[]}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_refractor_t4Cs-f7c1cb009c6a568996d9.js.map
