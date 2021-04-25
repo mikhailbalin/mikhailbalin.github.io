@@ -18,7 +18,7 @@ const NavWrapper = themedStyled("div", ({ $theme }) => ({
   margin: `${$theme.sizing.scale1000} auto`,
 }));
 
-const Wrapper = themedStyled("div", ({ $theme }) => ({
+const HeaderWrapper = themedStyled("div", ({ $theme }) => ({
   textAlign: "center",
   [$theme.mediaQuery.tablet]: {
     position: "fixed",
@@ -30,6 +30,11 @@ const Wrapper = themedStyled("div", ({ $theme }) => ({
   [$theme.mediaQuery.large]: {
     width: "12vw",
   },
+}));
+
+const AsideWrapper = themedStyled("div", ({ $theme }) => ({
+  padding: "3vw",
+  position: "fixed",
 }));
 
 type LayoutProps = {
@@ -67,13 +72,13 @@ export const Layout = ({ children }: LayoutProps) => {
             },
           }}
         >
-          <Wrapper>
+          <HeaderWrapper>
             <NavWrapper>
               <NavBar />
             </NavWrapper>
 
             <VerticalText>Mikhail B.</VerticalText>
-          </Wrapper>
+          </HeaderWrapper>
         </FlexGridItem>
 
         <FlexGridItem as="main">{children}</FlexGridItem>
@@ -86,14 +91,15 @@ export const Layout = ({ children }: LayoutProps) => {
                 [$theme.mediaQuery.large]: {
                   flexGrow: 0,
                   width: "30vw",
-                  padding: "3vw",
                 },
               }),
             },
           }}
         >
-          <SidebarMedia />
-          <Address />
+          <AsideWrapper>
+            <SidebarMedia />
+            <Address />
+          </AsideWrapper>
         </FlexGridItem>
       </FlexGrid>
     </Main>
