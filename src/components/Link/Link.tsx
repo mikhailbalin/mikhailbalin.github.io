@@ -58,19 +58,24 @@ const StyledBaseLink = themedWithStyle<
   { $theme?: CustomTheme; $isUpper: boolean }
 >(BaseLink, getLinkStyles);
 
-export interface LinkProps extends Pick<GatsbyLinkProps<unknown>, "to"> {
+interface Props {
   children: React.ReactNode;
-  isExternal?: boolean;
   isUpper?: boolean;
   linkStyle?: StyleObject;
 }
 
+type TruncateProps =
+  | { to: string; href?: never }
+  | { href: string; to?: never };
+
+export type LinkProps = Props & TruncateProps;
+
 export const Link = ({
   children,
   to,
+  href,
   linkStyle,
   isUpper = false,
-  isExternal = false,
 }: LinkProps) => {
   const element = (hovered: boolean) => (
     <div>
@@ -80,13 +85,13 @@ export const Link = ({
   );
   const [hoverable] = useHover(element);
 
-  console.log({ isUpper });
-
-  return isExternal ? (
-    <StyledBaseLink $isUpper={isUpper}>{hoverable}</StyledBaseLink>
-  ) : (
+  return to ? (
     <StyledGatsbyLink to={to} $style={linkStyle} $isUpper={isUpper}>
       {hoverable}
     </StyledGatsbyLink>
+  ) : (
+    <StyledBaseLink href={href} $isUpper={isUpper}>
+      {hoverable}
+    </StyledBaseLink>
   );
 };
