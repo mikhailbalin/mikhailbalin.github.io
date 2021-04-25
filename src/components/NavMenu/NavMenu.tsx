@@ -1,7 +1,7 @@
 import React from "react";
 import { animated, useSpring, config } from "react-spring";
 import { useGlobalState } from "../../hooks/useState";
-import { themedStyled } from "../../settings/theme";
+import { themedStyled, useThemedStyletron } from "../../settings/theme";
 import { Link } from "../Link";
 
 const Nav = themedStyled(animated.nav, ({ $theme }) => ({
@@ -12,7 +12,26 @@ const Nav = themedStyled(animated.nav, ({ $theme }) => ({
   zIndex: 1,
 }));
 
+const LinkWrapper = themedStyled("div", ({ $theme }) => ({
+  marginLeft: $theme.sizing.scale550,
+  marginRight: $theme.sizing.scale550,
+
+  ":last-child": {
+    marginRight: $theme.sizing.scale1200,
+  },
+}));
+
+const navLinks = {
+  "/": "Home",
+  "/works": "Works",
+  "/testimonials": "Testimonials",
+  "/blog": "Blog",
+  "/about": "About",
+  "/contact": "Contact",
+} as const;
+
 export const NavMenu = () => {
+  const [, theme] = useThemedStyletron();
   const { menuOpen } = useGlobalState();
 
   const navStyles = useSpring({
@@ -22,12 +41,22 @@ export const NavMenu = () => {
 
   return (
     <Nav style={navStyles}>
-      <Link to="/">Home</Link>
-      <Link to="/works">Works</Link>
-      <Link to="/testimonials">Testimonials</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
+      {Object.entries(navLinks).map(([link, name]) => (
+        <Link
+          key={name}
+          to={link}
+          linkStyle={{
+            marginLeft: theme.sizing.scale550,
+            marginRight: theme.sizing.scale550,
+
+            ":last-child": {
+              marginRight: theme.sizing.scale1200,
+            },
+          }}
+        >
+          {name}
+        </Link>
+      ))}
     </Nav>
   );
 };

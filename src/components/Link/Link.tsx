@@ -1,8 +1,9 @@
 import React from "react";
 import { GatsbyLinkProps, Link as GatsbyLink } from "gatsby";
 import { themedStyled } from "../../settings/theme";
-import { useHover } from "../../hooks/useHover";
-import { StyledLink } from "baseui/link";
+import { useHover } from "react-use";
+import { StyledLink as BaseLink } from "baseui/link";
+import { StyleObject } from "styletron-react";
 
 const HoverLine = themedStyled<"div", { $hovered: boolean }>(
   "div",
@@ -19,13 +20,11 @@ const HoverLine = themedStyled<"div", { $hovered: boolean }>(
   })
 );
 
-const StyledNavLink = themedStyled(GatsbyLink, ({ $theme }) => ({
+const StyledGatsbyLink = themedStyled(GatsbyLink, ({ $theme }) => ({
   position: "relative",
-  display: "block",
-  marginLeft: $theme.sizing.scale550,
-  marginRight: $theme.sizing.scale550,
+  display: "inline-block",
+  cursor: "pointer",
   color: $theme.colors.primaryA,
-  textDecoration: "none",
   textTransform: "uppercase",
   overflow: "hidden",
   ...$theme.typography.font160,
@@ -34,19 +33,26 @@ const StyledNavLink = themedStyled(GatsbyLink, ({ $theme }) => ({
     color: $theme.colors.primaryA,
     textDecoration: "none",
   },
-
-  ":last-child": {
-    marginRight: $theme.sizing.scale1200,
-  },
 }));
 
-export const Link = ({ children, ...rest }: GatsbyLinkProps<unknown>) => {
-  const [hoverRef, hovered] = useHover<HTMLAnchorElement>();
+export interface LinkProps extends Pick<GatsbyLinkProps<unknown>, "to"> {
+  children: React.ReactNode;
+  isExternal?: boolean;
+  linkStyle?: StyleObject;
+}
 
-  return (
-    <StyledNavLink {...rest} ref={hoverRef}>
+export const Link = ({ children, to, linkStyle }: LinkProps) => {
+  const element = (hovered: boolean) => (
+    <div>
       {children}
       <HoverLine $hovered={hovered} />
-    </StyledNavLink>
+    </div>
+  );
+  const [hoverable] = useHover(element);
+
+  return (
+    <StyledGatsbyLink to={to} $style={linkStyle}>
+      {hoverable}
+    </StyledGatsbyLink>
   );
 };
