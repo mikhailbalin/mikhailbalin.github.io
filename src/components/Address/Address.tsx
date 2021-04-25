@@ -30,6 +30,7 @@ const ContactBlock = themedStyled("div", ({ $theme }) => ({
   gap: $theme.sizing.scale300,
   paddingTop: $theme.sizing.scale300,
   paddingBottom: $theme.sizing.scale300,
+  color: $theme.colors.primaryA,
   ...$theme.typography.font150,
 }));
 
