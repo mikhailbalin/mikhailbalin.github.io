@@ -24,7 +24,7 @@ export const Link = ({
   );
 
   const [hoverable] = useHover(element);
-  const commonProps = { $size: size, $isUpper: isUpper, linkStyle };
+  const commonProps = { $size: size, $isUpper: isUpper, $style: linkStyle };
 
   return to ? (
     <StyledGatsbyLink to={to} {...commonProps}>

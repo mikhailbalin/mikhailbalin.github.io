@@ -40,7 +40,9 @@ export const getLinkStyles = ({
   textDecoration: "none",
   textTransform: $isUpper ? "uppercase" : "none",
   overflow: "hidden",
-  ...($size === "default" && $theme.typography.font160),
+  ...($size === "default"
+    ? $theme.typography.font270
+    : $theme.typography.font160),
 
   ":hover": {
     color: $theme.colors.primaryA,

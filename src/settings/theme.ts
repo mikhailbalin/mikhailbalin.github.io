@@ -52,8 +52,8 @@ const overrides: DeepPartial<Theme> = {
       fontFamily: primitives.primaryFontFamily,
     },
     ParagraphMedium: {
-      fontSize: "0.9375rem",
-      lineHeight: 1.6,
+      fontSize: "15px",
+      lineHeight: "24px",
     },
   },
   colors: {
@@ -77,6 +77,7 @@ interface CustomTypography {
   typography: {
     font160: Font;
     font260: Font;
+    font270: Font;
   };
 }
 
@@ -120,6 +121,12 @@ export const customTheme: CustomTheme = {
       fontSize: "15px",
       fontWeight: 500,
       lineHeight: "20px",
+    },
+    font270: {
+      fontFamily: monoFontFamily,
+      fontSize: "15px",
+      fontWeight: 500,
+      lineHeight: "24px",
     },
   },
   ...createResponsiveTheme({
