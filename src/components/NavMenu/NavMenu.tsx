@@ -12,15 +12,6 @@ const Nav = themedStyled(animated.nav, ({ $theme }) => ({
   zIndex: 1,
 }));
 
-const LinkWrapper = themedStyled("div", ({ $theme }) => ({
-  marginLeft: $theme.sizing.scale550,
-  marginRight: $theme.sizing.scale550,
-
-  ":last-child": {
-    marginRight: $theme.sizing.scale1200,
-  },
-}));
-
 const navLinks = {
   "/": "Home",
   "/works": "Works",

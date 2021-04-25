@@ -1,9 +1,16 @@
 import React from "react";
 import { GatsbyLinkProps, Link as GatsbyLink } from "gatsby";
-import { themedStyled } from "../../settings/theme";
+import {
+  CustomTheme,
+  themedStyled,
+  themedWithStyle,
+} from "../../settings/theme";
 import { useHover } from "react-use";
-import { StyledLink as BaseLink } from "baseui/link";
-import { StyleObject } from "styletron-react";
+import {
+  StyledLink as BaseLink,
+  LinkProps as BaseLinkProps,
+} from "baseui/link";
+import { StyleObject, StyletronComponent } from "styletron-react";
 
 const HoverLine = themedStyled<"div", { $hovered: boolean }>(
   "div",
@@ -20,12 +27,18 @@ const HoverLine = themedStyled<"div", { $hovered: boolean }>(
   })
 );
 
-const StyledGatsbyLink = themedStyled(GatsbyLink, ({ $theme }) => ({
+interface LinkStylesProps {
+  $theme: CustomTheme;
+  $isUpper: boolean;
+}
+
+const getLinkStyles = ({ $theme, $isUpper }: LinkStylesProps): StyleObject => ({
   position: "relative",
   display: "inline-block",
   cursor: "pointer",
   color: $theme.colors.primaryA,
-  textTransform: "uppercase",
+  textDecoration: "none",
+  textTransform: $isUpper ? "uppercase" : "none",
   overflow: "hidden",
   ...$theme.typography.font160,
 
@@ -33,15 +46,32 @@ const StyledGatsbyLink = themedStyled(GatsbyLink, ({ $theme }) => ({
     color: $theme.colors.primaryA,
     textDecoration: "none",
   },
-}));
+});
+
+const StyledGatsbyLink = themedStyled<
+  typeof GatsbyLink,
+  { $theme?: CustomTheme; $isUpper: boolean }
+>(GatsbyLink, getLinkStyles);
+
+const StyledBaseLink = themedWithStyle<
+  StyletronComponent<BaseLinkProps>,
+  { $theme?: CustomTheme; $isUpper: boolean }
+>(BaseLink, getLinkStyles);
 
 export interface LinkProps extends Pick<GatsbyLinkProps<unknown>, "to"> {
   children: React.ReactNode;
   isExternal?: boolean;
+  isUpper?: boolean;
   linkStyle?: StyleObject;
 }
 
-export const Link = ({ children, to, linkStyle }: LinkProps) => {
+export const Link = ({
+  children,
+  to,
+  linkStyle,
+  isUpper = false,
+  isExternal = false,
+}: LinkProps) => {
   const element = (hovered: boolean) => (
     <div>
       {children}
@@ -50,8 +80,12 @@ export const Link = ({ children, to, linkStyle }: LinkProps) => {
   );
   const [hoverable] = useHover(element);
 
-  return (
-    <StyledGatsbyLink to={to} $style={linkStyle}>
+  console.log({ isUpper });
+
+  return isExternal ? (
+    <StyledBaseLink $isUpper={isUpper}>{hoverable}</StyledBaseLink>
+  ) : (
+    <StyledGatsbyLink to={to} $style={linkStyle} $isUpper={isUpper}>
       {hoverable}
     </StyledGatsbyLink>
   );
