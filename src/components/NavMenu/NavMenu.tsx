@@ -36,6 +36,8 @@ export const NavMenu = () => {
         <Link
           key={name}
           to={link}
+          size="small"
+          isUpper
           linkStyle={{
             marginLeft: theme.sizing.scale550,
             marginRight: theme.sizing.scale550,

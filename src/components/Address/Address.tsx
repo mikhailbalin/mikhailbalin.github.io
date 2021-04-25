@@ -1,6 +1,10 @@
 import React from "react";
-import { themedStyled } from "../../settings/theme";
-import { StyledLink } from "baseui/link";
+import {
+  CustomTheme,
+  themedStyled,
+  themedWithStyle,
+} from "../../settings/theme";
+import { LinkProps, StyledLink } from "baseui/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhoneSquareAlt,
@@ -13,19 +17,42 @@ import {
   faGithub,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "../Link";
+import { StyletronComponent } from "styletron-react";
 
 const Root = themedStyled("address", {
   padding: "2.5vw",
 });
 
-const ContactBlock = themedStyled("div", {
+const ContactBlock = themedStyled("div", ({ $theme }) => ({
   display: "flex",
   alignItems: "center",
-  fontSize: "13px",
-  lineHeight: "20px",
-});
+  gap: $theme.sizing.scale300,
+  paddingTop: $theme.sizing.scale300,
+  paddingBottom: $theme.sizing.scale300,
+  ...$theme.typography.font150,
+}));
 
-const SocialBlock = themedStyled("address", {});
+const SocialBlock = themedStyled("div", ({ $theme }) => ({
+  display: "flex",
+  marginTop: $theme.sizing.scale850,
+}));
+
+const SocialLink = themedWithStyle<
+  StyletronComponent<LinkProps>,
+  { $theme?: CustomTheme }
+>(StyledLink, ({ $theme }) => ({
+  display: "block",
+  marginRight: $theme.sizing.scale700,
+  transitionProperty: "transform",
+  transitionDuration: $theme.animation.timing400,
+  transitionTimingFunction: $theme.animation.easeInOutCurve,
+
+  ":hover": {
+    color: $theme.colors.primaryA,
+    transform: "scale(1.2)",
+  },
+}));
 
 export interface AddressProps {
   useIcons?: boolean;
@@ -39,9 +66,9 @@ export const Address = ({ useIcons = false }: AddressProps) => (
       ) : (
         "Email me:"
       )}
-      <StyledLink href="mailto:m.balin@icloud.com?subject=Subject">
+      <Link href="mailto:m.balin@icloud.com?subject=Subject" size="small">
         m.balin@icloud.com
-      </StyledLink>
+      </Link>
     </ContactBlock>
 
     <ContactBlock>
@@ -50,29 +77,31 @@ export const Address = ({ useIcons = false }: AddressProps) => (
       ) : (
         "Call me:"
       )}
-      <StyledLink href="tel:+7 (931) 234-06-66">+7 (931) 234-06-66</StyledLink>
+      <Link href="tel:+7 (931) 234-06-66" size="small">
+        +7 (931) 234-06-66
+      </Link>
     </ContactBlock>
 
     <SocialBlock>
-      <StyledLink href="#">
+      <SocialLink href="#">
         <FontAwesomeIcon icon={faTwitter} size="2x" />
-      </StyledLink>
+      </SocialLink>
 
-      <StyledLink href="#">
+      <SocialLink href="#">
         <FontAwesomeIcon icon={faFacebook} size="2x" />
-      </StyledLink>
+      </SocialLink>
 
-      <StyledLink href="#">
+      <SocialLink href="#">
         <FontAwesomeIcon icon={faInstagram} size="2x" />
-      </StyledLink>
+      </SocialLink>
 
-      <StyledLink href="#">
+      <SocialLink href="#">
         <FontAwesomeIcon icon={faGithub} size="2x" />
-      </StyledLink>
+      </SocialLink>
 
-      <StyledLink href="#">
+      <SocialLink href="#">
         <FontAwesomeIcon icon={faLinkedinIn} size="2x" />
-      </StyledLink>
+      </SocialLink>
     </SocialBlock>
   </Root>
 );

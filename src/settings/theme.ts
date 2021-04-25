@@ -75,6 +75,7 @@ const theme = createTheme(primitives, overrides);
 
 interface CustomTypography {
   typography: {
+    font150: Font;
     font160: Font;
     font260: Font;
     font270: Font;
@@ -110,11 +111,17 @@ export const customTheme: CustomTheme = {
   },
   typography: {
     ...theme.typography,
+    font150: {
+      fontFamily: monoFontFamily,
+      fontSize: "13px",
+      fontWeight: 400,
+      lineHeight: "20px",
+    },
     font160: {
       fontFamily: monoFontFamily,
       fontSize: "13px",
       fontWeight: 500,
-      lineHeight: "16px",
+      lineHeight: "20px",
     },
     font260: {
       fontFamily: monoFontFamily,

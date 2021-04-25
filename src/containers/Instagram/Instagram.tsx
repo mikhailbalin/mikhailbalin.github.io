@@ -16,13 +16,13 @@ export const Instagram = () => {
   useEffect(() => {
     if (instagramFeed) return;
 
-    fetch(
-      `https://v1.nocodeapi.com/mikhailbalin/instagram/HjKwtFsqTYpEWgdW?limit=4`
-    )
-      .then((response) => response.json())
-      .then((resultData: InstagramFeed) => {
-        setInstagramFeed(resultData);
-      });
+    // fetch(
+    //   `https://v1.nocodeapi.com/mikhailbalin/instagram/HjKwtFsqTYpEWgdW?limit=4`
+    // )
+    //   .then((response) => response.json())
+    //   .then((resultData: InstagramFeed) => {
+    //     setInstagramFeed(resultData);
+    //   });
   }, []);
 
   return (
