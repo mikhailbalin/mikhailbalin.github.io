@@ -24,15 +24,15 @@ export const Address = ({
   size = "default",
 }: AddressProps) => (
   <Root>
-    <ContactBlock $size={size}>
-      {useIcons ? <FontAwesomeIcon icon={faEnvelope} size="2x" /> : "Email me:"}
+    <ContactBlock $size={size} $useIcons={useIcons}>
+      {useIcons ? <FontAwesomeIcon icon={faEnvelope} size="lg" /> : "Email me:"}
       <Link href="mailto:m.balin@icloud.com?subject=Subject" size={size}>
         m.balin@icloud.com
       </Link>
     </ContactBlock>
 
-    <ContactBlock $size={size}>
-      {useIcons ? <FontAwesomeIcon icon={faPhoneAlt} size="2x" /> : "Call me:"}
+    <ContactBlock $size={size} $useIcons={useIcons}>
+      {useIcons ? <FontAwesomeIcon icon={faPhoneAlt} size="lg" /> : "Call me:"}
       <Link href="tel:+7 (931) 234-06-66" size={size}>
         +7 (931) 234-06-66
       </Link>

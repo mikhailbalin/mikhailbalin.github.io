@@ -10,18 +10,20 @@ export const Root = themedStyled("address", {
   // padding: "2.5vw",
 });
 
-export const ContactBlock = themedStyled<"div", { $size: "default" | "small" }>(
+export const ContactBlock = themedStyled<
   "div",
-  ({ $theme, $size }) => ({
-    display: "flex",
-    alignItems: "center",
-    gap: $theme.sizing.scale300,
-    paddingTop: $theme.sizing.scale300,
-    paddingBottom: $theme.sizing.scale300,
-    color: $theme.colors.primaryA,
-    ...$theme.typography.font150,
-  })
-);
+  { $size: "default" | "small"; $useIcons: boolean }
+>("div", ({ $theme, $size, $useIcons }) => ({
+  display: "flex",
+  alignItems: $useIcons ? "center" : "baseline",
+  gap: $theme.sizing.scale300,
+  paddingTop: $theme.sizing.scale300,
+  paddingBottom: $theme.sizing.scale300,
+  color: $theme.colors.primaryA,
+  ...($size === "default"
+    ? $theme.typography.font270
+    : $theme.typography.font150),
+}));
 
 export const SocialBlock = themedStyled("div", ({ $theme }) => ({
   display: "flex",
