@@ -28,7 +28,7 @@ export const HoverLine = themedStyled<"div", { $hovered: boolean }>(
   })
 );
 
-export const getLinkStyles = ({
+const getLinkStyles = ({
   $theme,
   $isUpper,
   $size = "default",

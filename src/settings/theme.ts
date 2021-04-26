@@ -24,7 +24,12 @@ const size = (value: string, base = 1.5) =>
 
 const overrides: DeepPartial<Theme> = {
   grid: {
-    unit: "rem",
+    // unit: "rem",
+    // columns: [4, 4, 4, 8, 8, 8, 12],
+    // gutters: [16, 16, 16, 36, 36, 36, 36],
+    // margins: [16, 16, 16, 36, 36, 36, 64],
+    // gaps: 0,
+    // maxWidth: 1280,
   },
   typography: {
     HeadingXXLarge: {
@@ -147,11 +152,11 @@ export const customTheme: CustomTheme = {
   },
   ...createResponsiveTheme({
     small: 320,
-    medium: 600,
-    large: 1136,
     mobile: 360,
     landscape: 480,
+    medium: 600,
     tablet: 768,
     desktop: 992,
+    large: 1136,
   }),
 };
