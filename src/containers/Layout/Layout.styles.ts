@@ -51,6 +51,7 @@ export const Main = themedStyled("main", ({ $theme }) => ({
   order: 3,
 
   [$theme.mediaQuery.desktop]: {
+    flexGrow: 1,
     order: 2,
     paddingRight: "4vw",
     paddingLeft: "4vw",

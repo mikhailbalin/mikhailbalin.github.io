@@ -11,16 +11,12 @@ import {
   NavWrapper,
   AddressWrapper,
 } from "./Layout.styles";
-import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { title, description } = useSiteMetadata();
-  console.log({ title, description });
-
   return (
     <Root>
       <Header>
