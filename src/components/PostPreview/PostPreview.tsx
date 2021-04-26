@@ -1,22 +1,12 @@
-import { Link } from "gatsby";
 import React from "react";
 import {
   SiteIndexQuery_allMdx_nodes,
   SiteIndexQuery_allMdx_nodes_frontmatter,
 } from "../../pages/__generated__/SiteIndexQuery";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { themedStyled, useThemedStyletron } from "../../settings/theme";
-import { MyHeadingLarge, MyParagraphMedium } from "../typography";
-
-export const StyledLink = themedStyled(Link, () => ({
-  display: "flex",
-  minHeight: "22vw",
-  marginBottom: "32px",
-  backgroundColor: "#e1e3d9",
-  transition: "box-shadow 400ms ease",
-  color: "#151515",
-  textDecoration: "none",
-}));
+import { useThemedStyletron } from "../../settings/theme";
+import { MyHeadingLarge } from "../typography";
+import { Content, Excerpt, StyledLink } from "./PostPreview.styles";
 
 export interface PostPreviewProps {
   post: Pick<SiteIndexQuery_allMdx_nodes, "excerpt"> & {
@@ -62,19 +52,11 @@ export const PostPreview = ({
         </figure>
       )}
 
-      <div
-        className={css({
-          display: "flex",
-          flexDirection: "column",
-          margin: "32px 8%",
-          justifyContent: "center",
-          alignItems: "flex-start",
-        })}
-      >
+      <Content>
         <MyHeadingLarge>{title}</MyHeadingLarge>
-        <MyParagraphMedium>{excerpt}</MyParagraphMedium>
+        <Excerpt>{excerpt}</Excerpt>
         {date && <time>{date}</time>}
-      </div>
+      </Content>
     </StyledLink>
   );
 };

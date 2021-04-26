@@ -1,49 +1,18 @@
 import React from "react";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import {
-  CustomThemeProps,
-  themedStyled,
-  useThemedStyletron,
-} from "../../settings/theme";
-// import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+import { CustomThemeProps, useThemedStyletron } from "../../settings/theme";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
 import { VerticalText } from "../../components/VerticalText";
 import { Address } from "../../components/Address";
-
-const Main = themedStyled("div", ({ $theme }) => ({
-  backgroundColor: $theme.colors.backgroundPrimary,
-}));
-
-const NavWrapper = themedStyled("div", ({ $theme }) => ({
-  position: "relative",
-  width: "80px",
-  height: "80px",
-  margin: `${$theme.sizing.scale1000} auto`,
-}));
-
-const AddressWrapper = themedStyled("div", {
-  padding: "2.5vw",
-});
-
-const HeaderWrapper = themedStyled("div", ({ $theme }) => ({
-  textAlign: "center",
-  [$theme.mediaQuery.tablet]: {
-    position: "fixed",
-    width: "10vw",
-  },
-  [$theme.mediaQuery.desktop]: {
-    width: "10vw",
-  },
-  [$theme.mediaQuery.large]: {
-    width: "12vw",
-  },
-}));
-
-const AsideWrapper = themedStyled("div", {
-  padding: "3vw",
-  position: "fixed",
-});
+import {
+  AddressWrapper,
+  AsideWrapper,
+  HeaderWrapper,
+  Main,
+  NavWrapper,
+} from "./Layout.styles";
+// import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -61,7 +30,18 @@ export const Layout = ({ children }: LayoutProps) => {
         flexGridRowGap="scale800"
         $style={{
           minHeight: "100vh",
-          padding: theme.sizing.scale600,
+          paddingRight: theme.sizing.scale600,
+          paddingLeft: theme.sizing.scale600,
+
+          [theme.mediaQuery.landscape]: {
+            paddingRight: theme.sizing.scale1000,
+            paddingLeft: theme.sizing.scale1000,
+          },
+
+          [theme.mediaQuery.large]: {
+            paddingRight: 0,
+            paddingLeft: 0,
+          },
         }}
       >
         <FlexGridItem
@@ -69,13 +49,17 @@ export const Layout = ({ children }: LayoutProps) => {
           overrides={{
             Block: {
               style: ({ $theme }: CustomThemeProps) => ({
+                order: 1,
+
                 [$theme.mediaQuery.tablet]: {
                   width: "12vw",
                   flexGrow: 0,
                 },
+
                 [$theme.mediaQuery.desktop]: {
                   width: "10vw",
                 },
+
                 [$theme.mediaQuery.large]: {
                   width: "12vw",
                 },
@@ -92,13 +76,30 @@ export const Layout = ({ children }: LayoutProps) => {
           </HeaderWrapper>
         </FlexGridItem>
 
-        <FlexGridItem as="main">{children}</FlexGridItem>
+        <FlexGridItem
+          as="main"
+          overrides={{
+            Block: {
+              style: ({ $theme }: CustomThemeProps) => ({
+                order: 3,
+
+                [$theme.mediaQuery.tablet]: {
+                  order: 2,
+                },
+              }),
+            },
+          }}
+        >
+          {children}
+        </FlexGridItem>
 
         <FlexGridItem
           as="aside"
           overrides={{
             Block: {
               style: ({ $theme }: CustomThemeProps) => ({
+                order: 2,
+
                 [$theme.mediaQuery.large]: {
                   flexGrow: 0,
                   width: "30vw",
