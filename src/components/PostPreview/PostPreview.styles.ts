@@ -59,6 +59,9 @@ export const StyledGatsbyImage = themedStyled(GatsbyImage, ({ $theme }) => ({
 }));
 
 export const Date = themedStyled("time", ({ $theme }) => ({
+  display: "block",
+  paddingTop: $theme.sizing.scale300,
+  paddingBottom: $theme.sizing.scale100,
   textTransform: "uppercase",
   color: $theme.colors.primaryA,
   ...$theme.typography.font50,
