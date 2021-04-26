@@ -10,7 +10,7 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "../Link";
-import { ContactBlock, Root, SocialBlock, SocialLink } from "./Address.styles";
+import { ContactBlock, SocialBlock, SocialLink } from "./Address.styles";
 
 export interface AddressProps {
   useIcons?: boolean;
@@ -23,7 +23,7 @@ export const Address = ({
   showSocial = false,
   size = "default",
 }: AddressProps) => (
-  <Root>
+  <address>
     <ContactBlock $size={size} $useIcons={useIcons}>
       {useIcons ? <FontAwesomeIcon icon={faEnvelope} size="lg" /> : "Email me:"}
       <Link href="mailto:m.balin@icloud.com?subject=Subject" size={size}>
@@ -61,5 +61,5 @@ export const Address = ({
         </SocialLink>
       </SocialBlock>
     )}
-  </Root>
+  </address>
 );

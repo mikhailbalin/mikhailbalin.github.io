@@ -1,16 +1,21 @@
 import React from "react";
 import { Address } from "../../components/Address";
+import { Button } from "../../components/Button";
 import { SectionTitle } from "../../components/SectionTitle";
 import { Section } from "../../components/styled";
 import { MyHeadingSmall, MyParagraphMedium } from "../../components/typography";
-import { themedStyled } from "../../settings/theme";
+import { themedStyled, useThemedStyletron } from "../../settings/theme";
 
 const TextWrapper = themedStyled("div", ({ $theme }) => ({
-  columnCount: 2,
-  columnGap: $theme.sizing.scale900,
+  [$theme.mediaQuery.tablet]: {
+    columnCount: 2,
+    columnGap: $theme.sizing.scale900,
+  },
 }));
 
 export const AboutMe = () => {
+  const [, theme] = useThemedStyletron();
+
   return (
     <Section>
       <SectionTitle title="About Me" />
@@ -21,6 +26,13 @@ export const AboutMe = () => {
           posse et. Et quidem faciunt, ut de homine sensibus reliqui nihil est,
           omnis iste natus.
         </MyParagraphMedium>
+
+        <Button
+          $as="a"
+          baseButtonStyles={{ marginBottom: theme.sizing.scale800 }}
+        >
+          Learn More
+        </Button>
 
         <MyParagraphMedium>
           Ut placet inquam tum dicere exorsus est et dolore disputandum putant

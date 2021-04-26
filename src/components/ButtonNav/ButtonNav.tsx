@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button as BaseButton, SHAPE, SIZE } from "baseui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
-import { CustomTheme, themedStyled } from "../../settings/theme";
+import { themedStyled } from "../../settings/theme";
 import { useWindowScroll } from "react-use";
 
 const CircleOuter = themedStyled("div", ({ $theme }) => ({
@@ -83,18 +83,20 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
       size={size || SIZE.default}
       overrides={{
         BaseButton: {
-          style: ({ $theme }: { $theme: CustomTheme }) => ({
+          style: {
             position: "fixed",
             backgroundColor: "transparent",
             width: size === SIZE.mini ? "60px" : "80px",
             height: size === SIZE.mini ? "60px" : "80px",
+
             ":hover": {
               backgroundColor: "transparent",
             },
+
             ":active": {
               backgroundColor: "transparent",
             },
-          }),
+          },
         },
       }}
     >

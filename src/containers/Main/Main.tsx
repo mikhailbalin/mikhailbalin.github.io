@@ -13,8 +13,13 @@ import {
 
 const ButtonsWrapper = themedStyled("div", ({ $theme }) => ({
   display: "grid",
-  gridColumnGap: $theme.sizing.scale600,
-  gridTemplateColumns: "max-content max-content",
+  gridRowGap: $theme.sizing.scale600,
+  gridTemplateColumns: "100%",
+
+  [$theme.mediaQuery.landscape]: {
+    gridColumnGap: $theme.sizing.scale600,
+    gridTemplateColumns: "max-content max-content",
+  },
 }));
 
 const MainSection = themedWithStyle<

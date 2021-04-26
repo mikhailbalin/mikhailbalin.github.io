@@ -1,7 +1,11 @@
 import React from "react";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { CustomThemeProps, themedStyled } from "../../settings/theme";
-import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+import {
+  CustomThemeProps,
+  themedStyled,
+  useThemedStyletron,
+} from "../../settings/theme";
+// import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
 import { VerticalText } from "../../components/VerticalText";
@@ -46,8 +50,8 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { title, description } = useSiteMetadata();
-  console.log({ title, description });
+  const [, theme] = useThemedStyletron();
+  // const { title, description } = useSiteMetadata();
 
   return (
     <Main>
@@ -55,7 +59,10 @@ export const Layout = ({ children }: LayoutProps) => {
         flexGridColumnCount={[1, 1, 1, 1, 1, 2, 2, 3]}
         flexGridColumnGap="scale800"
         flexGridRowGap="scale800"
-        $style={{ minHeight: "100vh" }}
+        $style={{
+          minHeight: "100vh",
+          padding: theme.sizing.scale600,
+        }}
       >
         <FlexGridItem
           as="header"

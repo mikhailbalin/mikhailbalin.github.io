@@ -1,12 +1,14 @@
 import React from "react";
 import { Button as BaseButton, ButtonProps } from "baseui/button";
 import { CustomThemeProps } from "../../settings/theme";
+import { StyleObject } from "styletron-react";
 
 export const Button = ({
   children,
   kind,
+  baseButtonStyles,
   ...rest
-}: Omit<ButtonProps, "overrides">) => {
+}: Omit<ButtonProps, "overrides"> & { baseButtonStyles?: StyleObject }) => {
   return (
     <BaseButton
       kind={kind}
@@ -30,13 +32,16 @@ export const Button = ({
             letterSpacing: "0.06em",
             transitionProperty: "background color",
             textDecoration: "none",
+
             ":hover": {
               color: $theme.colors.white,
               textDecoration: "none",
             },
+
             ":active": {
               color: $theme.colors.white,
             },
+
             ...(kind === "secondary" && {
               borderColor: "#d9dbd0",
               ":hover": {
@@ -47,6 +52,7 @@ export const Button = ({
                 color: $theme.colors.white,
               },
             }),
+
             ...(kind === "tertiary" && {
               boxShadow: $theme.lighting.shadow600,
               transitionDuration: $theme.animation.timing400,
@@ -56,7 +62,10 @@ export const Button = ({
                 transform: "translateY(-3px) scale(1.02)",
               },
             }),
+
             ...$theme.typography.font260,
+
+            ...(baseButtonStyles || {}),
           }),
         },
         EndEnhancer: {

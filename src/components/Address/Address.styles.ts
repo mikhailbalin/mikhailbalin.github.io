@@ -6,10 +6,6 @@ import {
 import { StyletronComponent } from "styletron-react";
 import { LinkProps, StyledLink } from "baseui/link";
 
-export const Root = themedStyled("address", {
-  // padding: "2.5vw",
-});
-
 export const ContactBlock = themedStyled<
   "div",
   { $size: "default" | "small"; $useIcons: boolean }
