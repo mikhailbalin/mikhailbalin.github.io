@@ -1,4 +1,5 @@
 import React from "react";
+import { Address } from "../../components/Address";
 import { SectionTitle } from "../../components/SectionTitle";
 import { Section } from "../../components/styled";
 import { MyHeadingSmall, MyParagraphMedium } from "../../components/typography";
@@ -34,6 +35,8 @@ export const AboutMe = () => {
         </MyParagraphMedium>
 
         <MyHeadingSmall>Contacts</MyHeadingSmall>
+
+        <Address useIcons />
       </TextWrapper>
     </Section>
   );

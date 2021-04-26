@@ -10,4 +10,6 @@ export default {
 const Template: Story<AddressProps> = (args) => <Address {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  showSocial: true,
+};

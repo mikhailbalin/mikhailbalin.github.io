@@ -18,6 +18,10 @@ const NavWrapper = themedStyled("div", ({ $theme }) => ({
   margin: `${$theme.sizing.scale1000} auto`,
 }));
 
+const AddressWrapper = themedStyled("div", {
+  padding: "2.5vw",
+});
+
 const HeaderWrapper = themedStyled("div", ({ $theme }) => ({
   textAlign: "center",
   [$theme.mediaQuery.tablet]: {
@@ -32,10 +36,10 @@ const HeaderWrapper = themedStyled("div", ({ $theme }) => ({
   },
 }));
 
-const AsideWrapper = themedStyled("div", ({ $theme }) => ({
+const AsideWrapper = themedStyled("div", {
   padding: "3vw",
   position: "fixed",
-}));
+});
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -98,7 +102,10 @@ export const Layout = ({ children }: LayoutProps) => {
         >
           <AsideWrapper>
             <SidebarMedia />
-            <Address />
+
+            <AddressWrapper>
+              <Address showSocial size="small" />
+            </AddressWrapper>
           </AsideWrapper>
         </FlexGridItem>
       </FlexGrid>
