@@ -31,7 +31,6 @@ export const MySelect = ({
         id={field.name}
         onBlur={field.onBlur}
         onChange={(params: OnChangeParams) => {
-          console.log({ params });
           setValue(params.value);
         }}
         value={field.value}

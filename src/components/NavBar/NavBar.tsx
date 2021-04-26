@@ -44,8 +44,6 @@ export const NavBar = () => {
     },
   });
 
-  console.log({ barWidth, menuOpen });
-
   return (
     <StyledNavBar $width={barWidth}>
       <ButtonMenu shape="square" />
