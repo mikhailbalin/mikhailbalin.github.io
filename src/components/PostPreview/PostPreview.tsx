@@ -6,6 +6,7 @@ import {
 } from "../../pages/__generated__/SiteIndexQuery";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { themedStyled, useThemedStyletron } from "../../settings/theme";
+import { MyHeadingLarge, MyParagraphMedium } from "../typography";
 
 export const StyledLink = themedStyled(Link, () => ({
   display: "flex",
@@ -27,7 +28,12 @@ export interface PostPreviewProps {
 export const PostPreview = ({
   post: {
     excerpt,
-    frontmatter: { cover, coverCredit, date, title },
+    frontmatter: {
+      cover,
+      // coverCredit,
+      date,
+      title,
+    },
     slug,
   },
 }: PostPreviewProps) => {
@@ -65,9 +71,9 @@ export const PostPreview = ({
           alignItems: "flex-start",
         })}
       >
-        <h1>{title}</h1>
-        <p>{excerpt}</p>
-        {date && <p>{date}</p>}
+        <MyHeadingLarge>{title}</MyHeadingLarge>
+        <MyParagraphMedium>{excerpt}</MyParagraphMedium>
+        {date && <time>{date}</time>}
       </div>
     </StyledLink>
   );

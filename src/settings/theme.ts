@@ -40,10 +40,16 @@ const overrides: DeepPartial<Theme> = {
       fontWeight: 400,
     },
     HeadingLarge: {
-      fontFamily: primitives.primaryFontFamily,
+      fontFamily: sansSerifFontFamily,
+      fontSize: size("1.23rem", 0.25),
+      lineHeight: size("32px", 0.25),
+      fontWeight: 400,
     },
     HeadingMedium: {
-      fontFamily: primitives.primaryFontFamily,
+      fontFamily: sansSerifFontFamily,
+      fontSize: size("1.08rem", 0.2),
+      lineHeight: size("28px", 0.2),
+      fontWeight: 400,
     },
     HeadingSmall: {
       fontFamily: primitives.primaryFontFamily,
