@@ -26,7 +26,5 @@ export const copyToClipboard = (str: string) => {
     return Promise.resolve(true);
   }
 
-  console.log(typeof clipboard.writeText(str));
-
   return clipboard.writeText(str);
 };

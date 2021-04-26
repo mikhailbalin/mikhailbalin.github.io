@@ -23,14 +23,6 @@ const size = (value: string, base = 1.5) =>
   interpolate`calc(${value} + ${base}vw)`;
 
 const overrides: DeepPartial<Theme> = {
-  grid: {
-    // unit: "rem",
-    // columns: [4, 4, 4, 8, 8, 8, 12],
-    // gutters: [16, 16, 16, 36, 36, 36, 36],
-    // margins: [16, 16, 16, 36, 36, 36, 64],
-    // gaps: 0,
-    // maxWidth: 1280,
-  },
   typography: {
     HeadingXXLarge: {
       fontFamily: sansSerifFontFamily,
@@ -47,7 +39,7 @@ const overrides: DeepPartial<Theme> = {
     HeadingLarge: {
       fontFamily: sansSerifFontFamily,
       fontSize: size("1.23rem", 0.25),
-      lineHeight: size("32px", 0.25),
+      lineHeight: size("26px", 0.25),
       fontWeight: 400,
     },
     HeadingMedium: {
@@ -82,6 +74,7 @@ const overrides: DeepPartial<Theme> = {
     buttonTertiaryHover: "#ffffff",
     buttonTertiaryActive: "#ffffff",
     backgroundPrimary: "#edeee8",
+    backgroundSecondary: "#e1e3d9",
   },
 };
 
@@ -89,6 +82,7 @@ const theme = createTheme(primitives, overrides);
 
 interface CustomTypography {
   typography: {
+    font50: Font;
     font150: Font;
     font160: Font;
     font260: Font;
@@ -125,6 +119,12 @@ export const customTheme: CustomTheme = {
   },
   typography: {
     ...theme.typography,
+    font50: {
+      fontFamily: monoFontFamily,
+      fontSize: "11px",
+      fontWeight: 400,
+      lineHeight: "16px",
+    },
     font150: {
       fontFamily: monoFontFamily,
       fontSize: "13px",

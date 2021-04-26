@@ -53,7 +53,7 @@ export const query = graphql`
         excerpt(pruneLength: 250)
         frontmatter {
           title
-          date(formatString: "YYYY MMMM Do")
+          date(formatString: "MM Do, YYYY")
           coverCredit
           cover {
             childImageSharp {
