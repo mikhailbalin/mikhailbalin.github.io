@@ -1,10 +1,7 @@
 import React from "react";
 import { SectionTitle } from "../../components/SectionTitle";
 import { Section } from "../../components/styled";
-import {
-  MyHeadingMedium,
-  MyParagraphMedium,
-} from "../../components/typography";
+import { MyHeadingSmall, MyParagraphMedium } from "../../components/typography";
 import { themedStyled } from "../../settings/theme";
 
 const TextWrapper = themedStyled("div", ({ $theme }) => ({
@@ -36,7 +33,7 @@ export const AboutMe = () => {
           quam ob aliquam quaerat voluptatem accusantium doloremque.
         </MyParagraphMedium>
 
-        <MyHeadingMedium>Contacts</MyHeadingMedium>
+        <MyHeadingSmall>Contacts</MyHeadingSmall>
       </TextWrapper>
     </Section>
   );

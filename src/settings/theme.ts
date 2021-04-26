@@ -53,6 +53,9 @@ const overrides: DeepPartial<Theme> = {
     },
     HeadingSmall: {
       fontFamily: primitives.primaryFontFamily,
+      fontSize: "17px",
+      lineHeight: "24px",
+      fontWeight: 500,
     },
     HeadingXSmall: {
       fontFamily: primitives.primaryFontFamily,

@@ -2,10 +2,11 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { BlockProps } from "baseui/block";
 import {
+  MyHeadingXXLarge,
+  MyHeadingXLarge,
   MyHeadingLarge,
   MyHeadingMedium,
-  MyHeadingXLarge,
-  MyHeadingXXLarge,
+  MyHeadingSmall,
 } from "../components/typography";
 
 export default {
@@ -47,3 +48,5 @@ export const Large: Story<BlockProps> = (args) => <MyHeadingLarge {...args} />;
 export const Medium: Story<BlockProps> = (args) => (
   <MyHeadingMedium {...args} />
 );
+
+export const Small: Story<BlockProps> = (args) => <MyHeadingSmall {...args} />;
