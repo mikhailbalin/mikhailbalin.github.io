@@ -6,58 +6,73 @@ export const Root = themedStyled("div", ({ $theme }) => ({
   paddingRight: $theme.sizing.scale600,
   paddingLeft: $theme.sizing.scale600,
   backgroundColor: $theme.colors.backgroundPrimary,
-  // minHeight: "100vh",
-  // paddingRight: $theme.sizing.scale600,
-  // paddingLeft: $theme.sizing.scale600,
 
-  // [$theme.mediaQuery.landscape]: {
-  //   paddingRight: $theme.sizing.scale1000,
-  //   paddingLeft: $theme.sizing.scale1000,
-  // },
+  [$theme.mediaQuery.tablet]: {
+    paddingRight: "40px",
+    paddingLeft: "120px",
+  },
 
-  // [$theme.mediaQuery.large]: {
-  //   paddingRight: 0,
-  //   paddingLeft: 0,
-  // },
+  [$theme.mediaQuery.desktop]: {
+    flexDirection: "row",
+    paddingRight: 0,
+    paddingLeft: 0,
+  },
+}));
+
+export const Header = themedStyled("header", ({ $theme }) => ({
+  order: 1,
+  textAlign: "center",
+
+  [$theme.mediaQuery.tablet]: {
+    position: "fixed",
+    left: 0,
+    top: 0,
+    right: "auto",
+    bottom: 0,
+    padding: "20px",
+    height: "100vh",
+  },
+
+  [$theme.mediaQuery.desktop]: {
+    position: "sticky",
+    padding: "3vw",
+    flexShrink: 0,
+  },
 }));
 
 export const NavWrapper = themedStyled("div", ({ $theme }) => ({
   position: "relative",
   width: "80px",
   height: "80px",
-  // margin: `${$theme.sizing.scale1000} auto`,
-}));
-
-export const AddressWrapper = themedStyled("div", {
-  // padding: "2.5vw",
-});
-
-export const Header = themedStyled("header", ({ $theme }) => ({
-  order: 1,
-  textAlign: "center",
-
-  // [$theme.mediaQuery.tablet]: {
-  //   position: "fixed",
-  //   width: "10vw",
-  // },
-
-  // [$theme.mediaQuery.desktop]: {
-  //   width: "10vw",
-  // },
-
-  // [$theme.mediaQuery.large]: {
-  //   width: "12vw",
-  // },
+  marginBottom: $theme.sizing.scale1000,
 }));
 
 export const Main = themedStyled("main", ({ $theme }) => ({
   order: 3,
+
+  [$theme.mediaQuery.desktop]: {
+    order: 2,
+    paddingRight: "4vw",
+    paddingLeft: "4vw",
+  },
 }));
 
 export const Aside = themedStyled("aside", ({ $theme }) => ({
   order: 2,
-  // [$theme.mediaQuery.large]: {
-  //   padding: "3vw",
-  //   position: "fixed",
-  // },
+  paddingTop: "40px",
+
+  [$theme.mediaQuery.desktop]: {
+    order: 3,
+    position: "sticky",
+    top: 0,
+    height: "100vh",
+    width: "30%",
+    minWidth: "320px",
+    padding: "3vw",
+    flexShrink: 0,
+  },
 }));
+
+export const AddressWrapper = themedStyled("div", {
+  padding: "2.5vw",
+});
