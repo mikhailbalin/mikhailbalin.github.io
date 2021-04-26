@@ -58,6 +58,7 @@ export const Figure = themedStyled("figure", ({ $theme }) => ({
 
   [$theme.mediaQuery.landscape]: {
     width: "calc(100% / 3)",
+    flexShrink: 0,
   },
 }));
 
