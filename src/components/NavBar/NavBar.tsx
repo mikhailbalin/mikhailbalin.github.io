@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { animated, config, useSpring } from "react-spring";
 import { useGlobalState } from "../../hooks/useState";
-import { CustomTheme, themedStyled } from "../../settings/theme";
+import { themedStyled } from "../../settings/theme";
 import { ButtonMenu } from "../ButtonMenu";
 import { NavMenu } from "../NavMenu";
 
-const StyledNavBar = themedStyled(
+const StyledNavBar = themedStyled<typeof animated.div, { $width?: string }>(
   animated.div,
-  ({ $width }: { $theme?: CustomTheme; $width?: string }) => ({
+  ({ $theme, $width }) => ({
     position: "absolute",
     top: 0,
     bottom: 0,
@@ -15,6 +15,7 @@ const StyledNavBar = themedStyled(
     display: "inline-flex",
     alignItems: "stretch",
     width: $width,
+    height: $theme.sizing.scale2000,
   })
 );
 

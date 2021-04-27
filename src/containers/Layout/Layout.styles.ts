@@ -42,8 +42,8 @@ export const Header = themedStyled("header", ({ $theme }) => ({
 
 export const NavWrapper = themedStyled("div", ({ $theme }) => ({
   position: "relative",
-  width: "80px",
-  height: "80px",
+  width: $theme.sizing.scale2000,
+  height: $theme.sizing.scale2000,
   marginBottom: $theme.sizing.scale1000,
 }));
 
