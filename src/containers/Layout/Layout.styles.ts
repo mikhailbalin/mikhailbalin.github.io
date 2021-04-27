@@ -21,17 +21,17 @@ export const Root = themedStyled("div", ({ $theme }) => ({
 
 export const Header = themedStyled("header", ({ $theme }) => ({
   order: 1,
-  textAlign: "center",
 
   [$theme.mediaQuery.tablet]: {
-    zIndex: 5,
     position: "fixed",
-    left: 0,
     top: 0,
     right: "auto",
     bottom: 0,
+    left: 0,
+    zIndex: 5,
     padding: "20px",
     height: "100vh",
+    textAlign: "center",
   },
 
   [$theme.mediaQuery.desktop]: {
@@ -43,9 +43,12 @@ export const Header = themedStyled("header", ({ $theme }) => ({
 
 export const NavWrapper = themedStyled("div", ({ $theme }) => ({
   position: "relative",
-  width: $theme.sizing.scale2000,
-  height: $theme.sizing.scale2000,
-  marginBottom: $theme.sizing.scale1000,
+
+  [$theme.mediaQuery.tablet]: {
+    width: $theme.sizing.scale2000,
+    height: $theme.sizing.scale2000,
+    marginBottom: $theme.sizing.scale1000,
+  },
 }));
 
 export const Main = themedStyled("main", ({ $theme }) => ({
@@ -60,11 +63,10 @@ export const Main = themedStyled("main", ({ $theme }) => ({
 }));
 
 export const Aside = themedStyled("aside", ({ $theme }) => ({
+  padding: `${$theme.sizing.scale600} 0 0`,
   order: 2,
-  paddingTop: "40px",
 
   [$theme.mediaQuery.desktop]: {
-    order: 3,
     position: "sticky",
     top: 0,
     height: "100vh",
@@ -72,6 +74,7 @@ export const Aside = themedStyled("aside", ({ $theme }) => ({
     minWidth: "320px",
     padding: "3vw",
     flexShrink: 0,
+    order: 3,
   },
 }));
 

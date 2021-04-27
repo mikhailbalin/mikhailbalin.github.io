@@ -1,4 +1,5 @@
 import React from "react";
+import { Drawer, SIZE } from "baseui/drawer";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
 import { VerticalText } from "../../components/VerticalText";
@@ -11,16 +12,23 @@ import {
   NavWrapper,
   AddressWrapper,
 } from "./Layout.styles";
+import { NavMenu } from "../../components/NavMenu";
+import { useGlobalState } from "../../hooks/useState";
+import { ButtonMenu } from "../../components/ButtonMenu";
+import { CustomTheme } from "../../settings/theme";
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 export const Layout = ({ children }: LayoutProps) => {
+  const { menuOpen, closeMenu } = useGlobalState();
+
   return (
     <Root>
       <Header>
         <NavWrapper>
+          <ButtonMenu />
           <NavBar />
         </NavWrapper>
 
@@ -36,6 +44,42 @@ export const Layout = ({ children }: LayoutProps) => {
           <Address showSocial size="small" />
         </AddressWrapper>
       </Aside>
+
+      <Drawer
+        isOpen={menuOpen}
+        renderAll
+        size={SIZE.auto}
+        autoFocus
+        showBackdrop={false}
+        onClose={() => closeMenu()}
+        overrides={{
+          Root: {
+            style: ({ $theme }) => {
+              const theme = $theme as CustomTheme;
+              return {
+                [theme.mediaQuery.tablet]: {
+                  display: "none",
+                },
+              };
+            },
+          },
+          DrawerBody: {
+            style: ({ $theme }) => {
+              const theme = $theme as CustomTheme;
+              return {
+                margin: 0,
+                padding: `${theme.sizing.scale3100} ${theme.sizing.scale900} ${theme.sizing.scale900}`,
+              };
+            },
+          },
+          Close: {
+            // eslint-disable-next-line react/display-name
+            component: () => null,
+          },
+        }}
+      >
+        <NavMenu />
+      </Drawer>
     </Root>
   );
 };
