@@ -1,21 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Drawer, SIZE } from "baseui/drawer";
-import { useClickAway } from "react-use";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
 import { VerticalText } from "../../components/VerticalText";
 import { Address } from "../../components/Address";
-import {
-  Root,
-  Header,
-  Main,
-  Aside,
-  NavWrapper,
-  AddressWrapper,
-} from "./Layout.styles";
+import { Root, Header, Main, Aside, AddressWrapper } from "./Layout.styles";
 import { NavMenu } from "../../components/NavMenu";
 import { useGlobalState } from "../../hooks/useState";
-import { ButtonMenu } from "../../components/ButtonMenu";
 import { CustomTheme } from "../../settings/theme";
 
 type LayoutProps = {
@@ -23,17 +14,12 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { menuOpen, closeMenu } = useGlobalState();
-  const ref = useRef(null);
-  useClickAway(ref, () => closeMenu());
+  const { menuOpen } = useGlobalState();
 
   return (
     <Root>
       <Header>
-        <NavWrapper ref={ref}>
-          <ButtonMenu />
-          <NavBar />
-        </NavWrapper>
+        <NavBar />
 
         <VerticalText>Mikhail B.</VerticalText>
       </Header>

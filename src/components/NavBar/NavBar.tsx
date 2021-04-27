@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { animated, config, useSpring } from "react-spring";
+import { useClickAway } from "react-use";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled, useThemedStyletron } from "../../settings/theme";
+import { ButtonMenu } from "../ButtonMenu";
 import { NavMenu } from "../NavMenu";
+
+export const NavWrapper = themedStyled("div", ({ $theme }) => ({
+  position: "relative",
+
+  [$theme.mediaQuery.tablet]: {
+    width: $theme.sizing.scale2000,
+    height: $theme.sizing.scale2000,
+    marginBottom: $theme.sizing.scale1000,
+  },
+}));
 
 const StyledNavBar = themedStyled<typeof animated.div, { $width?: string }>(
   animated.div,
@@ -34,7 +46,7 @@ const Background = themedStyled(animated.div, ({ $theme }) => ({
 }));
 
 export const NavBar = () => {
-  const { menuOpen } = useGlobalState();
+  const { menuOpen, closeMenu } = useGlobalState();
   const [barWidth, setBarWidth] = useState<string | undefined>(undefined);
   const [, theme] = useThemedStyletron();
 
@@ -50,11 +62,18 @@ export const NavBar = () => {
     },
   });
 
-  return (
-    <StyledNavBar $width={barWidth}>
-      <NavMenu />
+  const ref = useRef(null);
+  useClickAway(ref, () => closeMenu());
 
-      <Background style={backgroundStyles} />
-    </StyledNavBar>
+  return (
+    <NavWrapper ref={ref}>
+      <ButtonMenu />
+
+      <StyledNavBar $width={barWidth}>
+        <NavMenu />
+
+        <Background style={backgroundStyles} />
+      </StyledNavBar>
+    </NavWrapper>
   );
 };

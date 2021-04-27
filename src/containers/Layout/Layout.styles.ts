@@ -41,16 +41,6 @@ export const Header = themedStyled("header", ({ $theme }) => ({
   },
 }));
 
-export const NavWrapper = themedStyled("div", ({ $theme }) => ({
-  position: "relative",
-
-  [$theme.mediaQuery.tablet]: {
-    width: $theme.sizing.scale2000,
-    height: $theme.sizing.scale2000,
-    marginBottom: $theme.sizing.scale1000,
-  },
-}));
-
 export const Main = themedStyled("main", ({ $theme }) => ({
   order: 3,
 
