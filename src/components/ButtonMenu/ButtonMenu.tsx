@@ -116,7 +116,7 @@ export const ButtonMenu = ({ shape = "circle" }: ButtonMenuProps) => {
             getButtonStyles({ $theme, $shape: shape }),
         },
       }}
-      onClick={() => toogleMenu()}
+      onClick={toogleMenu}
     >
       <Icon $shape={shape}>
         <Line style={topStyles} />

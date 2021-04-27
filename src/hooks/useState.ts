@@ -51,6 +51,9 @@ export function useGlobalState() {
     get menuOpen() {
       return state.menuOpen.get();
     },
+    closeMenu() {
+      state.menuOpen.set(false);
+    },
     toogleMenu() {
       state.menuOpen.set((p) => !p);
     },

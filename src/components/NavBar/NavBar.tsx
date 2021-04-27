@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { animated, config, useSpring } from "react-spring";
+import { useClickAway } from "react-use";
 import { useGlobalState } from "../../hooks/useState";
-import { themedStyled } from "../../settings/theme";
+import { themedStyled, useThemedStyletron } from "../../settings/theme";
 import { ButtonMenu } from "../ButtonMenu";
 import { NavMenu } from "../NavMenu";
 
@@ -30,8 +31,10 @@ const Background = themedStyled(animated.div, ({ $theme }) => ({
 }));
 
 export const NavBar = () => {
-  const { menuOpen } = useGlobalState();
+  const ref = useRef(null);
+  const { menuOpen, closeMenu } = useGlobalState();
   const [barWidth, setBarWidth] = useState<string | undefined>(undefined);
+  const [, theme] = useThemedStyletron();
 
   const backgroundStyles = useSpring({
     config: config.stiff,
@@ -41,12 +44,14 @@ export const NavBar = () => {
       menuOpen && setBarWidth(undefined);
     },
     onRest() {
-      !menuOpen && setBarWidth("80px");
+      !menuOpen && setBarWidth(theme.sizing.scale2000);
     },
   });
 
+  useClickAway(ref, () => closeMenu());
+
   return (
-    <StyledNavBar $width={barWidth}>
+    <StyledNavBar ref={ref} $width={barWidth}>
       <ButtonMenu shape="square" />
 
       <NavMenu />

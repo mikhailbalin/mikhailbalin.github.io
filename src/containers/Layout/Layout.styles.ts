@@ -24,6 +24,7 @@ export const Header = themedStyled("header", ({ $theme }) => ({
   textAlign: "center",
 
   [$theme.mediaQuery.tablet]: {
+    zIndex: 5,
     position: "fixed",
     left: 0,
     top: 0,
