@@ -6,10 +6,16 @@ import { Link } from "../Link";
 
 const Nav = themedStyled(animated.nav, ({ $theme }) => ({
   display: "flex",
-  alignItems: "center",
-  paddingTop: $theme.sizing.scale300,
-  paddingBottom: $theme.sizing.scale300,
+  flexDirection: "column",
+  alignItems: "flex-start",
   zIndex: 1,
+
+  [$theme.mediaQuery.tablet]: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: $theme.sizing.scale300,
+    paddingBottom: $theme.sizing.scale300,
+  },
 }));
 
 const navLinks = {
@@ -39,11 +45,20 @@ export const NavMenu = () => {
           size="small"
           isUpper
           linkStyle={{
-            marginLeft: theme.sizing.scale550,
-            marginRight: theme.sizing.scale550,
+            marginTop: "1.5vw",
+            marginBottom: "1.5vw",
+            ...theme.typography.font450,
 
-            ":last-child": {
-              marginRight: theme.sizing.scale1200,
+            [theme.mediaQuery.tablet]: {
+              marginTop: 0,
+              marginBottom: 0,
+              marginLeft: theme.sizing.scale550,
+              marginRight: theme.sizing.scale550,
+              ...theme.typography.font270,
+
+              ":last-child": {
+                marginRight: theme.sizing.scale1200,
+              },
             },
           }}
         >

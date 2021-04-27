@@ -22,7 +22,7 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { menuOpen, closeMenu } = useGlobalState();
+  const { menuOpen } = useGlobalState();
 
   return (
     <Root>
@@ -51,7 +51,6 @@ export const Layout = ({ children }: LayoutProps) => {
         size={SIZE.auto}
         autoFocus
         showBackdrop={false}
-        onClose={() => closeMenu()}
         overrides={{
           Root: {
             style: ({ $theme }) => {
@@ -73,7 +72,6 @@ export const Layout = ({ children }: LayoutProps) => {
             },
           },
           Close: {
-            // eslint-disable-next-line react/display-name
             component: () => null,
           },
         }}
