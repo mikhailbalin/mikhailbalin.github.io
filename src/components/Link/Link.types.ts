@@ -1,3 +1,4 @@
+import { ReactNode, MouseEvent } from "react";
 import { StyleObject } from "styletron-react";
 import { CustomTheme } from "../../settings/theme";
 
@@ -10,10 +11,11 @@ export interface LinkStylesProps {
 }
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   isUpper?: boolean;
   linkStyle?: StyleObject;
   size?: LinkSize;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 type TruncateProps =

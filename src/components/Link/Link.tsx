@@ -15,6 +15,7 @@ export const Link = ({
   linkStyle,
   isUpper = false,
   size = "default",
+  onClick,
 }: LinkProps) => {
   const element = (hovered: boolean) => (
     <HoverWrapper>
@@ -24,7 +25,12 @@ export const Link = ({
   );
 
   const [hoverable] = useHover(element);
-  const commonProps = { $size: size, $isUpper: isUpper, $style: linkStyle };
+  const commonProps = {
+    $size: size,
+    $isUpper: isUpper,
+    $style: linkStyle,
+    onClick,
+  };
 
   return to ? (
     <StyledGatsbyLink to={to} {...commonProps}>

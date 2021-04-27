@@ -29,7 +29,7 @@ const navLinks = {
 
 export const NavMenu = () => {
   const [, theme] = useThemedStyletron();
-  const { menuOpen } = useGlobalState();
+  const { menuOpen, closeMenu } = useGlobalState();
 
   const navStyles = useSpring({
     config: config.slow,
@@ -61,6 +61,7 @@ export const NavMenu = () => {
               },
             },
           }}
+          onClick={closeMenu}
         >
           {name}
         </Link>

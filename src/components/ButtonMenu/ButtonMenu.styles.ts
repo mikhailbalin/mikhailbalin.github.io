@@ -53,6 +53,7 @@ export const getButtonStyles = ({
   alignItems: "center",
   zIndex: 1,
   backgroundColor: $theme.colors.white,
+  boxShadow: $theme.lighting.shadow600,
   flexShrink: 0,
 
   ":hover": {
@@ -70,5 +71,6 @@ export const getButtonStyles = ({
     backgroundColor: "transparent",
     width: $theme.sizing.scale2000,
     height: $theme.sizing.scale2000,
+    boxShadow: "none",
   },
 });
