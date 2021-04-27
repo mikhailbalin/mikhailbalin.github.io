@@ -10,8 +10,12 @@ const Wrapper = themedStyled("div", {
 
 const ButtonWrapper = themedStyled("div", ({ $theme }) => ({
   position: "absolute",
-  right: `-${$theme.sizing.scale800}`,
+  right: `-${$theme.sizing.scale400}`,
   bottom: $theme.sizing.scale800,
+
+  [$theme.mediaQuery.tablet]: {
+    right: `-${$theme.sizing.scale800}`,
+  },
 }));
 
 export const SidebarMedia = () => {
