@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Drawer, SIZE } from "baseui/drawer";
+import { useClickAway } from "react-use";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
 import { VerticalText } from "../../components/VerticalText";
@@ -22,12 +23,14 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { menuOpen } = useGlobalState();
+  const { menuOpen, closeMenu } = useGlobalState();
+  const ref = useRef(null);
+  useClickAway(ref, () => closeMenu());
 
   return (
     <Root>
       <Header>
-        <NavWrapper>
+        <NavWrapper ref={ref}>
           <ButtonMenu />
           <NavBar />
         </NavWrapper>
