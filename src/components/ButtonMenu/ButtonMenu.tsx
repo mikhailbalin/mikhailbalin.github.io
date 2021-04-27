@@ -1,13 +1,12 @@
 import React from "react";
-import { Button, KIND } from "baseui/button";
+import { Button, KIND, SHAPE } from "baseui/button";
 import { useSpring } from "react-spring";
 import { useHover } from "../../hooks/useHover";
 import { useGlobalState } from "../../hooks/useState";
-import { ButtonMenuProps } from "./ButtonMenu.types";
 import { Circle, getButtonStyles, Icon, Line } from "./ButtonMenu.styles";
 import { CustomThemeProps } from "../../settings/theme";
 
-export const ButtonMenu = ({ shape = "circle" }: ButtonMenuProps) => {
+export const ButtonMenu = () => {
   const { menuOpen, toogleMenu } = useGlobalState();
   const [hoverRef, hovered] = useHover<HTMLButtonElement>();
 
@@ -41,22 +40,21 @@ export const ButtonMenu = ({ shape = "circle" }: ButtonMenuProps) => {
     <Button
       ref={hoverRef}
       kind={KIND.minimal}
-      shape={shape}
+      shape={SHAPE.circle}
       overrides={{
         BaseButton: {
-          style: ({ $theme }: CustomThemeProps) =>
-            getButtonStyles({ $theme, $shape: shape }),
+          style: ({ $theme }: CustomThemeProps) => getButtonStyles({ $theme }),
         },
       }}
       onClick={toogleMenu}
     >
-      <Icon $shape={shape}>
+      <Icon>
         <Line style={topStyles} />
         <Line style={middleStyles} />
         <Line style={bottomStyles} />
       </Icon>
 
-      {shape === "square" && <Circle style={circleStyles} />}
+      <Circle style={circleStyles} />
     </Button>
   );
 };

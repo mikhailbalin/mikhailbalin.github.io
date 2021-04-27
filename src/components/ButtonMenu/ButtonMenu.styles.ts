@@ -1,7 +1,6 @@
 import { StyleObject } from "styletron-react";
 import { animated } from "react-spring";
 import { CustomTheme, themedStyled } from "../../settings/theme";
-import { SHAPE } from "./ButtonMenu.types";
 
 export const Line = themedStyled(animated.div, ({ $theme }) => ({
   position: "relative",
@@ -11,59 +10,65 @@ export const Line = themedStyled(animated.div, ({ $theme }) => ({
   transformStyle: "preserve-3d",
 }));
 
-export const Icon = themedStyled<"div", { $shape: SHAPE }>(
-  "div",
-  ({ $theme, $shape }) => {
-    const size =
-      $shape === "circle" ? $theme.sizing.scale900 : $theme.sizing.scale950;
+export const Icon = themedStyled("div", ({ $theme }) => ({
+  position: "relative",
+  flexDirection: "column",
+  display: "flex",
+  justifyContent: "space-between",
+  width: $theme.sizing.scale900,
+  height: $theme.sizing.scale900,
+  padding: $theme.sizing.scale100,
 
-    return {
-      position: "relative",
-      flexDirection: "column",
-      display: "flex",
-      justifyContent: "space-between",
-      width: size,
-      height: size,
-      padding: $theme.sizing.scale100,
-    };
-  }
-);
+  [$theme.mediaQuery.tablet]: {
+    width: $theme.sizing.scale950,
+    height: $theme.sizing.scale950,
+  },
+}));
 
 export const Circle = themedStyled(animated.div, ({ $theme }) => ({
-  position: "absolute",
-  left: $theme.sizing.scale100,
-  top: $theme.sizing.scale100,
-  right: $theme.sizing.scale100,
-  bottom: $theme.sizing.scale100,
-  border: `${$theme.sizing.scale0} solid #d9dbd0`,
-  borderRadius: "50%",
+  display: "none",
+
+  [$theme.mediaQuery.tablet]: {
+    display: "block",
+    position: "absolute",
+    left: $theme.sizing.scale100,
+    top: $theme.sizing.scale100,
+    right: $theme.sizing.scale100,
+    bottom: $theme.sizing.scale100,
+    border: `${$theme.sizing.scale0} solid #d9dbd0`,
+    borderRadius: "50%",
+  },
 }));
 
 export const getButtonStyles = ({
   $theme,
-  $shape,
 }: {
   $theme: CustomTheme;
-  $shape: SHAPE;
-}): StyleObject => {
-  const size =
-    $shape === "circle" ? $theme.sizing.scale550 : $theme.sizing.scale2000;
+}): StyleObject => ({
+  position: "fixed",
+  top: $theme.sizing.scale200,
+  right: $theme.sizing.scale200,
+  width: $theme.sizing.scale1550,
+  height: $theme.sizing.scale1550,
+  alignItems: "center",
+  zIndex: 1,
+  backgroundColor: $theme.colors.white,
+  flexShrink: 0,
 
-  return {
+  ":hover": {
+    backgroundColor: "trasparent",
+  },
+
+  ":active": {
+    backgroundColor: "trasparent",
+  },
+
+  [$theme.mediaQuery.tablet]: {
     position: "relative",
-    width: size,
-    height: size,
-    alignItems: "center",
-    zIndex: 1,
-    backgroundColor: $shape === "circle" ? $theme.colors.white : "transparent",
-    flexShrink: 0,
-
-    ":hover": {
-      backgroundColor: "trasparent",
-    },
-
-    ":active": {
-      backgroundColor: "trasparent",
-    },
-  };
-};
+    top: 0,
+    right: 0,
+    backgroundColor: "transparent",
+    width: $theme.sizing.scale2000,
+    height: $theme.sizing.scale2000,
+  },
+});
