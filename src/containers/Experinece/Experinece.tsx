@@ -8,7 +8,7 @@ export const Experinece = () => {
     <Section>
       <SectionTitle title="Experinece" />
 
-      <Career>C</Career>
+      <Career></Career>
     </Section>
   );
 };
