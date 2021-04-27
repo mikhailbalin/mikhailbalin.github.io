@@ -5,14 +5,19 @@ export const Root = themedStyled("div", ({ $theme }) => ({
   gridAutoColumns: "1fr",
   gridTemplateColumns: `auto minmax(${$theme.sizing.scale900}, auto) 1fr`,
 
-  paddingLeft: $theme.sizing.scale300,
   gridColumnGap: $theme.sizing.scale800,
+  gridTemplateAreas: `"Timeline-Mobile Date-Mobile Date-Mobile" "Timeline-Mobile Job-Mobile Job-Mobile"`,
+  paddingLeft: $theme.sizing.scale300,
   gridRowGap: $theme.sizing.scale300,
-  gridTemplateAreas: `
-    "Timeline-Mobile Date-Mobile Date-Mobile"
-    "Timeline-Mobile Job-Mobile Job-Mobile"
-  `,
   gridTemplateRows: "auto auto",
+
+  [$theme.mediaQuery.large]: {
+    gridColumnGap: $theme.sizing.scale400,
+    gridTemplateAreas: `"Date Timeline Job"`,
+    paddingLeft: 0,
+    gridRowGap: 0,
+    gridTemplateRows: "none",
+  },
 }));
 
 export const Date = themedStyled("time", ({ $theme }) => ({
@@ -20,12 +25,16 @@ export const Date = themedStyled("time", ({ $theme }) => ({
   justifySelf: "stretch",
   width: "120px",
   color: "rgba(0, 0, 0, 0.55)",
-  ...$theme.typography.font150,
-
-  paddingTop: "5px",
-  paddingBottom: "5px",
+  paddingTop: $theme.sizing.scale200,
+  paddingBottom: $theme.sizing.scale200,
   textAlign: "left",
   gridArea: "Date-Mobile",
+  ...$theme.typography.font150,
+
+  [$theme.mediaQuery.large]: {
+    textAlign: "right",
+    gridArea: "Date",
+  },
 }));
 
 export const Timeline = themedStyled("div", ({ $theme }) => ({
@@ -39,6 +48,10 @@ export const Timeline = themedStyled("div", ({ $theme }) => ({
   alignSelf: "stretch",
   justifySelf: "center",
   gridArea: "Timeline-Mobile",
+
+  [$theme.mediaQuery.large]: {
+    gridArea: "Timeline",
+  },
 }));
 
 export const TimelineDot = themedStyled("div", ({ $theme }) => ({
@@ -67,13 +80,17 @@ export const TimelineColor = themedStyled("div", ({ $theme }) => ({
   top: 0,
   right: 0,
   bottom: "auto",
+  height: "40%",
   backgroundColor: $theme.colors.positive,
-  // height: "40%",
 }));
 
 export const JobInfo = themedStyled("div", ({ $theme }) => ({
   paddingBottom: $theme.sizing.scale1400,
   gridArea: "Job-Mobile",
+
+  [$theme.mediaQuery.large]: {
+    gridArea: "Job",
+  },
 }));
 
 export const JobPosition = themedStyled("div", ({ $theme }) => ({
@@ -81,8 +98,13 @@ export const JobPosition = themedStyled("div", ({ $theme }) => ({
   paddingTop: $theme.sizing.scale0,
   color: $theme.colors.primaryA,
   ...$theme.typography.font270,
-
   marginTop: $theme.sizing.scale100,
   marginRight: $theme.sizing.scale100,
   marginBottom: $theme.sizing.scale100,
+
+  [$theme.mediaQuery.large]: {
+    marginTop: 0,
+    marginRight: 0,
+    marginBottom: 0,
+  },
 }));
