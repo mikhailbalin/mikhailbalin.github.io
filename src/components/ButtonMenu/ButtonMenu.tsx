@@ -5,7 +5,7 @@ import { useHover } from "../../hooks/useHover";
 import { useGlobalState } from "../../hooks/useState";
 import { ButtonMenuProps } from "./ButtonMenu.types";
 import { Circle, getButtonStyles, Icon, Line } from "./ButtonMenu.styles";
-import { CustomTheme } from "../../settings/theme";
+import { CustomThemeProps } from "../../settings/theme";
 
 export const ButtonMenu = ({ shape = "circle" }: ButtonMenuProps) => {
   const { menuOpen, toogleMenu } = useGlobalState();
@@ -44,7 +44,7 @@ export const ButtonMenu = ({ shape = "circle" }: ButtonMenuProps) => {
       shape={shape}
       overrides={{
         BaseButton: {
-          style: ({ $theme }: { $theme: CustomTheme }) =>
+          style: ({ $theme }: CustomThemeProps) =>
             getButtonStyles({ $theme, $shape: shape }),
         },
       }}

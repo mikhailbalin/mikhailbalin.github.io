@@ -92,6 +92,7 @@ interface CustomTypography {
 
 interface CustomSizing {
   sizing: {
+    scale1550: string;
     scale2000: string;
     scale2500: string;
   };
@@ -114,6 +115,7 @@ export const customTheme: CustomTheme = {
   ...theme,
   sizing: {
     ...theme.sizing,
+    scale1550: "60px",
     scale2000: "80px",
     scale2500: "100px",
   },

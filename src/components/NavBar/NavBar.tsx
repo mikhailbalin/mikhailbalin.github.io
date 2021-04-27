@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { animated, config, useSpring } from "react-spring";
 import { useClickAway } from "react-use";
-// import { Drawer } from "baseui/drawer";
+import { Drawer } from "baseui/drawer";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled, useThemedStyletron } from "../../settings/theme";
 import { ButtonMenu } from "../ButtonMenu";
@@ -59,9 +59,9 @@ export const NavBar = () => {
 
       <Background style={backgroundStyles} />
 
-      {/* <Drawer isOpen={menuOpen} autoFocus onClose={() => void 0}>
+      <Drawer isOpen={menuOpen} autoFocus onClose={() => void 0}>
         <div>drawer content</div>
-      </Drawer> */}
+      </Drawer>
     </StyledNavBar>
   );
 };

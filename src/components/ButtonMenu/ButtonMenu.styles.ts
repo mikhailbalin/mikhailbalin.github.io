@@ -35,7 +35,7 @@ export const Circle = themedStyled(animated.div, ({ $theme }) => ({
   top: $theme.sizing.scale100,
   right: $theme.sizing.scale100,
   bottom: $theme.sizing.scale100,
-  border: `solid 2px #d9dbd0`,
+  border: `${$theme.sizing.scale0} solid #d9dbd0`,
   borderRadius: "50%",
 }));
 
@@ -46,7 +46,8 @@ export const getButtonStyles = ({
   $theme: CustomTheme;
   $shape: SHAPE;
 }): StyleObject => {
-  const size = $shape === "circle" ? "60px" : "80px";
+  const size =
+    $shape === "circle" ? $theme.sizing.scale550 : $theme.sizing.scale2000;
 
   return {
     position: "relative",
@@ -56,9 +57,11 @@ export const getButtonStyles = ({
     zIndex: 1,
     backgroundColor: $shape === "circle" ? $theme.colors.white : "transparent",
     flexShrink: 0,
+
     ":hover": {
       backgroundColor: "trasparent",
     },
+
     ":active": {
       backgroundColor: "trasparent",
     },
