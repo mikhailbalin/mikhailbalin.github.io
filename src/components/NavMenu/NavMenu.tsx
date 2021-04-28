@@ -1,5 +1,5 @@
 import React from "react";
-import { animated, useSpring, config } from "react-spring";
+import { animated, useSpring, config } from "@react-spring/web";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled, useThemedStyletron } from "../../settings/theme";
 import { Link } from "../Link";

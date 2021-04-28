@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, KIND, SHAPE } from "baseui/button";
-import { useSpring } from "react-spring";
+import { useSpring } from "@react-spring/web";
 import { useHover } from "../../hooks/useHover";
 import { useGlobalState } from "../../hooks/useState";
 import { Circle, getButtonStyles, Icon, Line } from "./ButtonMenu.styles";

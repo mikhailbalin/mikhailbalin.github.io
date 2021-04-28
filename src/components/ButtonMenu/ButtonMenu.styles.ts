@@ -1,5 +1,5 @@
 import { StyleObject } from "styletron-react";
-import { animated } from "react-spring";
+import { animated } from "@react-spring/web";
 import { CustomTheme, themedStyled } from "../../settings/theme";
 
 export const Line = themedStyled(animated.div, ({ $theme }) => ({

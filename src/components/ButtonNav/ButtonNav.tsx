@@ -9,6 +9,7 @@ import {
   Loader,
   ProgressBlock,
 } from "./ButtonNav.styles";
+import { useSpring, animated } from "@react-spring/web";
 
 export interface ButtonNavProps {
   size?: SIZE[keyof Pick<SIZE, "default" | "mini">];
@@ -16,14 +17,22 @@ export interface ButtonNavProps {
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
   const { y } = useWindowScroll();
-  const [percentSrcolled, setPercentSrcolled] = useState<string>();
+  const [test, setTest] = useState(false);
+
+  const [{ counter }, api] = useSpring(() => ({
+    counter: test ? 100 : 0,
+    from: { counter: 0 },
+  }));
 
   useEffect(() => {
     const scrollTop =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    setPercentSrcolled(((y / scrollTop) * 100).toFixed());
-  });
+
+    api.set({ counter: (y / scrollTop) * 100 });
+  }, [y]);
+
+  console.log();
 
   return (
     <BaseButton
@@ -67,7 +76,9 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
 
         <CircleInner>
           <FontAwesomeIcon icon={faReply} size="lg" color="#000" />
-          <div>{percentSrcolled}</div>
+          <animated.div onClick={() => setTest(!test)}>
+            {counter.to((v) => v)}
+          </animated.div>
         </CircleInner>
       </CircleOuter>
     </BaseButton>

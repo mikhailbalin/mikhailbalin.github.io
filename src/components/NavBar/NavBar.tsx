@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { animated, config, useSpring } from "react-spring";
+import { animated, config, useSpring } from "@react-spring/web";
 import { useClickAway } from "react-use";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled, useThemedStyletron } from "../../settings/theme";
