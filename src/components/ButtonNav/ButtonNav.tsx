@@ -11,7 +11,11 @@ import {
 } from "./ButtonNav.styles";
 import { useSpring } from "@react-spring/web";
 
-const calcScrollYFraction = (scroll: number) => {
+/**
+ * Calc a pesantage of scrolled window
+ * @param scroll scrolled in px
+ */
+const calcScrollYFraction = (scroll: number): number => {
   const scrollY =
     document.documentElement.scrollHeight -
     document.documentElement.clientHeight;
@@ -23,17 +27,27 @@ const calcScrollYFraction = (scroll: number) => {
   return 0;
 };
 
-const getStyles = (loader: number, scrollY: number) => {
-  const fraction = 25;
+/**
+ * Calc angle of each block inside circle
+ * @param loader block number
+ * @param scrollY pesantage of scrolled window
+ * @param parts loaders count
+ */
+const getRotationAngle = (
+  loader: number,
+  scrollY: number,
+  parts = 4
+): number => {
+  const fraction = 100 / parts;
   const startFraction = loader * fraction;
   const endFraction = startFraction + fraction;
-  const deg = (90 / 100) * scrollY * 4;
+  const deg = (90 / 100) * scrollY * parts;
 
   return scrollY <= startFraction
     ? -90
     : scrollY > endFraction
     ? 0
-    : (deg - 90 * (loader + 1)).toFixed();
+    : Math.trunc(deg - 90 * (loader + 1));
 };
 
 const progressBlocks = [
@@ -113,7 +127,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
             <Loader
               $origin={block.origin}
               style={{
-                transform: `rotateZ(${getStyles(index, scrollY)}deg)`,
+                transform: `rotateZ(${getRotationAngle(index, scrollY)}deg)`,
               }}
             />
           </ProgressBlock>
