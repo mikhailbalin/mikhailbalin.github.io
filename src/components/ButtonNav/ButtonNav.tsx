@@ -23,9 +23,9 @@ const calcScrollYFraction = (scroll: number) => {
   return 0;
 };
 
-const getStyles = (loader: 1 | 2 | 3 | 4, scrollY: number) => {
+const getStyles = (loader: number, scrollY: number) => {
   const fraction = 25;
-  const startFraction = (loader - 1) * fraction;
+  const startFraction = loader * fraction;
   const endFraction = startFraction + fraction;
   const deg = (90 / 100) * scrollY * 4;
 
@@ -33,8 +33,39 @@ const getStyles = (loader: 1 | 2 | 3 | 4, scrollY: number) => {
     ? -90
     : scrollY > endFraction
     ? 0
-    : (deg - 90 * loader).toFixed();
+    : (deg - 90 * (loader + 1)).toFixed();
 };
+
+const progressBlocks = [
+  {
+    position: {
+      $right: 0,
+      $top: 0,
+    },
+    origin: "bottom left",
+  },
+  {
+    position: {
+      $right: 0,
+      $bottom: 0,
+    },
+    origin: "top left",
+  },
+  {
+    position: {
+      $left: 0,
+      $bottom: 0,
+    },
+    origin: "top right",
+  },
+  {
+    position: {
+      $left: 0,
+      $top: 0,
+    },
+    origin: "bottom right",
+  },
+] as const;
 
 export interface ButtonNavProps {
   size?: SIZE[keyof Pick<SIZE, "default" | "mini">];
@@ -45,11 +76,6 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
   const [, setScrollY] = useSpring(() => ({ scrollY: 0 }));
 
   const scrollY = calcScrollYFraction(y);
-
-  const firstLoaderStyles = getStyles(1, scrollY);
-  const secondLoaderStyles = getStyles(2, scrollY);
-  const thirdLoaderStyles = getStyles(3, scrollY);
-  const forthLoaderStyles = getStyles(4, scrollY);
 
   return (
     <BaseButton
@@ -82,41 +108,16 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
       }}
     >
       <CircleOuter>
-        <ProgressBlock $right={0} $top={0}>
-          <Loader
-            $origin="bottom left"
-            style={{
-              transform: `rotateZ(${firstLoaderStyles}deg)`,
-            }}
-          />
-        </ProgressBlock>
-
-        <ProgressBlock $right={0} $bottom={0}>
-          <Loader
-            $origin="top left"
-            style={{
-              transform: `rotateZ(${secondLoaderStyles}deg)`,
-            }}
-          />
-        </ProgressBlock>
-
-        <ProgressBlock $left={0} $bottom={0}>
-          <Loader
-            $origin="top right"
-            style={{
-              transform: `rotateZ(${thirdLoaderStyles}deg)`,
-            }}
-          />
-        </ProgressBlock>
-
-        <ProgressBlock $left={0} $top={0}>
-          <Loader
-            $origin="bottom right"
-            style={{
-              transform: `rotateZ(${forthLoaderStyles}deg)`,
-            }}
-          />
-        </ProgressBlock>
+        {progressBlocks.map((block, index) => (
+          <ProgressBlock key={block.origin} {...block.position}>
+            <Loader
+              $origin={block.origin}
+              style={{
+                transform: `rotateZ(${getStyles(index, scrollY)}deg)`,
+              }}
+            />
+          </ProgressBlock>
+        ))}
 
         <CircleInner>
           <FontAwesomeIcon
