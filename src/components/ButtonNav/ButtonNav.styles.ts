@@ -1,4 +1,3 @@
-import { animated } from "@react-spring/web";
 import { themedStyled } from "../../settings/theme";
 
 export const CircleOuter = themedStyled("div", ({ $theme }) => ({
@@ -49,11 +48,11 @@ export const Loader = themedStyled<
   {
     $origin: string;
   }
->("div", ({ $origin }) => ({
+>("div", ({ $origin, $theme }) => ({
   position: "relative",
   width: "100%",
   height: "100%",
   transformOrigin: $origin,
-  backgroundColor: "#000",
-  transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+  backgroundColor: $theme.colors.primaryA,
+  transition: `transform ${$theme.animation.timing300} ${$theme.animation.easeOutQuinticCurve}`,
 }));

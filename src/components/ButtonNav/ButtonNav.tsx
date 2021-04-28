@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button as BaseButton, SHAPE, SIZE } from "baseui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
@@ -9,19 +9,31 @@ import {
   Loader,
   ProgressBlock,
 } from "./ButtonNav.styles";
-import { useSpring, config } from "@react-spring/web";
-import { debounce } from "lodash";
+import { useSpring } from "@react-spring/web";
 
-const calcPercentScrolled = (scroll: number) => {
-  const scrollTop =
+const calcScrollYFraction = (scroll: number) => {
+  const scrollY =
     document.documentElement.scrollHeight -
     document.documentElement.clientHeight;
 
-  if (scrollTop) {
-    return (scroll / scrollTop) * 100;
+  if (scrollY) {
+    return (scroll / scrollY) * 100;
   }
 
   return 0;
+};
+
+const getStyles = (loader: 1 | 2 | 3 | 4, scrollY: number) => {
+  const fraction = 25;
+  const startFraction = (loader - 1) * fraction;
+  const endFraction = startFraction + fraction;
+  const deg = (90 / 100) * scrollY * 4;
+
+  return scrollY <= startFraction
+    ? -90
+    : scrollY > endFraction
+    ? 0
+    : (deg - 90 * loader).toFixed();
 };
 
 export interface ButtonNavProps {
@@ -30,27 +42,26 @@ export interface ButtonNavProps {
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
   const { y } = useWindowScroll();
+  const [, setScrollY] = useSpring(() => ({ scrollY: 0 }));
 
-  const [styles, set] = useSpring(() => ({
-    config: config.slow,
-    width: 0,
-    from: { width: 0 },
-  }));
+  const scrollY = calcScrollYFraction(y);
 
-  useEffect(() => {
-    const calcHeight = debounce(() => {
-      set({ width: calcPercentScrolled(y) });
-    }, 300);
-
-    calcHeight();
-  }, [set, y]);
-
-  const val = (90 / 100) * calcPercentScrolled(y) * 4;
+  const firstLoaderStyles = getStyles(1, scrollY);
+  const secondLoaderStyles = getStyles(2, scrollY);
+  const thirdLoaderStyles = getStyles(3, scrollY);
+  const forthLoaderStyles = getStyles(4, scrollY);
 
   return (
     <BaseButton
       shape={SHAPE.circle}
       size={size || SIZE.default}
+      onClick={() =>
+        setScrollY({
+          scrollY: 0,
+          from: { scrollY: window.scrollY },
+          onChange: ({ value }) => window.scroll(0, value.scrollY),
+        })
+      }
       overrides={{
         BaseButton: {
           style: {
@@ -75,13 +86,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
           <Loader
             $origin="bottom left"
             style={{
-              transform: `rotateZ(${
-                calcPercentScrolled(y) === 0
-                  ? -90
-                  : calcPercentScrolled(y) > 25
-                  ? 0
-                  : (val - 90).toFixed()
-              }deg)`,
+              transform: `rotateZ(${firstLoaderStyles}deg)`,
             }}
           />
         </ProgressBlock>
@@ -90,13 +95,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
           <Loader
             $origin="top left"
             style={{
-              transform: `rotateZ(${
-                calcPercentScrolled(y) < 25
-                  ? -90
-                  : calcPercentScrolled(y) > 50
-                  ? 0
-                  : (val - 180).toFixed()
-              }deg)`,
+              transform: `rotateZ(${secondLoaderStyles}deg)`,
             }}
           />
         </ProgressBlock>
@@ -105,13 +104,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
           <Loader
             $origin="top right"
             style={{
-              transform: `rotateZ(${
-                calcPercentScrolled(y) < 50
-                  ? -90
-                  : calcPercentScrolled(y) > 75
-                  ? 0
-                  : (val - 270).toFixed()
-              }deg)`,
+              transform: `rotateZ(${thirdLoaderStyles}deg)`,
             }}
           />
         </ProgressBlock>
@@ -120,13 +113,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
           <Loader
             $origin="bottom right"
             style={{
-              transform: `rotateZ(${
-                calcPercentScrolled(y) < 75
-                  ? -90
-                  : calcPercentScrolled(y) > 100
-                  ? 0
-                  : (val - 360).toFixed()
-              }deg)`,
+              transform: `rotateZ(${forthLoaderStyles}deg)`,
             }}
           />
         </ProgressBlock>
