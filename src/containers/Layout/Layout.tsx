@@ -8,6 +8,7 @@ import { Root, Header, Main, Aside, AddressWrapper } from "./Layout.styles";
 import { NavMenu } from "../../components/NavMenu";
 import { useGlobalState } from "../../hooks/useState";
 import { CustomTheme } from "../../settings/theme";
+import { ButtonNav } from "../../components/ButtonNav";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -33,6 +34,8 @@ export const Layout = ({ children }: LayoutProps) => {
           <Address showSocial size="small" />
         </AddressWrapper>
       </Aside>
+
+      <ButtonNav />
 
       <Drawer
         isOpen={menuOpen}

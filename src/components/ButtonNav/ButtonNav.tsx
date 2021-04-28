@@ -10,6 +10,7 @@ import {
   ProgressBlock,
 } from "./ButtonNav.styles";
 import { useSpring } from "@react-spring/web";
+import { CustomThemeProps } from "../../settings/theme";
 
 /**
  * Calc a pesantage of scrolled window
@@ -90,6 +91,7 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
   const [, setScrollY] = useSpring(() => ({ scrollY: 0 }));
 
   const scrollY = calcScrollYFraction(y);
+  const showButton = scrollY > 5;
 
   return (
     <BaseButton
@@ -104,20 +106,28 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
       }
       overrides={{
         BaseButton: {
-          style: {
+          style: ({ $theme }: CustomThemeProps) => ({
             position: "fixed",
+            right: "1.5vw",
+            bottom: "1.5vw",
+            opacity: showButton ? 1 : 0,
+            transform: `scale(${showButton ? 1 : 0.8})`,
             backgroundColor: "transparent",
             width: size === SIZE.mini ? "60px" : "80px",
             height: size === SIZE.mini ? "60px" : "80px",
+            transitionProperty: "opacity, transform",
+            transitionDuration: $theme.animation.timing500,
+            transitionTimingFunction: $theme.animation.timing500,
 
             ":hover": {
               backgroundColor: "transparent",
+              transform: "scale(1.2)",
             },
 
             ":active": {
               backgroundColor: "transparent",
             },
-          },
+          }),
         },
       }}
     >
