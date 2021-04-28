@@ -53,38 +53,7 @@ export const Loader = themedStyled<
   position: "relative",
   width: "100%",
   height: "100%",
-  transform: "rotateZ(-90deg)",
   transformOrigin: $origin,
   backgroundColor: "#000",
-}));
-
-export const ScrollBar = themedStyled("div", {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  backgroundColor: "#c2c2c2",
-  height: "16px",
-  width: "100%",
-});
-
-export const ScrollBar2 = themedStyled("div", {
-  position: "fixed",
-  top: "20px",
-  left: 0,
-  backgroundColor: "#c2c2c2",
-  height: "16px",
-  width: "100%",
-});
-
-export const AnimatedLine = themedStyled(animated.div, {
-  backgroundColor: "green",
-  height: "16px",
-  zIndex: 1,
-});
-
-export const AnimatedLine2 = themedStyled("div", {
-  backgroundColor: "green",
-  height: "16px",
-  zIndex: 1,
   transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1)",
-});
+}));

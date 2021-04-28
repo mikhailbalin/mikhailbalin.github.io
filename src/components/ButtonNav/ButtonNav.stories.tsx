@@ -8,7 +8,7 @@ export default {
   component: ButtonNav,
   decorators: [
     (ButtonNavStory) => (
-      <div style={{ height: "250vh" }}>
+      <div style={{ height: "550vh" }}>
         <ButtonNavStory />
       </div>
     ),
