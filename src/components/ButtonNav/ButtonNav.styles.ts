@@ -9,6 +9,11 @@ export const CircleOuter = themedStyled("div", ({ $theme }) => ({
   borderRadius: "50%",
   backgroundColor: "#ccc",
   overflow: "hidden",
+  boxShadow: $theme.lighting.shadow600,
+
+  [$theme.mediaQuery.tablet]: {
+    boxShadow: "none",
+  },
 }));
 
 export const CircleInner = themedStyled("div", ({ $theme }) => ({
@@ -21,7 +26,11 @@ export const CircleInner = themedStyled("div", ({ $theme }) => ({
   right: $theme.sizing.scale0,
   bottom: $theme.sizing.scale0,
   borderRadius: "50%",
-  backgroundColor: $theme.colors.backgroundPrimary,
+  backgroundColor: $theme.colors.white,
+
+  [$theme.mediaQuery.tablet]: {
+    backgroundColor: $theme.colors.backgroundPrimary,
+  },
 }));
 
 export const ProgressBlock = themedStyled<
