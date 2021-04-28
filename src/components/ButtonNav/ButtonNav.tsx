@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button as BaseButton, SHAPE, SIZE } from "baseui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
@@ -8,8 +8,13 @@ import {
   CircleOuter,
   Loader,
   ProgressBlock,
+  ScrollBar,
+  ScrollBar2,
+  AnimatedLine,
+  AnimatedLine2,
 } from "./ButtonNav.styles";
-import { useSpring, animated } from "@react-spring/web";
+import { useSpring, config } from "@react-spring/web";
+import { debounce } from "lodash";
 
 export interface ButtonNavProps {
   size?: SIZE[keyof Pick<SIZE, "default" | "mini">];
@@ -17,70 +22,133 @@ export interface ButtonNavProps {
 
 export const ButtonNav = ({ size }: ButtonNavProps) => {
   const { y } = useWindowScroll();
-  const [test, setTest] = useState(false);
 
-  const [{ counter }, api] = useSpring(() => ({
-    counter: test ? 100 : 0,
-    from: { counter: 0 },
+  const [styles, api] = useSpring(() => ({
+    config: config.slow,
+    width: "0%",
+    // from: { width: "0%" },
   }));
 
-  useEffect(() => {
+  const calcPercentScrolled = (scroll: number) => {
     const scrollTop =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
 
-    api.set({ counter: (y / scrollTop) * 100 });
-  }, [y]);
+    if (scrollTop) {
+      return (scroll / scrollTop) * 100;
+    }
 
-  console.log();
+    return 0;
+  };
+
+  useEffect(() => {
+    const calcHeight = debounce(() => {
+      api.set({ width: calcPercentScrolled(y) + "%" });
+    }, 500);
+
+    calcHeight();
+  }, [api, y]);
+
+  const val = (90 / 100) * calcPercentScrolled(y) * 4;
 
   return (
-    <BaseButton
-      shape={SHAPE.circle}
-      size={size || SIZE.default}
-      overrides={{
-        BaseButton: {
-          style: {
-            position: "fixed",
-            backgroundColor: "transparent",
-            width: size === SIZE.mini ? "60px" : "80px",
-            height: size === SIZE.mini ? "60px" : "80px",
+    <>
+      <ScrollBar>
+        <AnimatedLine style={styles} />
+      </ScrollBar>
 
-            ":hover": {
-              backgroundColor: "transparent",
-            },
+      <ScrollBar2>
+        <AnimatedLine2 style={{ width: calcPercentScrolled(y) + "%" }} />
+      </ScrollBar2>
 
-            ":active": {
+      <BaseButton
+        shape={SHAPE.circle}
+        size={size || SIZE.default}
+        overrides={{
+          BaseButton: {
+            style: {
+              position: "fixed",
               backgroundColor: "transparent",
+              width: size === SIZE.mini ? "60px" : "80px",
+              height: size === SIZE.mini ? "60px" : "80px",
+
+              ":hover": {
+                backgroundColor: "transparent",
+              },
+
+              ":active": {
+                backgroundColor: "transparent",
+              },
             },
           },
-        },
-      }}
-    >
-      <CircleOuter>
-        <ProgressBlock $right={0} $top={0}>
-          <Loader $origin="bottom left" />
-        </ProgressBlock>
+        }}
+      >
+        <CircleOuter>
+          <ProgressBlock $right={0} $top={0}>
+            <Loader
+              $origin="bottom left"
+              style={{
+                transform: `rotateZ(${
+                  calcPercentScrolled(y) < 25 ? (val - 90).toFixed() : 0
+                }deg)`,
+              }}
+            />
+          </ProgressBlock>
 
-        <ProgressBlock $right={0} $bottom={0}>
-          <Loader $origin="top left" />
-        </ProgressBlock>
+          <ProgressBlock $right={0} $bottom={0}>
+            <Loader
+              $origin="top left"
+              style={{
+                transform: `rotateZ(${
+                  calcPercentScrolled(y) < 25
+                    ? -90
+                    : calcPercentScrolled(y) > 50
+                    ? 0
+                    : (val - 180).toFixed()
+                }deg)`,
+              }}
+            />
+          </ProgressBlock>
 
-        <ProgressBlock $left={0} $bottom={0}>
-          <Loader $origin="top right" />
-        </ProgressBlock>
+          <ProgressBlock $left={0} $bottom={0}>
+            <Loader
+              $origin="top right"
+              style={{
+                transform: `rotateZ(${
+                  calcPercentScrolled(y) < 50
+                    ? -90
+                    : calcPercentScrolled(y) > 75
+                    ? 0
+                    : (val - 270).toFixed()
+                }deg)`,
+              }}
+            />
+          </ProgressBlock>
 
-        <ProgressBlock $left={0} $top={0}>
-          <Loader $origin="bottom right" />
-        </ProgressBlock>
+          <ProgressBlock $left={0} $top={0}>
+            <Loader
+              $origin="bottom right"
+              style={{
+                transform: `rotateZ(${
+                  calcPercentScrolled(y) < 75
+                    ? -90
+                    : calcPercentScrolled(y) > 100
+                    ? 0
+                    : (val - 360).toFixed()
+                }deg)`,
+              }}
+            />
+          </ProgressBlock>
 
-        <CircleInner>
-          <FontAwesomeIcon icon={faReply} size="lg" color="#000" />
-          <animated.div onClick={() => setTest(!test)}>
-            {counter.to((v) => v)}
-          </animated.div>
-        </CircleInner>
-      </CircleOuter>
-    </BaseButton>
+          <CircleInner>
+            {/* <FontAwesomeIcon icon={faReply} size="lg" color="#000" /> */}
+            {/* <animated.div>{counter.to((v) => v.toFixed())}</animated.div> */}
+            <div>
+              {calcPercentScrolled(y).toFixed()} / {val.toFixed()}
+            </div>
+          </CircleInner>
+        </CircleOuter>
+      </BaseButton>
+    </>
   );
 };
