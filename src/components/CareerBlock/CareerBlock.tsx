@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useIntersection, useWindowScroll } from "react-use";
 import { MyHeadingSmall, MyParagraphMedium } from "../typography";
 import {
   Root,
   Date,
   Timeline,
   TimelineDot,
-  TimelineColor,
+  StyledIndicator,
   JobInfo,
   JobPosition,
 } from "./CareerBlock.styles";
+
+const ColorIndicator = ({
+  intersection,
+}: {
+  intersection: IntersectionObserverEntry;
+}) => {
+  const { y } = useWindowScroll();
+  const scrollTop = useRef(window.document.documentElement.scrollTop);
+
+  const indicatorHeight =
+    ((y - scrollTop.current) / intersection.boundingClientRect.height) * 100;
+
+  return (
+    <StyledIndicator
+      style={{
+        height: `${indicatorHeight < 100 ? indicatorHeight : 100}%`,
+      }}
+    />
+  );
+};
 
 export interface CareerBlockProps {
   dates: string;
@@ -23,13 +44,24 @@ export const CareerBlock = ({
   description,
   position,
 }: CareerBlockProps) => {
+  const intersectionRef = React.useRef(null);
+  const intersection = useIntersection(intersectionRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1,
+  });
+
+  console.log({ intersection });
+
   return (
-    <Root>
+    <Root ref={intersectionRef}>
       <Date>{dates}</Date>
 
       <Timeline>
         <TimelineDot />
-        <TimelineColor />
+        {intersection?.intersectionRatio === 1 && (
+          <ColorIndicator intersection={intersection} />
+        )}
       </Timeline>
 
       <JobInfo>

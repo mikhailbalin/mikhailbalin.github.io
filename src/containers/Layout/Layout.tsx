@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // useCallback
 import { Drawer, SIZE } from "baseui/drawer";
 import { NavBar } from "../../components/NavBar";
 import { SidebarMedia } from "../../components/SidebarMedia";
@@ -16,6 +16,10 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   const { menuOpen } = useGlobalState();
+  // const onScroll = useCallback(
+  //   (e) => console.log({ scrollTop: e.target.scrollTop }),
+  //   []
+  // );
 
   return (
     <Root>

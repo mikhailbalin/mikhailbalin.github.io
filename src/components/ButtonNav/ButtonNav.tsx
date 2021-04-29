@@ -17,7 +17,7 @@ import { CustomThemeProps } from "../../settings/theme";
  * @param scroll scrolled in px
  */
 const calcScrollYFraction = (scroll: number): number => {
-  const { scrollHeight, clientHeight } = document.documentElement;
+  const { scrollHeight, clientHeight } = window.document.documentElement;
   const scrollY = scrollHeight - clientHeight;
 
   if (scrollY) {

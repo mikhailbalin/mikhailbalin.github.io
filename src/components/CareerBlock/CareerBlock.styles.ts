@@ -74,13 +74,12 @@ export const TimelineDot = themedStyled("div", ({ $theme }) => ({
   boxShadow: $theme.lighting.shadow600,
 }));
 
-export const TimelineColor = themedStyled("div", ({ $theme }) => ({
+export const StyledIndicator = themedStyled("div", ({ $theme }) => ({
   position: "absolute",
   left: 0,
   top: 0,
   right: 0,
   bottom: "auto",
-  height: "40%",
   backgroundColor: $theme.colors.positive,
 }));
 
