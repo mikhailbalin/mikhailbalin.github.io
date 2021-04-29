@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useIntersection, useWindowScroll } from "react-use";
 import { MyHeadingSmall, MyParagraphMedium } from "../typography";
 import {
@@ -44,22 +44,56 @@ export const CareerBlock = ({
   description,
   position,
 }: CareerBlockProps) => {
-  const intersectionRef = React.useRef(null);
-  const intersection = useIntersection(intersectionRef, {
+  const [downLeave, setDownLeave] = useState(false);
+  const rootRef = useRef(null);
+  const intersectionRef = useRef<IntersectionObserverEntry | null>(null);
+  const intersection = useIntersection(rootRef, {
     root: null,
     rootMargin: "0px",
     threshold: 1,
   });
 
-  console.log({ intersection });
+  if (!intersectionRef?.current) {
+    intersectionRef.current = intersection;
+  }
+
+  // console.log({ intersection, intersectionRef: intersectionRef?.current });
+
+  if (intersection && intersectionRef?.current) {
+    const previousY = intersectionRef.current.boundingClientRect.y;
+    const previousRatio = intersectionRef.current.intersectionRatio;
+    const currentY = intersection.boundingClientRect.y;
+    const currentRatio = intersection.intersectionRatio;
+    const isIntersecting = intersection.isIntersecting;
+
+    if (currentY < previousY) {
+      if (currentRatio > previousRatio && isIntersecting) {
+        console.log("Scrolling down enter");
+      } else {
+        console.log("Scrolling down leave");
+        setDownLeave(true);
+      }
+    } else if (currentY > previousY && isIntersecting) {
+      if (currentRatio < previousRatio) {
+        console.log("Scrolling up leave");
+      } else {
+        console.log("Scrolling up enter");
+      }
+    }
+
+    intersectionRef.current = intersection;
+  }
+
+  // console.log({ [name]: intersection });
 
   return (
-    <Root ref={intersectionRef}>
+    <Root ref={rootRef}>
       <Date>{dates}</Date>
 
       <Timeline>
         <TimelineDot />
-        {intersection?.intersectionRatio === 1 && (
+        {(intersection?.intersectionRatio === 1 ||
+          (intersection && downLeave)) && (
           <ColorIndicator intersection={intersection} />
         )}
       </Timeline>
