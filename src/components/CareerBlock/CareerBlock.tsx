@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, MutableRefObject } from "react";
 import { useIntersection, useWindowScroll } from "react-use";
 import { MyHeadingSmall, MyParagraphMedium } from "../typography";
 import {
@@ -10,6 +10,47 @@ import {
   JobInfo,
   JobPosition,
 } from "./CareerBlock.styles";
+
+const getScrollBehavior = (
+  intersection: IntersectionObserverEntry | null,
+  intersectionRef: MutableRefObject<IntersectionObserverEntry | null>,
+  cb: () => void
+): { direction: "up" | "down"; state: "enter" | "leave" } | undefined => {
+  if (intersection && intersectionRef.current) {
+    const {
+      boundingClientRect: { y: previousY },
+      intersectionRatio: previousRatio,
+    } = intersectionRef.current;
+
+    const {
+      boundingClientRect: { y: currentY },
+      intersectionRatio: currentRatio,
+      isIntersecting: currentIsIntersecting,
+    } = intersection;
+
+    const isEntering = currentRatio > previousRatio && currentIsIntersecting;
+
+    if (currentY < previousY) {
+      if (isEntering) {
+        return { direction: "down", state: "enter" };
+      } else {
+        return { direction: "down", state: "leave" };
+      }
+    } else if (currentY > previousY) {
+      if (isEntering) {
+        return { direction: "up", state: "enter" };
+      } else {
+        return { direction: "up", state: "leave" };
+      }
+    }
+
+    cb();
+
+    return undefined;
+  } else {
+    return undefined;
+  }
+};
 
 const ColorIndicator = ({
   intersection,
@@ -44,7 +85,6 @@ export const CareerBlock = ({
   description,
   position,
 }: CareerBlockProps) => {
-  const [downLeave, setDownLeave] = useState(false);
   const rootRef = useRef(null);
   const intersectionRef = useRef<IntersectionObserverEntry | null>(null);
   const intersection = useIntersection(rootRef, {
@@ -57,34 +97,17 @@ export const CareerBlock = ({
     intersectionRef.current = intersection;
   }
 
-  // console.log({ intersection, intersectionRef: intersectionRef?.current });
-
-  if (intersection && intersectionRef?.current) {
-    const previousY = intersectionRef.current.boundingClientRect.y;
-    const previousRatio = intersectionRef.current.intersectionRatio;
-    const currentY = intersection.boundingClientRect.y;
-    const currentRatio = intersection.intersectionRatio;
-    const isIntersecting = intersection.isIntersecting;
-
-    if (currentY < previousY) {
-      if (currentRatio > previousRatio && isIntersecting) {
-        console.log("Scrolling down enter");
-      } else {
-        console.log("Scrolling down leave");
-        setDownLeave(true);
-      }
-    } else if (currentY > previousY && isIntersecting) {
-      if (currentRatio < previousRatio) {
-        console.log("Scrolling up leave");
-      } else {
-        console.log("Scrolling up enter");
-      }
-    }
-
-    intersectionRef.current = intersection;
-  }
-
-  // console.log({ [name]: intersection });
+  const scrollBehavior = getScrollBehavior(
+    intersection,
+    intersectionRef,
+    () => (intersectionRef.current = intersection)
+  );
+  const isIntersecting = intersection?.intersectionRatio === 1;
+  const isScrolled =
+    intersection &&
+    scrollBehavior &&
+    scrollBehavior.direction === "down" &&
+    scrollBehavior.state === "leave";
 
   return (
     <Root ref={rootRef}>
@@ -92,9 +115,8 @@ export const CareerBlock = ({
 
       <Timeline>
         <TimelineDot />
-        {(intersection?.intersectionRatio === 1 ||
-          (intersection && downLeave)) && (
-          <ColorIndicator intersection={intersection} />
+        {(isIntersecting || isScrolled) && (
+          <ColorIndicator intersection={intersection!} />
         )}
       </Timeline>
 
