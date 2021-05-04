@@ -13,7 +13,7 @@ import { useSpring } from "@react-spring/web";
 import { CustomThemeProps } from "../../settings/theme";
 
 /**
- * Calc a pesantage of scrolled window
+ * Calc the pesantage of scrolled window
  * @param scroll scrolled in px
  */
 const calcScrollYFraction = (scroll: number): number => {

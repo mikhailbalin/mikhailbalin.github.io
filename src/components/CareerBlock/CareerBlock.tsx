@@ -1,5 +1,6 @@
-import React, { useRef, MutableRefObject } from "react";
-import { useIntersection, useWindowScroll } from "react-use";
+import throttle from "lodash/throttle";
+import React, { useLayoutEffect, useState } from "react";
+import { useMeasure } from "react-use";
 import { MyHeadingSmall, MyParagraphMedium } from "../typography";
 import {
   Root,
@@ -11,64 +12,47 @@ import {
   JobPosition,
 } from "./CareerBlock.styles";
 
-const getScrollBehavior = (
-  intersection: IntersectionObserverEntry | null,
-  intersectionRef: MutableRefObject<IntersectionObserverEntry | null>,
-  cb: () => void
-): { direction: "up" | "down"; state: "enter" | "leave" } | undefined => {
-  if (intersection && intersectionRef.current) {
-    const {
-      boundingClientRect: { y: previousY },
-      intersectionRatio: previousRatio,
-    } = intersectionRef.current;
-
-    const {
-      boundingClientRect: { y: currentY },
-      intersectionRatio: currentRatio,
-      isIntersecting: currentIsIntersecting,
-    } = intersection;
-
-    const isEntering = currentRatio > previousRatio && currentIsIntersecting;
-
-    if (currentY < previousY) {
-      if (isEntering) {
-        return { direction: "down", state: "enter" };
-      } else {
-        return { direction: "down", state: "leave" };
-      }
-    } else if (currentY > previousY) {
-      if (isEntering) {
-        return { direction: "up", state: "enter" };
-      } else {
-        return { direction: "up", state: "leave" };
-      }
-    }
-
-    cb();
-
-    return undefined;
-  } else {
-    return undefined;
-  }
-};
-
 const ColorIndicator = ({
-  intersection,
+  blockHeight,
+  threshold,
 }: {
-  intersection: IntersectionObserverEntry;
+  blockHeight: number;
+  threshold: number;
 }) => {
-  const { y } = useWindowScroll();
-  const scrollTop = useRef(window.document.documentElement.scrollTop);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
 
-  const indicatorHeight =
-    ((y - scrollTop.current) / intersection.boundingClientRect.height) * 100;
+  useLayoutEffect(() => {
+    const increaseCount = () => {
+      const elementTop = ref?.current?.getBoundingClientRect().y;
+
+      if (!elementTop) return;
+      const diff = threshold - elementTop;
+
+      if (threshold <= elementTop) {
+        setHeight(() => 0);
+      } else if (diff >= blockHeight) {
+        setHeight(() => 100);
+      } else {
+        setHeight(() => (diff / blockHeight) * 100);
+      }
+    };
+
+    const throttledCount = throttle(increaseCount, 100);
+    window.addEventListener("scroll", throttledCount);
+    return () => window.removeEventListener("scroll", throttledCount);
+  }, [blockHeight, threshold]);
 
   return (
-    <StyledIndicator
-      style={{
-        height: `${indicatorHeight < 100 ? indicatorHeight : 100}%`,
-      }}
-    />
+    <>
+      <TimelineDot $active={height !== 0} />
+      <StyledIndicator
+        ref={ref}
+        style={{
+          height: `${height}%`,
+        }}
+      />
+    </>
   );
 };
 
@@ -77,6 +61,7 @@ export interface CareerBlockProps {
   name: string;
   description: string;
   position: string;
+  threshold: number;
 }
 
 export const CareerBlock = ({
@@ -84,40 +69,16 @@ export const CareerBlock = ({
   name,
   description,
   position,
+  threshold,
 }: CareerBlockProps) => {
-  const rootRef = useRef(null);
-  const intersectionRef = useRef<IntersectionObserverEntry | null>(null);
-  const intersection = useIntersection(rootRef, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1,
-  });
-
-  if (!intersectionRef?.current) {
-    intersectionRef.current = intersection;
-  }
-
-  const scrollBehavior = getScrollBehavior(
-    intersection,
-    intersectionRef,
-    () => (intersectionRef.current = intersection)
-  );
-  const isIntersecting = intersection?.intersectionRatio === 1;
-  const isScrolled =
-    intersection &&
-    scrollBehavior &&
-    scrollBehavior.direction === "down" &&
-    scrollBehavior.state === "leave";
+  const [rootRef, { height }] = useMeasure<HTMLDivElement>();
 
   return (
     <Root ref={rootRef}>
       <Date>{dates}</Date>
 
       <Timeline>
-        <TimelineDot />
-        {(isIntersecting || isScrolled) && (
-          <ColorIndicator intersection={intersection!} />
-        )}
+        <ColorIndicator blockHeight={height} threshold={threshold} />
       </Timeline>
 
       <JobInfo>
