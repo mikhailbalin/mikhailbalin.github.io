@@ -1,3 +1,4 @@
+import { animated } from "@react-spring/web";
 import { themedStyled } from "../../settings/theme";
 
 export const Root = themedStyled("div", ({ $theme }) => ({
@@ -83,7 +84,7 @@ export const TimelineDot = themedStyled<"div", { $active: boolean }>(
   })
 );
 
-export const StyledIndicator = themedStyled("div", ({ $theme }) => ({
+export const StyledIndicator = themedStyled(animated.div, ({ $theme }) => ({
   position: "absolute",
   left: 0,
   top: 0,

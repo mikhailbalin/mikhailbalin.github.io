@@ -1,3 +1,4 @@
+import { useSpring } from "@react-spring/web";
 import throttle from "lodash/throttle";
 import React, { useLayoutEffect, useState } from "react";
 import { useMeasure } from "react-use";
@@ -20,7 +21,7 @@ const ColorIndicator = ({
   threshold: number;
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState("0%");
 
   useLayoutEffect(() => {
     const increaseCount = () => {
@@ -30,28 +31,27 @@ const ColorIndicator = ({
       const diff = threshold - elementTop;
 
       if (threshold <= elementTop) {
-        setHeight(() => 0);
+        setHeight(() => "0%");
       } else if (diff >= blockHeight) {
-        setHeight(() => 100);
+        setHeight(() => "100%");
       } else {
-        setHeight(() => (diff / blockHeight) * 100);
+        setHeight(() => `${(diff / blockHeight) * 100}%`);
       }
     };
 
-    const throttledCount = throttle(increaseCount, 100);
+    const throttledCount = throttle(increaseCount, 300);
     window.addEventListener("scroll", throttledCount);
     return () => window.removeEventListener("scroll", throttledCount);
   }, [blockHeight, threshold]);
 
+  const springProps = useSpring({
+    height,
+  });
+
   return (
     <>
-      <TimelineDot $active={height !== 0} />
-      <StyledIndicator
-        ref={ref}
-        style={{
-          height: `${height}%`,
-        }}
-      />
+      <TimelineDot $active={height !== "0%"} />
+      <StyledIndicator ref={ref} style={springProps} />
     </>
   );
 };
