@@ -1,20 +1,25 @@
 import { animated } from "@react-spring/web";
 import { themedStyled } from "../../../settings/theme";
 
+export const DotWrapper = themedStyled("div", ({ $theme }) => ({
+  position: "absolute",
+  top: 0,
+  right: "auto",
+  bottom: "auto",
+  left: "auto",
+  zIndex: 2,
+  paddingTop: $theme.sizing.scale300,
+  paddingBottom: $theme.sizing.scale300,
+  backgroundColor: $theme.colors.backgroundPrimary,
+}));
+
 export const Dot = themedStyled<"div", { $active: boolean }>(
   "div",
   ({ $theme, $active }) => ({
-    position: "absolute",
-    left: "auto",
-    top: 0,
-    right: "auto",
-    bottom: "auto",
-    zIndex: 2,
     width: $theme.sizing.scale550,
     height: $theme.sizing.scale550,
-    marginTop: $theme.sizing.scale300,
-    marginRight: 0,
-    marginLeft: 0,
+    // marginRight: 0,
+    // marginLeft: 0,
     borderStyle: "solid",
     borderWidth: $theme.sizing.scale0,
     borderColor: $theme.colors.positive,

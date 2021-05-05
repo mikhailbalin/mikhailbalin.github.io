@@ -4,7 +4,6 @@ export const Root = themedStyled("div", ({ $theme }) => ({
   display: "grid",
   gridAutoColumns: "1fr",
   gridTemplateColumns: `auto minmax(${$theme.sizing.scale900}, auto) 1fr`,
-
   gridColumnGap: $theme.sizing.scale800,
   gridTemplateAreas: `"Timeline-Mobile Date-Mobile Date-Mobile" "Timeline-Mobile Job-Mobile Job-Mobile"`,
   paddingLeft: $theme.sizing.scale300,
@@ -44,7 +43,7 @@ export const Timeline = themedStyled("div", ({ $theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   backgroundColor: "#d9dbd0",
-
+  // marginTop: $theme.sizing.scale750,
   alignSelf: "stretch",
   justifySelf: "center",
   gridArea: "Timeline-Mobile",

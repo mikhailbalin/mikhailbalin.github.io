@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useSpring } from "@react-spring/web";
 import throttle from "lodash/throttle";
-import { Dot, StyledIndicator } from "./Indicator.styles";
+import { DotWrapper, Dot, StyledIndicator } from "./Indicator.styles";
 
 interface IndicatorProps {
   blockHeight: number;
@@ -40,7 +40,9 @@ export const Indicator = ({ blockHeight, threshold }: IndicatorProps) => {
 
   return (
     <>
-      <Dot $active={height !== "0%"} />
+      <DotWrapper>
+        <Dot $active={height !== "0%"} />
+      </DotWrapper>
       <StyledIndicator ref={ref} style={springProps} />
     </>
   );
