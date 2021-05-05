@@ -5,6 +5,13 @@ import { CareerBlock, CareerBlockProps } from "./CareerBlock";
 export default {
   title: "CareerBlock",
   component: CareerBlock,
+  decorators: [
+    (CareerBlockStory) => (
+      <div style={{ height: "700px", paddingTop: "50px" }}>
+        <CareerBlockStory />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const Template: Story<CareerBlockProps> = (args) => <CareerBlock {...args} />;
@@ -16,4 +23,6 @@ Primary.args = {
   description:
     "At magnum periculum adiit in quo enim inter argumentum conclusionemque rationis et dolorum. Censes aut reiciendis voluptatibus maiores alias consequatur.",
   position: "Internship",
+  indicatorVisible: true,
+  threshold: 50,
 };
