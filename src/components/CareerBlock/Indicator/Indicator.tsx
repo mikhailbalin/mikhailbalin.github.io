@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useRef } from "react";
 import { useSpring } from "@react-spring/web";
 import throttle from "lodash/throttle";
 import { DotWrapper, Dot, StyledIndicator } from "./Indicator.styles";
@@ -6,15 +6,22 @@ import { DotWrapper, Dot, StyledIndicator } from "./Indicator.styles";
 interface IndicatorProps {
   blockHeight: number;
   threshold: number;
+  indicatorVisible: boolean;
 }
 
-export const Indicator = ({ blockHeight, threshold }: IndicatorProps) => {
-  const ref = React.useRef<HTMLDivElement>(null);
+export const Indicator = ({
+  blockHeight,
+  threshold,
+  indicatorVisible,
+}: IndicatorProps) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState("0%");
 
   useLayoutEffect(() => {
     const increaseCount = () => {
       const elementTop = ref?.current?.getBoundingClientRect().y;
+
+      console.log({ elementTop });
 
       if (!elementTop) return;
       const diff = threshold - elementTop;
@@ -24,7 +31,7 @@ export const Indicator = ({ blockHeight, threshold }: IndicatorProps) => {
       } else if (diff >= blockHeight) {
         setHeight(() => "100%");
       } else {
-        setHeight(() => `${(diff / blockHeight) * 100}%`);
+        setHeight(() => `${((diff / blockHeight) * 100).toFixed()}%`);
       }
     };
 
@@ -34,16 +41,18 @@ export const Indicator = ({ blockHeight, threshold }: IndicatorProps) => {
     return () => window.removeEventListener("scroll", throttledCount);
   }, [blockHeight, threshold]);
 
-  const springProps = useSpring({
-    height,
-  });
+  const indicatorStyles = useSpring({ height });
 
   return (
     <>
       <DotWrapper>
         <Dot $active={height !== "0%"} />
+        {height}
       </DotWrapper>
-      <StyledIndicator ref={ref} style={springProps} />
+
+      {indicatorVisible && (
+        <StyledIndicator ref={ref} style={indicatorStyles} />
+      )}
     </>
   );
 };

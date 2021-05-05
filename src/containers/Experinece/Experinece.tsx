@@ -20,8 +20,18 @@ const jobs = [
       "At magnum periculum adiit in quo enim inter argumentum conclusionemque rationis et dolorum. Censes aut reiciendis voluptatibus maiores alias consequatur.",
     position: "Junior Designer",
   },
+  {
+    dates: "2010 - 2011",
+    name: "MyTona",
+    description:
+      "At magnum periculum adiit in quo enim inter argumentum conclusionemque rationis et dolorum. Censes aut reiciendis voluptatibus maiores alias consequatur.",
+    position: "Junior Designer",
+  },
 ];
-
+/**
+ * 0 1
+ * 2
+ */
 export const Experinece = () => {
   const { height } = useWindowSize();
 
@@ -30,8 +40,13 @@ export const Experinece = () => {
       <SectionTitle title="Experinece" />
 
       <Career>
-        {jobs.map((job) => (
-          <CareerBlock key={job.name} {...job} threshold={height / 2} />
+        {jobs.map((job, index) => (
+          <CareerBlock
+            key={job.name}
+            {...job}
+            threshold={height / 2}
+            indicatorVisible={index + 1 < jobs.length}
+          />
         ))}
       </Career>
     </Section>

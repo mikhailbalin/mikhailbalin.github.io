@@ -18,8 +18,6 @@ export const Dot = themedStyled<"div", { $active: boolean }>(
   ({ $theme, $active }) => ({
     width: $theme.sizing.scale550,
     height: $theme.sizing.scale550,
-    // marginRight: 0,
-    // marginLeft: 0,
     borderStyle: "solid",
     borderWidth: $theme.sizing.scale0,
     borderColor: $theme.colors.positive,

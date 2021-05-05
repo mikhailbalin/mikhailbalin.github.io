@@ -16,6 +16,7 @@ export interface CareerBlockProps {
   description: string;
   position: string;
   threshold: number;
+  indicatorVisible?: boolean;
 }
 
 export const CareerBlock = ({
@@ -24,6 +25,7 @@ export const CareerBlock = ({
   description,
   position,
   threshold,
+  indicatorVisible = true,
 }: CareerBlockProps) => {
   const [ref, { height }] = useMeasure<HTMLDivElement>();
 
@@ -31,8 +33,12 @@ export const CareerBlock = ({
     <Root>
       <Date>{dates}</Date>
 
-      <Timeline ref={ref}>
-        <Indicator blockHeight={height} threshold={threshold} />
+      <Timeline ref={ref} $indicatorVisible={indicatorVisible}>
+        <Indicator
+          blockHeight={height}
+          threshold={threshold}
+          indicatorVisible={indicatorVisible}
+        />
       </Timeline>
 
       <JobInfo>
