@@ -1,60 +1,14 @@
-import { useSpring } from "@react-spring/web";
-import throttle from "lodash/throttle";
-import React, { useLayoutEffect, useState } from "react";
+import React from "react";
 import { useMeasure } from "react-use";
 import { MyHeadingSmall, MyParagraphMedium } from "../typography";
 import {
   Root,
   Date,
   Timeline,
-  TimelineDot,
-  StyledIndicator,
   JobInfo,
   JobPosition,
 } from "./CareerBlock.styles";
-
-const ColorIndicator = ({
-  blockHeight,
-  threshold,
-}: {
-  blockHeight: number;
-  threshold: number;
-}) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState("0%");
-
-  useLayoutEffect(() => {
-    const increaseCount = () => {
-      const elementTop = ref?.current?.getBoundingClientRect().y;
-
-      if (!elementTop) return;
-      const diff = threshold - elementTop;
-
-      if (threshold <= elementTop) {
-        setHeight(() => "0%");
-      } else if (diff >= blockHeight) {
-        setHeight(() => "100%");
-      } else {
-        setHeight(() => `${(diff / blockHeight) * 100}%`);
-      }
-    };
-
-    const throttledCount = throttle(increaseCount, 300);
-    window.addEventListener("scroll", throttledCount);
-    return () => window.removeEventListener("scroll", throttledCount);
-  }, [blockHeight, threshold]);
-
-  const springProps = useSpring({
-    height,
-  });
-
-  return (
-    <>
-      <TimelineDot $active={height !== "0%"} />
-      <StyledIndicator ref={ref} style={springProps} />
-    </>
-  );
-};
+import { Indicator } from "./Indicator";
 
 export interface CareerBlockProps {
   dates: string;
@@ -71,14 +25,14 @@ export const CareerBlock = ({
   position,
   threshold,
 }: CareerBlockProps) => {
-  const [rootRef, { height }] = useMeasure<HTMLDivElement>();
+  const [ref, { height }] = useMeasure<HTMLDivElement>();
 
   return (
-    <Root ref={rootRef}>
+    <Root>
       <Date>{dates}</Date>
 
-      <Timeline>
-        <ColorIndicator blockHeight={height} threshold={threshold} />
+      <Timeline ref={ref}>
+        <Indicator blockHeight={height} threshold={threshold} />
       </Timeline>
 
       <JobInfo>
