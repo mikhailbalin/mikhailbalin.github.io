@@ -1,22 +1,13 @@
 import React from "react";
-import { useMeasure } from "react-use";
 import { MyHeadingSmall, MyParagraphMedium } from "../typography";
-import {
-  Root,
-  Date,
-  Timeline,
-  JobInfo,
-  JobPosition,
-} from "./CareerBlock.styles";
-import { Indicator } from "./Indicator";
+import { Root, Date, JobInfo, JobPosition } from "./CareerBlock.styles";
+import { Indicator, IndicatorProps } from "./Indicator";
 
-export interface CareerBlockProps {
+export interface CareerBlockProps extends IndicatorProps {
   dates: string;
   name: string;
   description: string;
   position: string;
-  threshold: number;
-  indicatorVisible?: boolean;
 }
 
 export const CareerBlock = ({
@@ -24,32 +15,21 @@ export const CareerBlock = ({
   name,
   description,
   position,
-  threshold,
-  indicatorVisible = true,
-}: CareerBlockProps) => {
-  const [ref, { height }] = useMeasure<HTMLDivElement>();
+  ...rest
+}: CareerBlockProps) => (
+  <Root>
+    <Date>{dates}</Date>
 
-  return (
-    <Root>
-      <Date>{dates}</Date>
+    <Indicator {...rest} />
 
-      <Timeline ref={ref} $indicatorVisible={indicatorVisible}>
-        <Indicator
-          blockHeight={height}
-          threshold={threshold}
-          indicatorVisible={indicatorVisible}
-        />
-      </Timeline>
+    <JobInfo>
+      <MyHeadingSmall>{name}</MyHeadingSmall>
 
-      <JobInfo>
-        <MyHeadingSmall>{name}</MyHeadingSmall>
+      <MyParagraphMedium color="rgba(0, 0, 0, 0.55)">
+        {description}
+      </MyParagraphMedium>
 
-        <MyParagraphMedium color="rgba(0, 0, 0, 0.55)">
-          {description}
-        </MyParagraphMedium>
-
-        <JobPosition>{position}</JobPosition>
-      </JobInfo>
-    </Root>
-  );
-};
+      <JobPosition>{position}</JobPosition>
+    </JobInfo>
+  </Root>
+);

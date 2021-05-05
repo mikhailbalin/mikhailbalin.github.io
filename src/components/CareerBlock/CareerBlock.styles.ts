@@ -36,25 +36,6 @@ export const Date = themedStyled("time", ({ $theme }) => ({
   },
 }));
 
-export const Timeline = themedStyled<"div", { $indicatorVisible: boolean }>(
-  "div",
-  ({ $theme, $indicatorVisible }) => ({
-    position: "relative",
-    display: "flex",
-    width: $theme.sizing.scale0,
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: $indicatorVisible ? "#d9dbd0" : "transparent",
-    alignSelf: "stretch",
-    justifySelf: "center",
-    gridArea: "Timeline-Mobile",
-
-    [$theme.mediaQuery.large]: {
-      gridArea: "Timeline",
-    },
-  })
-);
-
 export const JobInfo = themedStyled("div", ({ $theme }) => ({
   paddingBottom: $theme.sizing.scale1400,
   gridArea: "Job-Mobile",

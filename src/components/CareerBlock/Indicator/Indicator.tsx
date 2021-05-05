@@ -1,19 +1,19 @@
 import React, { useLayoutEffect, useState, useRef } from "react";
 import { useSpring } from "@react-spring/web";
 import throttle from "lodash/throttle";
-import { DotWrapper, Dot, StyledIndicator } from "./Indicator.styles";
+import { Timeline, DotWrapper, Dot, StyledIndicator } from "./Indicator.styles";
+import { useMeasure } from "react-use";
 
-interface IndicatorProps {
-  blockHeight: number;
+export interface IndicatorProps {
   threshold: number;
   indicatorVisible: boolean;
 }
 
-export const Indicator = ({
-  blockHeight,
-  threshold,
-  indicatorVisible,
-}: IndicatorProps) => {
+export const Indicator = ({ threshold, indicatorVisible }: IndicatorProps) => {
+  const [
+    timelineRef,
+    { height: timelineHeight },
+  ] = useMeasure<HTMLDivElement>();
   const ref = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState("0%");
 
@@ -21,17 +21,15 @@ export const Indicator = ({
     const increaseCount = () => {
       const elementTop = ref?.current?.getBoundingClientRect().y;
 
-      console.log({ elementTop });
-
       if (!elementTop) return;
       const diff = threshold - elementTop;
 
       if (threshold <= elementTop) {
         setHeight(() => "0%");
-      } else if (diff >= blockHeight) {
+      } else if (diff >= timelineHeight) {
         setHeight(() => "100%");
       } else {
-        setHeight(() => `${((diff / blockHeight) * 100).toFixed()}%`);
+        setHeight(() => `${((diff / timelineHeight) * 100).toFixed()}%`);
       }
     };
 
@@ -39,20 +37,20 @@ export const Indicator = ({
 
     window.addEventListener("scroll", throttledCount);
     return () => window.removeEventListener("scroll", throttledCount);
-  }, [blockHeight, threshold]);
+  }, [timelineHeight, threshold]);
 
   const indicatorStyles = useSpring({ height });
 
   return (
-    <>
+    <Timeline ref={timelineRef} $indicatorVisible={indicatorVisible}>
       <DotWrapper>
         <Dot $active={height !== "0%"} />
-        {height}
       </DotWrapper>
 
-      {indicatorVisible && (
-        <StyledIndicator ref={ref} style={indicatorStyles} />
-      )}
-    </>
+      <StyledIndicator
+        ref={ref}
+        style={indicatorVisible ? indicatorStyles : {}}
+      />
+    </Timeline>
   );
 };
