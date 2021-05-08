@@ -3,6 +3,7 @@ import { themedStyled } from "../../settings/theme";
 export const Root = themedStyled("div", ({ $theme }) => ({
   display: "flex",
   flexDirection: "column",
+  minHeight: "100vh",
   paddingRight: $theme.sizing.scale600,
   paddingLeft: $theme.sizing.scale600,
   backgroundColor: $theme.colors.backgroundPrimary,
@@ -42,7 +43,10 @@ export const Header = themedStyled("header", ({ $theme }) => ({
 }));
 
 export const Main = themedStyled("main", ({ $theme }) => ({
+  display: "flex",
+  flexDirection: "column",
   order: 3,
+  minHeight: "100vh",
 
   [$theme.mediaQuery.desktop]: {
     flexGrow: 1,

@@ -28,6 +28,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
       <Main>
         {children}
+
         <Footer />
       </Main>
 

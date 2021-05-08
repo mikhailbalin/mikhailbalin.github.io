@@ -1,6 +1,8 @@
 import { themedStyled } from "../../../settings/theme";
 
 export const Root = themedStyled("footer", ({ $theme }) => ({
+  order: 4,
+  marginTop: "auto",
   paddingTop: $theme.sizing.scale600,
   borderTop: `1px solid #d9dbd0`,
 }));
