@@ -11,6 +11,7 @@ import {
 } from "./ButtonNav.styles";
 import { useSpring } from "@react-spring/web";
 import { CustomThemeProps } from "../../settings/theme";
+import { StyleObject } from "styletron-react";
 
 /**
  * Calc the pesantage of scrolled window
@@ -83,9 +84,10 @@ const progressBlocks = [
 
 export interface ButtonNavProps {
   size?: SIZE[keyof Pick<SIZE, "default" | "mini">];
+  baseButtonStyle?: StyleObject;
 }
 
-export const ButtonNav = ({ size }: ButtonNavProps) => {
+export const ButtonNav = ({ size, baseButtonStyle }: ButtonNavProps) => {
   const { y } = useWindowScroll();
   const [, setScrollY] = useSpring(() => ({ scrollY: 0 }));
 
@@ -126,6 +128,8 @@ export const ButtonNav = ({ size }: ButtonNavProps) => {
             ":active": {
               backgroundColor: "transparent",
             },
+
+            ...baseButtonStyle,
           }),
         },
       }}
