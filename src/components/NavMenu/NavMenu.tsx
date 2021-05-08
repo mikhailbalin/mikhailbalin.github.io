@@ -3,6 +3,7 @@ import { animated, useSpring, config } from "@react-spring/web";
 import { useGlobalState } from "../../hooks/useState";
 import { themedStyled, useThemedStyletron } from "../../settings/theme";
 import { Link } from "../Link";
+import { navLinks } from "../../constants";
 
 const Nav = themedStyled(animated.nav, ({ $theme }) => ({
   display: "flex",
@@ -17,15 +18,6 @@ const Nav = themedStyled(animated.nav, ({ $theme }) => ({
     paddingBottom: $theme.sizing.scale300,
   },
 }));
-
-const navLinks = {
-  "/": "Home",
-  "/works": "Works",
-  "/testimonials": "Testimonials",
-  "/blog": "Blog",
-  "/about": "About",
-  "/contact": "Contact",
-} as const;
 
 export const NavMenu = () => {
   const [, theme] = useThemedStyletron();

@@ -4,16 +4,15 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import React from "react";
 import SEO from "react-seo-component";
+import { PostBySlug } from "./__generated__/PostBySlug";
 
 type Props = {
-  data: {
-    mdx: any;
-  };
+  data: PostBySlug;
   pageContext: any;
 };
 
 // eslint-disable-next-line react/display-name
-const blogPostTemplate = ({ data, pageContext }: Props) => {
+export default ({ data, pageContext }: Props) => {
   const {
     image,
     siteUrl,
@@ -23,7 +22,12 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
     authorName,
   } = useSiteMetadata();
 
+  if (!data.mdx) return null;
+
   const { frontmatter, body, fields, excerpt } = data.mdx;
+
+  if (!frontmatter) return null;
+
   const { title, date, cover } = frontmatter;
   const { previous, next } = pageContext;
 
@@ -36,7 +40,7 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
         image={
           cover === null ? `${siteUrl}${image}` : `${siteUrl}${cover.publicURL}`
         }
-        pathname={`${siteUrl}${fields.slug}`}
+        pathname={`${siteUrl}${fields?.slug}`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}
         twitterUsername={twitterUsername}
@@ -47,7 +51,9 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
       />
       <h1>{frontmatter.title}</h1>
       <p>{frontmatter.date}</p>
+
       <MDXRenderer>{body}</MDXRenderer>
+
       {previous === false ? null : (
         <>
           {previous && (
@@ -57,6 +63,7 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
           )}
         </>
       )}
+
       {next === false ? null : (
         <>
           {next && (
@@ -69,8 +76,6 @@ const blogPostTemplate = ({ data, pageContext }: Props) => {
     </Layout>
   );
 };
-
-export default blogPostTemplate;
 
 export const query = graphql`
   query PostBySlug($slug: String!) {

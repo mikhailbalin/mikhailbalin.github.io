@@ -9,6 +9,7 @@ import { NavMenu } from "../../components/NavMenu";
 import { useGlobalState } from "../../hooks/useState";
 import { CustomTheme } from "../../settings/theme";
 import { ButtonNav } from "../../components/ButtonNav";
+import { Footer } from "./Footer";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -25,7 +26,10 @@ export const Layout = ({ children }: LayoutProps) => {
         <VerticalText>Mikhail B.</VerticalText>
       </Header>
 
-      <Main>{children}</Main>
+      <Main>
+        {children}
+        <Footer />
+      </Main>
 
       <Aside>
         <SidebarMedia />
