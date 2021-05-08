@@ -8,7 +8,7 @@ import { Root, Header, Main, Aside, AddressWrapper } from "./Layout.styles";
 import { NavMenu } from "../../components/NavMenu";
 import { useGlobalState } from "../../hooks/useState";
 import { CustomTheme } from "../../settings/theme";
-import { ButtonNav } from "../../components/ButtonNav";
+import { ButtonScroll } from "../../components/ButtonScroll";
 import { Footer } from "./Footer";
 
 type LayoutProps = {
@@ -40,7 +40,7 @@ export const Layout = ({ children }: LayoutProps) => {
         </AddressWrapper>
       </Aside>
 
-      <ButtonNav />
+      <ButtonScroll />
 
       <Drawer
         isOpen={menuOpen}

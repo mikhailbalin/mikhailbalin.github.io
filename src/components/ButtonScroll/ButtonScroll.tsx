@@ -8,7 +8,7 @@ import {
   CircleOuter,
   Loader,
   ProgressBlock,
-} from "./ButtonNav.styles";
+} from "./ButtonScroll.styles";
 import { useSpring } from "@react-spring/web";
 import { CustomThemeProps } from "../../settings/theme";
 import { StyleObject } from "styletron-react";
@@ -87,7 +87,7 @@ export interface ButtonNavProps {
   baseButtonStyle?: StyleObject;
 }
 
-export const ButtonNav = ({ size, baseButtonStyle }: ButtonNavProps) => {
+export const ButtonScroll = ({ size, baseButtonStyle }: ButtonNavProps) => {
   const { y } = useWindowScroll();
   const [, setScrollY] = useSpring(() => ({ scrollY: 0 }));
 
