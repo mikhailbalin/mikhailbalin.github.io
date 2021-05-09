@@ -46,9 +46,11 @@ const Background = themedStyled(animated.div, ({ $theme }) => ({
 }));
 
 export const NavBar = () => {
-  const { menuOpen, closeMenu } = useGlobalState();
-  const [barWidth, setBarWidth] = useState<string | undefined>(undefined);
   const [, theme] = useThemedStyletron();
+  const { menuOpen, closeMenu } = useGlobalState();
+  const [barWidth, setBarWidth] = useState<string | undefined>(
+    theme.sizing.scale2000
+  );
 
   const backgroundStyles = useSpring({
     config: config.stiff,
