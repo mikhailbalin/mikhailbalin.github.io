@@ -1,11 +1,11 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { ButtonNav, ButtonNavProps } from "./ButtonNav";
+import { ButtonScroll, ButtonScrollProps } from "./ButtonScroll";
 import { SIZE } from "baseui/button";
 
 export default {
   title: "Buttons/Nav",
-  component: ButtonNav,
+  component: ButtonScroll,
   decorators: [
     (ButtonNavStory) => (
       <div style={{ height: "150vh" }}>
@@ -22,8 +22,8 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonNavProps> = (args) => (
-  <ButtonNav
+const Template: Story<ButtonScrollProps> = (args) => (
+  <ButtonScroll
     {...args}
     baseButtonStyle={{
       position: "absolute",

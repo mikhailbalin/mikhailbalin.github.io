@@ -82,12 +82,12 @@ const progressBlocks = [
   },
 ] as const;
 
-export interface ButtonNavProps {
+export interface ButtonScrollProps {
   size?: SIZE[keyof Pick<SIZE, "default" | "mini">];
   baseButtonStyle?: StyleObject;
 }
 
-export const ButtonScroll = ({ size, baseButtonStyle }: ButtonNavProps) => {
+export const ButtonScroll = ({ size, baseButtonStyle }: ButtonScrollProps) => {
   const { y } = useWindowScroll();
   const [, setScrollY] = useSpring(() => ({ scrollY: 0 }));
 
