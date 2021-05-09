@@ -1,13 +1,13 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { ButtonBack } from "./ButtonBack";
+import { LinkBack, LinkBackProps } from "./LinkBack";
 
 export default {
-  title: "Buttons/Back",
-  component: ButtonBack,
+  title: "Links/Back",
+  component: LinkBack,
 } as Meta;
 
-const Template: Story = (args) => <ButtonBack {...args} />;
+const Template: Story<LinkBackProps> = (args) => <LinkBack {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

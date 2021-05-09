@@ -4,7 +4,7 @@ import { Link } from "./Link";
 import { LinkProps } from "./Link.types";
 
 export default {
-  title: "Link",
+  title: "Links/Link",
   component: Link,
 } as Meta;
 
