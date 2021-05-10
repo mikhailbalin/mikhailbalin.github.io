@@ -28,10 +28,7 @@ const jobs = [
     position: "Junior Designer",
   },
 ];
-/**
- * 0 1
- * 2
- */
+
 export const Experinece = () => {
   const { height } = useWindowSize();
 
