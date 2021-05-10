@@ -10,6 +10,8 @@ import { useGlobalState } from "../../hooks/useState";
 import { CustomTheme } from "../../settings/theme";
 import { ButtonScroll } from "../../components/ButtonScroll";
 import { Footer } from "./Footer";
+import { withPrefix } from "gatsby";
+import { LinkBack } from "../../components/LinkBack";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -17,6 +19,10 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   const { menuOpen } = useGlobalState();
+
+  const isHomepage =
+    typeof window !== "undefined" &&
+    window.location.pathname === withPrefix("/");
 
   return (
     <Root>
@@ -27,7 +33,11 @@ export const Layout = ({ children }: LayoutProps) => {
       </Header>
 
       <Main>
-        <div>{children}</div>
+        <div>
+          {!isHomepage && <LinkBack to="/" />}
+
+          {children}
+        </div>
 
         <Footer />
       </Main>
