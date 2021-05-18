@@ -7,3 +7,9 @@
 ![Twitter Follow](https://img.shields.io/twitter/follow/mischabalin?style=social)
 
 Docs site. Check `package.json` for commands.
+
+Install `libvips` on Mac OS before `yarn install`:
+
+```
+brew install vips
+```
