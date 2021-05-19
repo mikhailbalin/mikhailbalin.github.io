@@ -33,6 +33,30 @@ export const MyInput = ({
         value={field.value}
         error={!!error}
         type={type}
+        placeholder="Your name"
+        overrides={{
+          Input: {
+            style: ({ $theme: { colors }, $isFocused }) => ({
+              backgroundColor: $isFocused
+                ? colors.primaryB
+                : colors.backgroundSecondary,
+            }),
+          },
+          Root: {
+            style: ({ $isFocused, $theme: { colors } }) => {
+              const border = $isFocused
+                ? colors.primaryB
+                : colors.backgroundSecondary;
+
+              return {
+                borderLeftColor: border,
+                borderRightColor: border,
+                borderTopColor: border,
+                borderBottomColor: border,
+              };
+            },
+          },
+        }}
       />
     </FormControl>
   );

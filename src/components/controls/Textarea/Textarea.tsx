@@ -10,7 +10,7 @@ interface MyTextareaProps {
 }
 
 export const MyTextarea = ({ label, name, caption }: MyTextareaProps) => {
-  const [field, meta] = useField(name);
+  const [field, meta] = useField<string>(name);
   const error = meta.touched && meta.error;
 
   return (
@@ -21,6 +21,32 @@ export const MyTextarea = ({ label, name, caption }: MyTextareaProps) => {
         onChange={field.onChange}
         value={field.value}
         error={!!error}
+        placeholder="Describe your project..."
+        overrides={
+          {
+            InputContainer: {
+              style: ({ $theme: { colors }, $isFocused }: any) => ({
+                backgroundColor: $isFocused
+                  ? colors.primaryB
+                  : colors.backgroundSecondary,
+              }),
+            },
+            Root: {
+              style: ({ $isFocused, $theme: { colors } }: any) => {
+                const border = $isFocused
+                  ? colors.primaryB
+                  : colors.backgroundSecondary;
+
+                return {
+                  borderLeftColor: border,
+                  borderRightColor: border,
+                  borderTopColor: border,
+                  borderBottomColor: border,
+                };
+              },
+            },
+          } as any
+        }
       />
     </FormControl>
   );

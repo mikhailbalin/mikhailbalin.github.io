@@ -38,6 +38,13 @@ export const MySelect = ({
         labelKey={labelKey}
         valueKey={valueKey}
         error={!!error}
+        overrides={{
+          ControlContainer: {
+            style: ({ $theme }) => ({
+              backgroundColor: $theme.colors.backgroundSecondary,
+            }),
+          },
+        }}
       />
     </FormControl>
   );
