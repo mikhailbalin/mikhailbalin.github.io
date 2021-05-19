@@ -3,6 +3,7 @@ import { Layout } from "../containers/Layout";
 import { PageProps } from "gatsby";
 import { MyHeadingXXLarge, MyParagraphMedium } from "../components/typography";
 import { PageHeader } from "../components/styled/PageHeader";
+import { Form } from "../containers/Form";
 
 // eslint-disable-next-line react/display-name
 export default (props: PageProps) => {
@@ -16,6 +17,8 @@ export default (props: PageProps) => {
           Aoluta nobis laborum et fortibus viris commemorandis. Certe, inquam,
           pertinax non quo minus id, de voluptate velit esse.
         </MyParagraphMedium>
+
+        <Form />
       </PageHeader>
     </Layout>
   );

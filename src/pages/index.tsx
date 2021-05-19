@@ -9,6 +9,7 @@ import { SiteIndexQuery } from "./__generated__/SiteIndexQuery";
 import { AboutMe } from "../containers/AboutMe";
 import { Instagram } from "../containers/Instagram";
 import { Experinece } from "../containers/Experinece";
+import { ContactMe } from "../containers/ContactMe";
 
 // eslint-disable-next-line react/display-name
 export default ({ data }: PageProps<SiteIndexQuery>) => {
@@ -39,6 +40,7 @@ export default ({ data }: PageProps<SiteIndexQuery>) => {
       <AboutMe />
       <Experinece />
       <RecentPosts posts={data.allMdx.nodes} />
+      <ContactMe />
       <Instagram />
     </Layout>
   );

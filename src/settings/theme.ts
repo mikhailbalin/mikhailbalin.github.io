@@ -75,6 +75,7 @@ const overrides: DeepPartial<Theme> = {
     buttonTertiaryActive: "#ffffff",
     backgroundPrimary: "#edeee8",
     backgroundSecondary: "#e1e3d9",
+    inputPlaceholder: "rgba(0, 0, 0, 0.3)",
   },
 };
 
