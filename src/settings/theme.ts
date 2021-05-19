@@ -76,6 +76,9 @@ const overrides: DeepPartial<Theme> = {
     backgroundPrimary: "#edeee8",
     backgroundSecondary: "#e1e3d9",
     inputPlaceholder: "rgba(0, 0, 0, 0.3)",
+    inputFill: "#e1e3d9",
+    inputBorder: "#e1e3d9",
+    inputBorderPositive: primitives.primaryB,
   },
 };
 
