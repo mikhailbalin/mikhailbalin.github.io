@@ -10,4 +10,6 @@ export default {
 const Template: Story<LinkBackProps> = (args) => <LinkBack {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  to: "/",
+};

@@ -11,8 +11,9 @@ export interface LinkBackProps {
 }
 
 export const LinkBack = ({ to }: LinkBackProps) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLAnchorElement | null>(null);
   const isHovering = useHoverDirty(ref);
+  console.log({ isHovering });
 
   const circleStyles = useSpring({
     transform: isHovering ? "scale(1.2)" : "scale(1)",

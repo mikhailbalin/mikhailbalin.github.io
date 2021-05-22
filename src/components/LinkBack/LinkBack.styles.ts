@@ -14,6 +14,15 @@ export const StyledLink = themedStyled(Link, ({ $theme }) => ({
     cursor: "pointer",
     textDecoration: "none",
     marginTop: "3vw",
+
+    ":hover": {
+      color: $theme.colors.primaryA,
+      textDecoration: "none",
+    },
+
+    ":focus": {
+      outline: "none",
+    },
   },
 }));
 
