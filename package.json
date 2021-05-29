@@ -45,7 +45,7 @@
     "react-live": "^2.2.3",
     "react-seo-component": "^2.0.2",
     "react-use": "^17.1.1",
-    "regenerator-runtime": "^0.13.7",
+    "regenerator-runtime": "^0.13.8",
     "styled-components": "^5.2.1",
     "styletron-engine-atomic": "^1.4.8",
     "styletron-react": "^6.0.1",
