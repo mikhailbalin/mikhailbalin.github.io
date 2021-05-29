@@ -6517,7 +6517,7 @@
                       "ofType": null
                     }
                   },
-                  "defaultValue": "[WEBP]"
+                  "defaultValue": null
                 },
                 {
                   "name": "outputPixelDensities",
