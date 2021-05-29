@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Input } from "../../components/controls/Input";
 import { Textarea } from "../../components/controls/Textarea";
 import { Select } from "../../components/controls/Select";
+import { Button } from "../../components/Button";
 
 const initialValues = {
   firstName: "",
@@ -54,7 +55,7 @@ export const Form = () => {
           valueKey="id"
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit Message</Button>
       </FormikForm>
     </Formik>
   );

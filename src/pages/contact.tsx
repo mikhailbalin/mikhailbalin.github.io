@@ -13,6 +13,7 @@ export default (props: PageProps) => {
     <Layout>
       <PageHeader>
         <MyHeadingXXLarge>Let&apos;s get in touch</MyHeadingXXLarge>
+
         <MyParagraphMedium>
           Aoluta nobis laborum et fortibus viris commemorandis. Certe, inquam,
           pertinax non quo minus id, de voluptate velit esse.
