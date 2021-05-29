@@ -2,6 +2,7 @@ import React from "react";
 import { FormControl } from "baseui/form-control";
 import { Input } from "baseui/input";
 import { useField } from "formik";
+import { getBorder } from "../utils/getBorder";
 
 interface MyInputProps {
   label: string;
@@ -34,30 +35,13 @@ export const MyInput = ({
         error={!!error}
         type={type}
         placeholder="Your name"
-        overrides={
-          {
-            // Input: {
-            //   style: ({ $theme: { colors }, $isFocused }) => ({
-            //     backgroundColor: $isFocused
-            //       ? colors.primaryB
-            //       : colors.backgroundSecondary,
-            //   }),
-            // },
-            // Root: {
-            //   style: ({ $isFocused, $theme: { colors } }) => {
-            //     const border = $isFocused
-            //       ? colors.primaryB
-            //       : colors.backgroundSecondary;
-            //     return {
-            //       borderLeftColor: border,
-            //       borderRightColor: border,
-            //       borderTopColor: border,
-            //       borderBottomColor: border,
-            //     };
-            //   },
-            // },
-          }
-        }
+        overrides={{
+          Root: {
+            style: ({ $isFocused, $disabled, $error, $theme: { colors } }) => ({
+              ...getBorder({ $isFocused, $disabled, $error, colors }),
+            }),
+          },
+        }}
       />
     </FormControl>
   );

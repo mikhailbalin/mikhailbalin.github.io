@@ -25,11 +25,7 @@ export const MyTextarea = ({ label, name, caption }: MyTextareaProps) => {
         overrides={
           {
             // InputContainer: {
-            //   style: ({ $theme: { colors }, $isFocused }: any) => ({
-            //     backgroundColor: $isFocused
-            //       ? colors.primaryB
-            //       : colors.backgroundSecondary,
-            //   }),
+            //   style: ({ $theme: { colors }, $isFocused }) => ({}),
             // },
             // Root: {
             //   style: ({ $isFocused, $theme: { colors } }: any) => {
@@ -44,7 +40,7 @@ export const MyTextarea = ({ label, name, caption }: MyTextareaProps) => {
             //     };
             //   },
             // },
-          } as any
+          }
         }
       />
     </FormControl>

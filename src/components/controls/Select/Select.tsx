@@ -2,6 +2,7 @@ import * as React from "react";
 import { FormControl } from "baseui/form-control";
 import { OnChangeParams, Select, SelectProps } from "baseui/select";
 import { useFormikContext } from "formik";
+import { getBorder } from "../utils/getBorder";
 
 interface MySelectProps
   extends Pick<SelectProps, "options" | "labelKey" | "valueKey"> {
@@ -40,8 +41,8 @@ export const MySelect = ({
         error={!!error}
         overrides={{
           ControlContainer: {
-            style: ({ $theme }) => ({
-              backgroundColor: $theme.colors.backgroundSecondary,
+            style: ({ $isFocused, $disabled, $error, $theme: { colors } }) => ({
+              ...getBorder({ $isFocused, $disabled, $error, colors }),
             }),
           },
         }}
