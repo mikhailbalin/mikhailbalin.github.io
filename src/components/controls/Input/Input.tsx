@@ -3,6 +3,8 @@ import { FormControl } from "baseui/form-control";
 import { Input, BaseInputProps } from "baseui/input";
 import { useField } from "formik";
 import { getBorder } from "../utils/getBorder";
+import { Theme } from "baseui/theme";
+import { getLabelStyles } from "../utils/getLabelStyles";
 
 interface MyInputProps
   extends Pick<BaseInputProps<HTMLInputElement>, "placeholder"> {
@@ -28,6 +30,11 @@ export const MyInput = ({
       label={label}
       caption={() => caption}
       error={error}
+      overrides={{
+        Label: {
+          style: getLabelStyles,
+        },
+      }}
     >
       <Input
         name={field.name}

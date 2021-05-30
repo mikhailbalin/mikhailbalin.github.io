@@ -5,6 +5,7 @@ import { useField } from "formik";
 import { Theme } from "baseui/theme";
 import { BaseInputOverrides, BaseInputProps, SharedProps } from "baseui/input";
 import { getBorder } from "../utils/getBorder";
+import { getLabelStyles } from "../utils/getLabelStyles";
 
 interface MyTextareaProps
   extends Pick<BaseInputProps<HTMLTextAreaElement>, "placeholder"> {
@@ -23,7 +24,17 @@ export const MyTextarea = ({
   const error = meta.touched && meta.error;
 
   return (
-    <FormControl htmlFor={name} label={label} caption={caption} error={error}>
+    <FormControl
+      htmlFor={name}
+      label={label}
+      caption={caption}
+      error={error}
+      overrides={{
+        Label: {
+          style: getLabelStyles,
+        },
+      }}
+    >
       <Textarea
         name={field.name}
         onBlur={field.onBlur}

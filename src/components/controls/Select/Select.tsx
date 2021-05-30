@@ -3,6 +3,7 @@ import { FormControl } from "baseui/form-control";
 import { OnChangeParams, Select, SelectProps } from "baseui/select";
 import { useFormikContext } from "formik";
 import { getBorder } from "../utils/getBorder";
+import { getLabelStyles } from "../utils/getLabelStyles";
 
 interface MySelectProps
   extends Pick<
@@ -31,7 +32,17 @@ export const MySelect = ({
   const error = meta.touched && meta.error;
 
   return (
-    <FormControl htmlFor={name} label={label} caption={caption} error={error}>
+    <FormControl
+      htmlFor={name}
+      label={label}
+      caption={caption}
+      error={error}
+      overrides={{
+        Label: {
+          style: getLabelStyles,
+        },
+      }}
+    >
       <Select
         id={field.name}
         onBlur={field.onBlur}
