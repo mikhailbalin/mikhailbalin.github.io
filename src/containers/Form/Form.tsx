@@ -15,9 +15,9 @@ const initialValues = {
 };
 
 const options = [
-  { id: "red", color: "Red" },
-  { id: "green", color: "Green" },
-  { id: "blue", color: "Blue" },
+  { id: "1", budget: "$2000 - $5000" },
+  { id: "2", budget: "$5000 - $10000" },
+  { id: "3", budget: "$10000+" },
 ];
 
 export const Form = () => {
@@ -42,17 +42,29 @@ export const Form = () => {
       }}
     >
       <FormikForm>
-        <Input name="firstName" label="First Name" />
-        <Input name="lastName" label="Last Name" />
-        <Input name="email" label="Email Address" type="email" />
-        <Textarea name="message" label="Message" />
+        <Input name="firstName" label="Name" placeholder="Your name" />
+
+        <Input name="lastName" label="Last Name" placeholder="Your last name" />
+
+        <Input
+          name="email"
+          label="Email"
+          type="email"
+          placeholder="Contact Email"
+        />
 
         <Select
-          label="Colors"
-          name="colors"
+          label="Budget"
+          name="budget"
           options={options}
-          labelKey="color"
+          labelKey="budget"
           valueKey="id"
+        />
+
+        <Textarea
+          name="message"
+          label="Message"
+          placeholder="Describe your project..."
         />
 
         <Button type="submit">Submit Message</Button>

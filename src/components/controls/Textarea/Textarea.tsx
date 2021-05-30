@@ -2,14 +2,23 @@ import React from "react";
 import { FormControl } from "baseui/form-control";
 import { Textarea } from "baseui/textarea";
 import { useField } from "formik";
+import { Theme } from "baseui/theme";
+import { BaseInputOverrides, BaseInputProps, SharedProps } from "baseui/input";
+import { getBorder } from "../utils/getBorder";
 
-interface MyTextareaProps {
+interface MyTextareaProps
+  extends Pick<BaseInputProps<HTMLTextAreaElement>, "placeholder"> {
   label: string;
   name: string;
   caption?: string;
 }
 
-export const MyTextarea = ({ label, name, caption }: MyTextareaProps) => {
+export const MyTextarea = ({
+  label,
+  name,
+  caption,
+  placeholder,
+}: MyTextareaProps) => {
   const [field, meta] = useField<string>(name);
   const error = meta.touched && meta.error;
 
@@ -21,26 +30,20 @@ export const MyTextarea = ({ label, name, caption }: MyTextareaProps) => {
         onChange={field.onChange}
         value={field.value}
         error={!!error}
-        placeholder="Describe your project..."
+        placeholder={placeholder}
         overrides={
           {
-            // InputContainer: {
-            //   style: ({ $theme: { colors }, $isFocused }) => ({}),
-            // },
-            // Root: {
-            //   style: ({ $isFocused, $theme: { colors } }: any) => {
-            //     const border = $isFocused
-            //       ? colors.primaryB
-            //       : colors.backgroundSecondary;
-            //     return {
-            //       borderLeftColor: border,
-            //       borderRightColor: border,
-            //       borderTopColor: border,
-            //       borderBottomColor: border,
-            //     };
-            //   },
-            // },
-          }
+            Root: {
+              style: ({
+                $isFocused,
+                $disabled,
+                $error,
+                $theme: { colors },
+              }: { $theme: Theme } & React.PropsWithChildren<SharedProps>) => ({
+                ...getBorder({ $isFocused, $disabled, $error, colors }),
+              }),
+            },
+          } as BaseInputOverrides<SharedProps>
         }
       />
     </FormControl>

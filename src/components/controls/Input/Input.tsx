@@ -1,10 +1,11 @@
 import React from "react";
 import { FormControl } from "baseui/form-control";
-import { Input } from "baseui/input";
+import { Input, BaseInputProps } from "baseui/input";
 import { useField } from "formik";
 import { getBorder } from "../utils/getBorder";
 
-interface MyInputProps {
+interface MyInputProps
+  extends Pick<BaseInputProps<HTMLInputElement>, "placeholder"> {
   label: string;
   name: string;
   caption?: string;
@@ -16,6 +17,7 @@ export const MyInput = ({
   name,
   caption,
   type = "text",
+  placeholder,
 }: MyInputProps) => {
   const [field, meta] = useField(name);
   const error = meta.touched && meta.error;
@@ -34,7 +36,7 @@ export const MyInput = ({
         value={field.value}
         error={!!error}
         type={type}
-        placeholder="Your name"
+        placeholder={placeholder}
         overrides={{
           Root: {
             style: ({ $isFocused, $disabled, $error, $theme: { colors } }) => ({

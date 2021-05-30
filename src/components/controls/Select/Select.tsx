@@ -5,7 +5,10 @@ import { useFormikContext } from "formik";
 import { getBorder } from "../utils/getBorder";
 
 interface MySelectProps
-  extends Pick<SelectProps, "options" | "labelKey" | "valueKey"> {
+  extends Pick<
+    SelectProps,
+    "options" | "labelKey" | "valueKey" | "placeholder"
+  > {
   label: string;
   name: string;
   caption?: string;
@@ -18,6 +21,7 @@ export const MySelect = ({
   options,
   labelKey,
   valueKey,
+  placeholder,
 }: MySelectProps) => {
   const { getFieldHelpers, getFieldProps, getFieldMeta } = useFormikContext();
   const { setValue } = getFieldHelpers(name);
@@ -46,6 +50,7 @@ export const MySelect = ({
             }),
           },
         }}
+        placeholder={placeholder}
       />
     </FormControl>
   );

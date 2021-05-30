@@ -78,6 +78,7 @@ const overrides: DeepPartial<Theme> = {
     inputPlaceholder: "rgba(0, 0, 0, 0.3)",
     inputFill: "#e1e3d9",
     inputFillActive: "#ffffff",
+    inputBorder: "green",
   },
 };
 
