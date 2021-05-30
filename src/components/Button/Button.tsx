@@ -14,11 +14,16 @@ export const Button = ({
       kind={kind}
       overrides={{
         BaseButton: {
-          style: ({ $theme }: CustomThemeProps) => ({
-            paddingTop: kind === "tertiary" ? "18px" : "12px",
-            paddingBottom: kind === "tertiary" ? "18px" : "12px",
-            paddingRight: kind === "tertiary" ? "32px" : "23px",
-            paddingLeft: kind === "tertiary" ? "32px" : "23px",
+          style: ({
+            $theme: { sizing, colors, lighting, animation, typography },
+          }: CustomThemeProps) => ({
+            paddingTop: kind === "tertiary" ? sizing.scale650 : sizing.scale500,
+            paddingBottom:
+              kind === "tertiary" ? sizing.scale650 : sizing.scale500,
+            paddingRight:
+              kind === "tertiary" ? sizing.scale900 : sizing.scale800,
+            paddingLeft:
+              kind === "tertiary" ? sizing.scale900 : sizing.scale800,
             borderColor: "transparent",
             borderTopStyle: "solid",
             borderRightStyle: "solid",
@@ -34,36 +39,36 @@ export const Button = ({
             textDecoration: "none",
 
             ":hover": {
-              color: $theme.colors.white,
+              color: colors.white,
               textDecoration: "none",
             },
 
             ":active": {
-              color: $theme.colors.white,
+              color: colors.white,
             },
 
             ...(kind === "secondary" && {
               borderColor: "#d9dbd0",
               ":hover": {
-                color: $theme.colors.white,
+                color: colors.white,
                 textDecoration: "none",
               },
               ":active": {
-                color: $theme.colors.white,
+                color: colors.white,
               },
             }),
 
             ...(kind === "tertiary" && {
-              boxShadow: $theme.lighting.shadow600,
-              transitionDuration: $theme.animation.timing400,
-              transitionTimingFunction: $theme.animation.easeInOutCurve,
+              boxShadow: lighting.shadow600,
+              transitionDuration: animation.timing400,
+              transitionTimingFunction: animation.easeInOutCurve,
               ":hover": {
-                boxShadow: $theme.lighting.shadow700,
+                boxShadow: lighting.shadow700,
                 transform: "translateY(-3px) scale(1.02)",
               },
             }),
 
-            ...$theme.typography.font260,
+            ...typography.font260,
 
             ...(baseButtonStyles || {}),
           }),

@@ -5,6 +5,37 @@ import { Input } from "../../components/controls/Input";
 import { Textarea } from "../../components/controls/Textarea";
 import { Select } from "../../components/controls/Select";
 import { Button } from "../../components/Button";
+import { themedStyled } from "../../settings/theme";
+
+const StyledFormikForm = themedStyled(
+  FormikForm,
+  ({ $theme: { mediaQuery, sizing } }) => ({
+    display: "grid",
+    gridAutoColumns: "1fr",
+    gridRowGap: sizing.scale900,
+    gridColumnGap: sizing.scale600,
+    gridTemplateRows: "auto auto auto auto",
+    gridTemplateColumns: "100%",
+
+    [mediaQuery.landscape]: {
+      gridTemplateColumns: "1fr 1fr",
+    },
+
+    [mediaQuery.tablet]: {
+      gridColumnGap: sizing.scale800,
+    },
+
+    [mediaQuery.desktop]: {
+      gridColumnGap: sizing.scale600,
+    },
+
+    [mediaQuery.large]: {
+      gridColumnGap: sizing.scale800,
+    },
+  })
+);
+
+// const StyledButton = themedWithStyle(Button, {});
 
 const initialValues = {
   firstName: "",
@@ -41,7 +72,7 @@ export const Form = () => {
         }, 400);
       }}
     >
-      <FormikForm>
+      <StyledFormikForm>
         <Input name="firstName" label="Name" placeholder="Your name" />
 
         <Input name="lastName" label="Last Name" placeholder="Your last name" />
@@ -67,8 +98,10 @@ export const Form = () => {
           placeholder="Describe your project..."
         />
 
-        <Button type="submit">Submit Message</Button>
-      </FormikForm>
+        <Button type="submit" baseButtonStyles={{ justifySelf: "start" }}>
+          Submit Message
+        </Button>
+      </StyledFormikForm>
     </Formik>
   );
 };
