@@ -16,7 +16,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@atlaskit/code": "^13.2.3",
+    "@atlaskit/code": "^14.1.0",
     "@atlaskit/css-reset": "^6.0.5",
     "@atlaskit/tree": "^8.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
