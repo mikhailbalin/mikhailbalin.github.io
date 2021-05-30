@@ -6,6 +6,7 @@ import { Theme } from "baseui/theme";
 import { BaseInputOverrides, BaseInputProps, SharedProps } from "baseui/input";
 import { getBorder } from "../utils/getBorder";
 import { getLabelStyles } from "../utils/getLabelStyles";
+import { StyledWrapper } from "../StyledWrapper";
 
 interface MyTextareaProps
   extends Pick<BaseInputProps<HTMLTextAreaElement>, "placeholder"> {
@@ -24,39 +25,48 @@ export const MyTextarea = ({
   const error = meta.touched && meta.error;
 
   return (
-    <FormControl
-      htmlFor={name}
-      label={label}
-      caption={caption}
-      error={error}
-      overrides={{
-        Label: {
-          style: getLabelStyles,
-        },
-      }}
-    >
-      <Textarea
-        name={field.name}
-        onBlur={field.onBlur}
-        onChange={field.onChange}
-        value={field.value}
-        error={!!error}
-        placeholder={placeholder}
-        overrides={
-          {
-            Root: {
-              style: ({
-                $isFocused,
-                $disabled,
-                $error,
-                $theme: { colors },
-              }: { $theme: Theme } & React.PropsWithChildren<SharedProps>) => ({
-                ...getBorder({ $isFocused, $disabled, $error, colors }),
-              }),
+    <StyledWrapper>
+      <FormControl
+        htmlFor={name}
+        label={label}
+        caption={caption}
+        error={error}
+        overrides={{
+          Label: {
+            style: getLabelStyles,
+          },
+          ControlContainer: {
+            style: {
+              marginBottom: 0,
             },
-          } as BaseInputOverrides<SharedProps>
-        }
-      />
-    </FormControl>
+          },
+        }}
+      >
+        <Textarea
+          name={field.name}
+          onBlur={field.onBlur}
+          onChange={field.onChange}
+          value={field.value}
+          error={!!error}
+          placeholder={placeholder}
+          overrides={
+            {
+              Root: {
+                style: ({
+                  $isFocused,
+                  $disabled,
+                  $error,
+                  $theme: { colors },
+                }: {
+                  $theme: Theme;
+                } & React.PropsWithChildren<SharedProps>) => ({
+                  ...getBorder({ $isFocused, $disabled, $error, colors }),
+                }),
+              },
+            } as BaseInputOverrides<SharedProps>
+          }
+        />
+      </FormControl>
+    </StyledWrapper>
   );
 };

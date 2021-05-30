@@ -32,37 +32,49 @@ export const MySelect = ({
   const error = meta.touched && meta.error;
 
   return (
-    <FormControl
-      htmlFor={name}
-      label={label}
-      caption={caption}
-      error={error}
-      overrides={{
-        Label: {
-          style: getLabelStyles,
-        },
-      }}
-    >
-      <Select
-        id={field.name}
-        onBlur={field.onBlur}
-        onChange={(params: OnChangeParams) => {
-          setValue(params.value);
-        }}
-        value={field.value}
-        options={options}
-        labelKey={labelKey}
-        valueKey={valueKey}
-        error={!!error}
+    <div>
+      <FormControl
+        htmlFor={name}
+        label={label}
+        caption={caption}
+        error={error}
         overrides={{
+          Label: {
+            style: getLabelStyles,
+          },
           ControlContainer: {
-            style: ({ $isFocused, $disabled, $error, $theme: { colors } }) => ({
-              ...getBorder({ $isFocused, $disabled, $error, colors }),
-            }),
+            style: {
+              marginBottom: 0,
+            },
           },
         }}
-        placeholder={placeholder}
-      />
-    </FormControl>
+      >
+        <Select
+          id={field.name}
+          onBlur={field.onBlur}
+          onChange={(params: OnChangeParams) => {
+            setValue(params.value);
+          }}
+          value={field.value}
+          options={options}
+          labelKey={labelKey}
+          valueKey={valueKey}
+          error={!!error}
+          overrides={{
+            ControlContainer: {
+              style: ({
+                $isFocused,
+                $disabled,
+                $error,
+                $theme: { colors },
+              }) => ({
+                ...getBorder({ $isFocused, $disabled, $error, colors }),
+              }),
+            },
+          }}
+          placeholder={placeholder}
+        />
+      </FormControl>
+    </div>
   );
 };

@@ -3,7 +3,6 @@ import { FormControl } from "baseui/form-control";
 import { Input, BaseInputProps } from "baseui/input";
 import { useField } from "formik";
 import { getBorder } from "../utils/getBorder";
-import { Theme } from "baseui/theme";
 import { getLabelStyles } from "../utils/getLabelStyles";
 
 interface MyInputProps
@@ -25,33 +24,45 @@ export const MyInput = ({
   const error = meta.touched && meta.error;
 
   return (
-    <FormControl
-      htmlFor={name}
-      label={label}
-      caption={() => caption}
-      error={error}
-      overrides={{
-        Label: {
-          style: getLabelStyles,
-        },
-      }}
-    >
-      <Input
-        name={field.name}
-        onBlur={field.onBlur}
-        onChange={field.onChange}
-        value={field.value}
-        error={!!error}
-        type={type}
-        placeholder={placeholder}
+    <div>
+      <FormControl
+        htmlFor={name}
+        label={label}
+        caption={caption}
+        error={error}
         overrides={{
-          Root: {
-            style: ({ $isFocused, $disabled, $error, $theme: { colors } }) => ({
-              ...getBorder({ $isFocused, $disabled, $error, colors }),
-            }),
+          Label: {
+            style: getLabelStyles,
+          },
+          ControlContainer: {
+            style: {
+              marginBottom: 0,
+            },
           },
         }}
-      />
-    </FormControl>
+      >
+        <Input
+          name={field.name}
+          onBlur={field.onBlur}
+          onChange={field.onChange}
+          value={field.value}
+          error={!!error}
+          type={type}
+          placeholder={placeholder}
+          overrides={{
+            Root: {
+              style: ({
+                $isFocused,
+                $disabled,
+                $error,
+                $theme: { colors },
+              }) => ({
+                ...getBorder({ $isFocused, $disabled, $error, colors }),
+              }),
+            },
+          }}
+        />
+      </FormControl>
+    </div>
   );
 };
